@@ -40,12 +40,12 @@ Things you may want to cover:
 |phone_number|string|null: false, unique: true|
 
 ### Associatioin
-has_many :buyer_products, class_name: 'Product', foreign_key: 'buyer_id'
-has_many :seller_products, class_name: 'Product', foreign_key: 'seller_id'
-has_many :comments, dependent: :destroy
-has_many :likes, dependent: :destroy
-has_one :streetaddresses
-has_one :creditcards
+- has_many :buyer_products, class_name: 'Product', foreign_key: 'buyer_id'
+- has_many :seller_products, class_name: 'Product', foreign_key: 'seller_id'
+- has_many :comments, dependent: :destroy
+- has_many :likes, dependent: :destroy
+- has_one :streetaddresses
+- has_one :creditcards
 
 ## productsテーブル
 |Column|Type|Options|
@@ -65,13 +65,13 @@ has_one :creditcards
 |brand_id|integer|foreign_key: true|
 
 ### Associatioin
-belongs_to :buyer, class_name: 'User', foreign_key: 'buyer_id'
-belongs_to :seller, class_name: 'User', foreign_key: 'seller_id'
-has_many :comments, dependent: :destroy
-has_many :likes, dependent: :destroy
-belongs_to :category
-belongs_to :brand
-has_many :images
+- belongs_to :buyer, class_name: 'User', foreign_key: 'buyer_id'
+- belongs_to :seller, class_name: 'User', foreign_key: 'seller_id'
+- has_many :comments, dependent: :destroy
+- has_many :likes, dependent: :destroy
+- belongs_to :category
+- belongs_to :brand
+- has_many :images
 
 ## likesテーブル
 |Column|Type|Options|
