@@ -109,10 +109,10 @@ has_many :images
 |Column|Type|Options|
 |------|----|-------|
 |genre|string|null: false, unique: true|
-|ancestry|integerstring|
+|ancestry|integerstring| |
 
 ## Associatioin
-- has_many :products
+- has_many :products
 - has_ancestry
 
 ## bransテーブル
@@ -133,8 +133,8 @@ has_many :images
 |prefectures|string|null: false|
 |city string|null: false|
 |address|string|null: false|
-|building_name|string||
-|phone_number|string||
+|building_name|string| |
+|phone_number|string| |
 |user_id|integer|null: false,foreign_key: true|
 
 ## Associatioin
