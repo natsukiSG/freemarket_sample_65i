@@ -52,7 +52,6 @@ has_one :creditcards
 |------|----|-------|
 |name|string|null: false, unique: true|
 |comment|text|null: false|
-|price|integer|null: false|
 |size|string|	
 |status|string|null: false|
 |costcharge|string|null: false|
@@ -88,7 +87,7 @@ has_many :images
 ## creditcardsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false,foreign_key: true|
+|user_id|integer|null: false,foreign_key: true|
 |card_id|integer|null: false|
 |customer_id|integer|null: false|
 
@@ -98,54 +97,54 @@ has_many :images
 ## commentsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|text|text|null: false|
-|user_id|integer|null: false,foreign_key: true|
-|product_id|integer|null: false,foreign_key: true|
+|text|text|null: false|
+|user_id|integer|null: false,foreign_key: true|
+|product_id|integer|null: false,foreign_key: true|
 
 ## Associatioin
-- belongs_to :user
-- belongs_to :product_id
+- belongs_to :user
+- belongs_to :product_id
 
 ## categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|genre|string|null: false, unique: true|
+|genre|string|null: false, unique: true|
 |ancestry|integerstring|
 
 ## Associatioin
-- has_many :products
-- has_ancestry
+- has_many :products
+- has_ancestry
 
 ## bransテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false|
+|name|string|null: false|
 
 ## Associatioin
-- has_many :products
+- has_many :products
 
 ## streetaddressテーブル
 |Column|Type|Options|
-|fist_name|string|null: false|
-|last_name|string|null: false|
-|first_name_kana|string|null: false|
-|last_name_kana|string|null: false|
-|post_number|string|null: false|
-|prefectures|string|null: false|
-|city string|null: false|
-|address|string|null: false|
+|fist_name|string|null: false|
+|last_name|string|null: false|
+|first_name_kana|string|null: false|
+|last_name_kana|string|null: false|
+|post_number|string|null: false|
+|prefectures|string|null: false|
+|city string|null: false|
+|address|string|null: false|
 |building_name|string||
 |phone_number|string||
-|user_id|integer|null: false,foreign_key: true|
+|user_id|integer|null: false,foreign_key: true|
 
 ## Associatioin
-- belongs_to :user
+- belongs_to :user
 
 ## imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|url|text|null: false|
+|url|text|null: false|
 |product_id|integer|null:false,foreign_key:true|
 
 ### Associatioin
-belongs_to :product
+belongs_to :product
