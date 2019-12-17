@@ -48,7 +48,8 @@ has_one :streetaddresses
 has_one :creditcards
 
 ## productsテーブル
-|Column|Type|Options
+|Column|Type|Options|
+|------|----|-------|
 |name|string|null: false, unique: true|
 |comment|text|null: false|
 |price|integer|null: false|
@@ -64,3 +65,11 @@ has_one :creditcards
 |category_id|integer|null: false,foreign_key: true|
 |brand_id|integer|foreign_key: true|
 
+### Associatioin
+belongs_to :buyer, class_name: 'User', foreign_key: 'buyer_id'
+belongs_to :seller, class_name: 'User', foreign_key: 'seller_id'
+has_many :comments, dependent: :destroy
+has_many :likes, dependent: :destroy
+belongs_to :category
+belongs_to :brand
+has_many :images
