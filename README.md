@@ -101,7 +101,7 @@ has_many :images
 |user_id|integer|null: false,foreign_key: true|
 |product_id|integer|null: false,foreign_key: true|
 
-## Associatioin
+### Associatioin
 - belongs_to :user
 - belongs_to :product_id
 
@@ -111,7 +111,7 @@ has_many :images
 |genre|string|null: false, unique: true|
 |ancestry|integerstring| |
 
-## Associatioin
+### Associatioin
 - has_many :products
 - has_ancestry
 
@@ -120,11 +120,12 @@ has_many :images
 |------|----|-------|
 |name|string|null: false|
 
-## Associatioin
+### Associatioin
 - has_many :products
 
 ## streetaddressテーブル
 |Column|Type|Options|
+|------|----|-------|
 |fist_name|string|null: false|
 |last_name|string|null: false|
 |first_name_kana|string|null: false|
@@ -133,11 +134,11 @@ has_many :images
 |prefectures|string|null: false|
 |city string|null: false|
 |address|string|null: false|
-|building_name|string| |
-|phone_number|string| |
+|building_name|string||
+|phone_number|string||
 |user_id|integer|null: false,foreign_key: true|
 
-## Associatioin
+### Associatioin
 - belongs_to :user
 
 ## imagesテーブル
