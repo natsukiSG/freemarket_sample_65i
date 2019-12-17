@@ -80,6 +80,7 @@ has_many :images
 |user_id|integer|null: false,foreign_key: true|
 |product_id|integer|null: false, foreign_key: true|
 |password|integer|null: false|
+
 ### Association
 - belongs_to :user
 - belongs_to :product
@@ -90,6 +91,7 @@ has_many :images
 |user_id|integer|null: false,foreign_key: true|
 |card_id|integer|null: false|
 |customer_id|integer|null: false|
+
 ### Association
 - belongs_to :user
 
@@ -99,6 +101,7 @@ has_many :images
 |text|text|null: false|
 |user_id|integer|null: false,foreign_key: true|
 |product_id|integer|null: false,foreign_key: true|
+
 ## Associatioin
 - belongs_to :user
 - belongs_to :product_id
@@ -108,6 +111,7 @@ has_many :images
 |------|----|-------|
 |genre|string|null: false, unique: true|
 |ancestry|integerstring|
+
 ## Associatioin
 - has_many :products
 - has_ancestry
@@ -116,6 +120,7 @@ has_many :images
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
+
 ## Associatioin
 - has_many :products
 
@@ -132,6 +137,7 @@ has_many :images
 |building_name|string||
 |phone_number|string||
 |user_id|integer|null: false,foreign_key: true|
+
 ## Associatioin
 - belongs_to :user
 
