@@ -74,26 +74,26 @@ belongs_to :category
 belongs_to :brand
 has_many :images
 
-## likesテーブル
+## likesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false,foreign_key: true|
-|product_id|integer|null: false, foreign_key: true|
-|password|integer|null: false|
+|user_id|integer|null: false,foreign_key: true|
+|product_id|integer|null: false, foreign_key: true|
+|password|integer|null: false|
 
-### Association
-- belongs_to :user
-- belongs_to :product
+### Association
+- belongs_to :user
+- belongs_to :product
 
 ## creditcardsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false,foreign_key: true|
-|card_id|integer|null: false|
-|customer_id|integer|null: false|
+|user_id|integer|null: false,foreign_key: true|
+|card_id|integer|null: false|
+|customer_id|integer|null: false|
 
 ### Association
-- belongs_to :user
+- belongs_to :user
 
 ## commentsテーブル
 |Column|Type|Options|
