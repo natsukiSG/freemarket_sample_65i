@@ -23,7 +23,7 @@ Things you may want to cover:
 
 * ...
 
-##　usersテーブル
+## usersテーブル
 |Column|Type|options|
 |------|----|-------|
 |fist_name|string|null: false|
@@ -38,6 +38,7 @@ Things you may want to cover:
 |birth_day|integer|null: false|
 |comment|text|null: false|
 |phone_number|string|null: false, unique: true|
+
 ### Associatioin
 has_many :buyer_products, class_name: 'Product', foreign_key: 'buyer_id'
 has_many :seller_products, class_name: 'Product', foreign_key: 'seller_id'
