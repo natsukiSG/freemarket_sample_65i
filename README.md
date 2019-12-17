@@ -84,46 +84,46 @@ has_many :images
 - belongs_to :user
 - belongs_to :product
 
-## creditcardsテーブル
+## creditcardsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false,foreign_key: true|
 |card_id|integer|null: false|
 |customer_id|integer|null: false|
 
-### Association
+### Association
 - belongs_to :user
 
-## commentsテーブル
+## commentsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |text|text|null: false|
 |user_id|integer|null: false,foreign_key: true|
 |product_id|integer|null: false,foreign_key: true|
 
-### Associatioin
+### Associatioin
 - belongs_to :user
 - belongs_to :product_id
 
-## categoriesテーブル
+## categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |genre|string|null: false, unique: true|
 |ancestry|integerstring| |
 
-### Associatioin
+### Associatioin
 - has_many :products
 - has_ancestry
 
-## bransテーブル
+## bransテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
 
-### Associatioin
+### Associatioin
 - has_many :products
 
-## streetaddressテーブル
+## streetaddressテーブル
 |Column|Type|Options|
 |------|----|-------|
 |fist_name|string|null: false|
@@ -138,14 +138,14 @@ has_many :images
 |phone_number|string||
 |user_id|integer|null: false,foreign_key: true|
 
-### Associatioin
+### Associatioin
 - belongs_to :user
 
-## imagesテーブル
+## imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |url|text|null: false|
 |product_id|integer|null:false,foreign_key:true|
 
-### Associatioin
+### Associatioin
 belongs_to :product
