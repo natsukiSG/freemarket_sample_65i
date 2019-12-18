@@ -65,20 +65,19 @@ Things you may want to cover:
 |brand_id|integer|foreign_key: true|
 
 ### Associatioin
-- belongs_to :buyer, class_name: 'User', foreign_key: 'buyer_id'
-- belongs_to :seller, class_name: 'User', foreign_key: 'seller_id'
-- has_many :comments, dependent: :destroy
-- has_many :likes, dependent: :destroy
-- belongs_to :category
-- belongs_to :brand
-- has_many :images
+- belongs_to :buyer, class_name: 'User', foreign_key: 'buyer_id'
+- belongs_to :seller, class_name: 'User', foreign_key: 'seller_id'
+- has_many :comments, dependent: :destroy
+- has_many :likes, dependent: :destroy
+- belongs_to :category
+- belongs_to :brand
+- has_many :images
 
 ## likesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false,foreign_key: true|
 |product_id|integer|null: false, foreign_key: true|
-|password|integer|null: false|
 
 ### Association
 - belongs_to :user
@@ -115,7 +114,7 @@ Things you may want to cover:
 - has_many :products
 - has_ancestry
 
-## bransテーブル
+## brandsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
@@ -123,7 +122,7 @@ Things you may want to cover:
 ### Associatioin
 - has_many :products
 
-## streetaddressテーブル
+## street_addressテーブル
 |Column|Type|Options|
 |------|----|-------|
 |fist_name|string|null: false|
@@ -132,7 +131,7 @@ Things you may want to cover:
 |last_name_kana|string|null: false|
 |post_number|string|null: false|
 |prefectures|string|null: false|
-|city string|null: false|
+|city|string|null: false|
 |address|string|null: false|
 |building_name|string||
 |phone_number|string||
