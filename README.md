@@ -87,7 +87,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |genre|string|null: false, unique: true|
-|ancestry|integerstring| |
+|ancestry|string||
 
 ### Associatioin
 - has_many :products
