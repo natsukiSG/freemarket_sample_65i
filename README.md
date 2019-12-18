@@ -33,7 +33,7 @@ Things you may want to cover:
 |nickname|string|null: false, unique: true|
 |mail|string|null: false, unique: true|
 |password|string|null: false|
-|birth_year|integer null: false|
+|birth_year|integer|null: false|
 |birth_month|integer|null: false|
 |birth_day|integer|null: false|
 |comment|text|null: false|
@@ -44,7 +44,7 @@ Things you may want to cover:
 - has_many :seller_products, class_name: 'Product', foreign_key: 'seller_id'
 - has_many :comments, dependent: :destroy
 - has_many :likes, dependent: :destroy
-- has_one :streetaddresses
+- has_one :street_addresses
 - has_one :creditcards
 
 ## productsテーブル
