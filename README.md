@@ -32,7 +32,7 @@
 |name|string|null: false, unique: true|
 |comment|text|null: false|
 |size|string|	
-|status|string|null: false|
+|status|integer|null: false, enumで管理|
 |costcharge|string|null: false|
 |delivery_way|string|null: false|
 |delivery_area|string|null: false|
