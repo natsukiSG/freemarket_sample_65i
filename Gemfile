@@ -81,3 +81,5 @@ end
 
 gem 'carrierwave'
 gem 'fog-aws'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
