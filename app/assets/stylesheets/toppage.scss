@@ -1,0 +1,140 @@
+// html {
+//   vertical-align: baseline;
+//   margin:  0px;
+//   padding: 0px;
+//   overflow: scroll;
+// }
+body{
+  background-color: #f5f5f5;
+    .Advertising_top{
+      background: url(https://www.photolibrary.jp/mhd4/img532/450-20170703140315300883.jpg);
+      height: 390px;
+    //     .__first {
+    //       }
+    //     }
+    //     .__second {
+    //       }
+    //     }
+    }
+}
+
+.style_heading_header {
+    position: center;
+    color: rgb(51, 51, 51);
+    font-size: 28px;
+    text-align: center;
+}
+
+.category {
+  text-align: center;
+  color: rgb(51, 51, 51);
+  .category-first {
+    position: relative;
+    font-size: 14px;
+    padding: 8px 16px;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: baseline;
+  }
+  .category-second {
+    position: relative;
+    font-size: 14px;
+    padding: 8px 16px;
+    cursor: pointer;
+    display: inline-block;
+  }
+
+  .category-third {
+    position: relative;
+    font-size: 14px;
+    padding: 8px 16px;
+    cursor: pointer;
+    display: inline-block;
+  }  
+  .category-four {
+    position: relative;
+    font-size: 14px;
+    padding: 8px 16px;
+    cursor: pointer;
+    display: inline-block;
+  }
+}
+
+// %h3.item_first 
+// レディース新着アイテム
+// -# %a.mottomiru{:href => "/category"}
+// -#   \::before
+// -#     "もっと見"
+// %h3.item_second
+// %h3.item_third
+// %h3.item_fourth
+// .body_second
+
+.style_heading_center {
+  position: center;
+  color: rgb(51, 51, 51);
+  font-size: 28px;
+  text-align: center;
+}
+  .brand {
+    text-align: center;
+    color: rgb(51, 51, 51);
+  .brand-first {
+    position: relative;
+    font-size: 14px;
+    padding: 8px 16px;
+    cursor: pointer;
+    display: inline-block;
+  } 
+  .brand-second {
+    position: relative;
+    font-size: 14px;
+    padding: 8px 16px;
+    cursor: pointer;
+    display: inline-block;
+  }
+  .brand-third {
+    position: relative;
+    font-size: 14px;
+    padding: 8px 16px;
+    cursor: pointer;
+    display: inline-block;
+  }
+  .brand-four {
+    position: relative;
+    font-size: 14px;
+    padding: 8px 16px;
+    cursor: pointer;
+    display: inline-block;
+  }
+}
+// %h3.brands-first 
+// シャネル新着アイテム
+// %h3.brands-second
+// ルイヴィトン新着アイテム
+// %h3.brands-third
+// シュプリーム新着アイテム
+// %h3.brands-four
+// ナイキ新着アイテム
+.Advertising_under{
+  background: url(https://www.photolibrary.jp/mhd4/img532/450-20170703140315300883.jpg);
+  background-position: center center;
+  height: 260px;
+  .Advertising-box {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    width: 750px;
+    margin: 0px auto;
+    .Advertising-fontfirst {
+      color: white;
+      font-size: 24px;
+      margin-bottom:  15px;
+      font-weight: 600;
+    }
+    .Advertising-fontsecond {
+      color: white;
+      font-size: 35px;
+    }
+  }
+}
