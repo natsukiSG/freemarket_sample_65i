@@ -78,3 +78,5 @@ end
 
 gem 'kaminari'
 gem 'jquery-rails'
+gem 'haml-rails'
+gem 'erb2haml'
