@@ -1,0 +1,49 @@
+
+
+.pankuzu-nav{
+  position: relative;
+  border-top: 1px solid #eee;
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  background-color: #fff;
+  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+}
+
+.pankuzu-list{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 1020px;
+  height: 48px;
+  overflow: visible;
+  margin: 0 auto;
+  padding: 16px 0;
+  white-space: normal;
+}
+
+.pankuzu-list_page-name{
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px;
+  line-height: 16px;
+  color: #333;
+}
+
+.pankuzu-list_page-name span{
+  font-weight: 600;
+}
+.pankuzu-list_page-name a{
+  color: #333;
+}
+
+.fa-angle-right{
+  margin: 0 10px;
+  font-size: 14px;
+  line-height: 16px;
+  color: #888;
+  font-weight: 600;
+}
+
+.pankuzu_right-icon{
+  display: inline-block;
+}
