@@ -22,6 +22,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new
   end
 
+  def address
+    @user = User.new
+  end
+
 
 
 
