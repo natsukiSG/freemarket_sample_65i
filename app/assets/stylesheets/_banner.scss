@@ -6,8 +6,6 @@
   background-image: url("https://web-jp-assets.mercdn.net/_next/static/images/download_app_bg-b57d6f1a32f2aebd89cf6f43bc2e4b39.jpg");
   background-position: cover;
   background-size: cover;
-  left: 50%;
-  margin-left: -50vw;
   position: relative;
   top: 0px;
   &__ad{
@@ -32,7 +30,6 @@
 }
 
 .letter-download{
-  font-family: '游ゴシック体','YuGothic','メイリオ','Meiryo',sans-serif;
   font-size: 35px;
   line-height: 35px;
   margin-bottom: 20px;
