@@ -7,6 +7,7 @@ CarrierWave.configure do |config|
     config.storage = :file
   elsif Rails.env.production? #本番はS3に保存する
     config.storage = :fog
+    
     config.fog_provider = 'fog/aws'
     config.fog_credentials = {
       provider: 'AWS',     #AWSのアクセスキーとシークレットキーを環境変数で定義する
