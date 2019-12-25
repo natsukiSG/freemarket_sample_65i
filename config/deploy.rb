@@ -43,11 +43,7 @@ namespace :deploy do
       if test "[ ! -d #{shared_path}/config ]"
         execute "mkdir -p #{shared_path}/config"
       end
-<<<<<<< Updated upstream
-      upload!('config/master.key', "#{shared_path}/config/master.key")
-=======
       upload!('config/crendentials.yml.enc', "#{shared_path}/config/crendentials.yml.enc")
->>>>>>> Stashed changes
     end
   end
   before :starting, 'deploy:upload'
