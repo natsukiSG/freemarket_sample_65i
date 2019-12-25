@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     get     "sms_confirmation",to: "users/registrations#sms_confirmation"
     get     "address",             to: "users/registrations#address"
     get     "credit",              to: "users/registrations#credit"
-    get     "complete",            to: "users/registrations#complete"
-    post    "complete",            to: "devise/registrations#create"
+    get     "done",            to: "users/registrations#done"
+    post    "done",            to: "devise/registrations#create"
   end
 end
