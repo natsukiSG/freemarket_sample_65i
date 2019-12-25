@@ -351,12 +351,12 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
+  erb2haml
   factory_bot_rails
   faker (~> 2.8)
   fog-aws
   font-awesome-rails
   gretel
-  erb2haml
   haml-rails
   jbuilder (~> 2.5)
   jquery-rails
