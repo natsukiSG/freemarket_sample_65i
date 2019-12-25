@@ -1,3 +1,6 @@
+.body {
+  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo';
+}
 .category-index_contents {
   font-family: Arial,"游ゴシック体","YuGothic","メイリオ","Meiryo",sans-serif;
   width: 700px;
@@ -15,7 +18,6 @@
   padding: 8px 0;
   font-size: 22px;
   line-height: 1.4;
-  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo';
   font-weight: 700;
 }
 
@@ -95,15 +97,14 @@
   float: left;
   width: 50%;
   padding-right: 20px;
-}
-
-.category_inner-box_grandchildren-name-link{
-  display: inline-block;
-  margin: 8px 0;
-  color: rgb(0, 153, 232);
-}
-.category_inner-box_grandchildren-name-link:hover{
-  text-decoration: underline;
-  opacity: 0.7;
-  filter: alpha(opacity=70);
+  .category_inner-box_grandchildren-name-link{
+    display: inline-block;
+    margin: 8px 0;
+    color: rgb(0, 153, 232);
+    .category_inner-box_grandchildren-name-link:hover{
+      text-decoration: underline;
+      opacity: 0.7;
+      filter: alpha(opacity=70);
+    }
+  }
 }
