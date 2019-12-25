@@ -26,10 +26,10 @@ body {
         text-decoration: none;
         color: #333;
         background-color: #fff;
-      &__parent-link:hover{
-        background-color: #ea352d;
-        color: #fff;  
-      }
+        &:hover{
+          background-color: #ea352d;
+          color: #fff;  
+        }
       &__parent-name{
         display: inline-block;
         text-size-adjust: 100%;

@@ -139,43 +139,44 @@ body {
           cursor: pointer;
           color: rgb(0, 149, 238);
         }
-      .item-category-box {
-        height: 416px;
-        width: 700px;
-        background-color: rgb(245, 245, 245);
-        flex-wrap: wrap;
-        display: flex;
-      }
-        .item-category-box-one {
-          background-color: blue;
-          height: 186px;
-          width: 124px;
-          margin: 5px;
+      .item-category
+        .item-category-box {
+          height: 416px;
+          width: 700px;
+          background-color: rgb(245, 245, 245);
+          flex-wrap: wrap;
+          display: flex;
         }
-        .item-category-box-two {
-          background-color: green;
-          height: 186px;
-          width: 124px;
-          margin: 5px;
-        }
-        .item-category-box-three {
-          background-color: red;
-          height: 186px;
-          width: 124px;
-          margin: 5px;
-        }
-        .item-category-box-four {
-          background-color: yellow;
-          height: 186px;
-          width: 124px;
-          margin: 5px;
-        }
-        .item-category-box-five {
-          background-color: blue;
-          height: 186px;
-          width: 124px;
-          margin: 5px;
-        }
+          &__one {
+            background-color: blue;
+            height: 186px;
+            width: 124px;
+            margin: 5px;
+          }
+          &__two {
+            background-color: green;
+            height: 186px;
+            width: 124px;
+            margin: 5px;
+          }
+          &__three {
+            background-color: red;
+            height: 186px;
+            width: 124px;
+            margin: 5px;
+          }
+          &__four {
+            background-color: yellow;
+            height: 186px;
+            width: 124px;
+            margin: 5px;
+          }
+          &__five {
+            background-color: blue;
+            height: 186px;
+            width: 124px;
+            margin: 5px;
+          }
     .item-box-second {
       background-color: rgb(245, 245, 245);
       height: 455px;
