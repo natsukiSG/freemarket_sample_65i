@@ -1,0 +1,146 @@
+.main-contents p{
+  margin:8px 0 0;
+}
+
+.signup-main {
+  width: 100%;
+  background-color: #f5f5f5;
+}
+.main-contents {
+  width: 700px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding:24px 16px 40px;
+}
+.main-contents-title {
+  font-size: 22px;
+  font-weight: bold;
+  padding: 32px;
+  text-align: center;
+  border-bottom: 1px solid #f5f5f5;
+}
+.form-group {
+  max-width: 343px;
+  margin: 20px auto 0;
+  text-align: left;
+  font-size:14px;
+}
+.form-label {
+  font-weight: bold;
+}
+.form-require {
+  background: #ea352d;
+  margin: 0 0 0 8px;
+  padding: 2px 4px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 12px;
+  vertical-align: top;
+}
+.form-any {
+  background-color: #888;
+  margin: 0 0 0 8px;
+  padding: 2px 4px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 12px;
+  vertical-align: top;
+}
+.input-box {
+  width: 100%;
+  margin-top: 8px;
+  height: 28px;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  line-height: 1.5;
+  font-size: 16px;
+}
+
+#streetaddress_prefecture {
+  position: relative;
+  margin-top: 8px;
+  width: 100%;
+  z-index: 2;
+  height: 48px;
+  padding: 0 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+.fa-sort-down {
+  position: absolute;
+  top: 8px;
+  right: 1px;
+  z-index: 2;
+  font-size: 24px;
+  color: #888;
+}
+.fa-sort-down2{
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  z-index: 2;
+  font-size: 24px;
+  color: #888;
+}
+.unit {
+  height: 48px;
+  line-height: 48px;
+  margin: 0 10px;
+  margin-top: 8px;
+}
+.txt {
+  color: #888;
+}
+
+.phone-txt {
+  padding-bottom: 50px;
+}
+.complete-txt {
+  text-align: center;
+}
+.signup-card-list {
+  margin: 8px 0 0;
+}
+.signup-card-list li {
+  display: inline-block;
+  margin: 0 0 0 8px;
+}
+.signup-error-message li {
+  color: #ea352d;
+  font-size: 16px;
+  list-style: square;
+}
+
+.recaptcha_term{
+  width:343px;
+  height:35px;
+  background-color: #f5f5f5;
+  padding:8px 16px;
+  font-size:10px;
+  color:#888888;
+}
+
+.text-center{
+  text-align: center;
+}
+
+.form__info--text{
+  height:21px;
+  color: #888;
+}
+
+.form__info--text p{
+  margin:8px 0 0 ;
+    font-size:14px;
+}
+
+.fa-sort-down {
+  right:8px;
+}
