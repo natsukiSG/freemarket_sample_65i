@@ -3,4 +3,7 @@ class ToppageController < ApplicationController
     # @categories = Category.roots
     @popular = []
   end
+
+  def show
+  end
 end
