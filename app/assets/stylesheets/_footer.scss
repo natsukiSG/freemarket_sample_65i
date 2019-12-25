@@ -1,0 +1,83 @@
+.footer {
+  width: 100%;
+  padding: 0 20px 10px;
+  background-color: rgb(34, 34, 34);
+  font-family: Arial,'游ゴシック体','YuGothic','メイリオ','Meiryo',sans-serif;
+}
+
+.footer-contents{
+  width: 1020px;
+  color: #fff;
+  display: flex;
+  margin: 0 auto;
+  &__title{
+    font-size: 16px;
+    font-weight: bold;
+  }
+  &__item{
+    margin-top: 18px;
+    padding-right: 40px;
+    width: auto;
+  }
+  &__lists{
+    &__list{
+      font-size: 12px;
+      margin-top: 16px;
+      height: 16px;
+    }
+    &__icon{
+      margin-top: 30px;
+      display: inline-block;
+    }
+  }
+}
+
+.privacy-service-item{
+  width: 43%;
+}
+
+.privacy-service{
+  display: flex;
+  &__privacy{
+    width: 50%;
+    padding: 0 10px 0 0;
+  }
+  &__service{
+    padding: 0 0 0 10px;
+  }
+}
+
+.footer-list-detail{
+  color: #dcdcdc;
+  text-decoration: none;
+}
+
+.footer-list-detail:hover{
+  text-decoration: underline;
+}
+
+.footer-icon{
+  &--twitter{
+    color: #fff;
+    font-size: 32px;
+    margin-right: 20px;
+  }
+  &--facebook{
+    color: #fff;
+    font-size: 32px;
+  }
+}
+
+.footer-copyright{
+  width: 1020px;
+  margin: 30px auto 20px;
+  display: flex;
+  &__developer{
+    width: 75%;
+    color: #FFF;
+    font-size: 12px;
+    text-align: center;
+    line-height: 33px;
+    padding-left: 15px;
+  }
+}
