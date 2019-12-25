@@ -1,0 +1,109 @@
+.category-index_contents {
+  font-family: Arial,"游ゴシック体","YuGothic","メイリオ","Meiryo",sans-serif;
+  width: 700px;
+  background: transparent;
+  margin: 40px auto;
+  z-index: 0;
+  color: #333;
+}
+
+.category-index_conteiner{
+  display: block;
+}
+
+.category-index_conteiner_title{
+  padding: 8px 0;
+  font-size: 22px;
+  line-height: 1.4;
+  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo';
+  font-weight: 700;
+}
+
+.category-index_parent-link{
+  display: inline-block;
+  border-radius: 4px;
+  box-shadow: 1px 1px 1px 1px rgba(14,14,14,0.0580392);
+  padding: 0 30px;
+  margin: 5px;
+  font-size: 16px;
+  line-height: 40px;
+  text-decoration: none;
+  color: #333;
+  background-color: #fff;
+}
+.category-index_parent-link:hover{
+  background-color: #ea352d;
+  color: #fff;  
+}
+
+.category-index_parent-name{
+  display: inline-block;
+  text-size-adjust: 100%;
+}
+
+.category-index_list-box{
+  margin: 30px auto;
+}
+
+.category-index_individual-box{
+  border-radius: 4px;
+  margin-bottom: 40px;
+  background-color: #fff;
+}
+
+.category-index_list-box_parent-name{
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  padding: 7px 30px 0 30px;
+  height: 40px;
+  background-color: #ea352d;
+  color: #fff;
+}
+
+.root-category-name{
+  line-height: 22px;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.category-index_individual-box_children-box{
+  padding: 24px 30px 10px 30px;
+}
+
+.category_inner-box_all{
+  margin: 8px 0;
+}
+
+.category_inner-box_all-link{
+  color:rgb(0, 153, 232);
+}
+
+.category_inner-box_children-name{
+  padding: 15px 0 5px;
+  font-size: 14px;
+  line-height: 14px;
+  font-weight: 700;
+}
+
+.category_inner-box_grandchildren-box{
+  padding: 0 20px 10px;
+  overflow: hidden;
+}
+
+.category_inner-box_grandchildren-name{
+  display: inline-block;
+  float: left;
+  width: 50%;
+  padding-right: 20px;
+}
+
+.category_inner-box_grandchildren-name-link{
+  display: inline-block;
+  margin: 8px 0;
+  color: rgb(0, 153, 232);
+}
+.category_inner-box_grandchildren-name-link:hover{
+  text-decoration: underline;
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+}
