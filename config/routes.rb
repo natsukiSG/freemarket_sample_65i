@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  get 'users/show'
-  root to: 'tops#index'
+  resources :users, only: [:show] 
+  resources :toppage, only: [:index]
+  
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  get 'toppage/index'
+  root to: 'toppage#index'
 end
