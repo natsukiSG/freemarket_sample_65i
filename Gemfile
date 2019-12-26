@@ -81,6 +81,7 @@ end
 
 gem 'carrierwave'
 gem 'fog-aws'
+gem "font-awesome-rails"
 
 gem 'haml-rails'
 gem "font-awesome-rails"
