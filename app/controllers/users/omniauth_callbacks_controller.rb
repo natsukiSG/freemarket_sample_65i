@@ -23,3 +23,4 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
   end
 end
+# frozen_string_literal: true

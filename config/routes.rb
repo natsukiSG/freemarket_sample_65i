@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'tops#index'
-  # devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  root to: 'toppage#index'
   devise_for :users, controllers: {
     registrations: "users/registrations",
     sessions:      "users/sessions",
@@ -11,11 +10,14 @@ Rails.application.routes.draw do
     delete  "sign_out",            to: "devise/sessions#destroy"
     get     "index",               to: "users/registrations#index"
     get     "profile",             to: "users/registrations#profile"
-    get     "phone",               to: "users/registrations#phone"
-    get     "phone_authentication",to: "users/registrations#phone_authen"
+    get     "sms",                 to: "users/registrations#sms"
+    get     "sms_confirmation",    to: "users/registrations#sms_confirmation"
     get     "address",             to: "users/registrations#address"
     get     "credit",              to: "users/registrations#credit"
-    get     "complete",            to: "users/registrations#complete"
-    post    "complete",            to: "users/registrations#create"
+    get     "done",                to: "users/registrations#done"
+    post    "done",                to: "devise/registrations#create"
   end
+
+  resources :users, only: [:show]
+  resources :toppage, only: [:index]
 end

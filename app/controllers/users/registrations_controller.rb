@@ -5,19 +5,25 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :validates_step1, only: :phone
   before_action :validates_step2, only: :phone_authe
   before_action :validates_step3, only: :create
-  def new
 
+  def new
+  end
+# frozen_string_literal: true
+  # GET /resource/sign_up
+  def new_registration
+    @user = User.new
   end
 
+  # POST /resource
   def profile
     @user = User.new
   end
 
-    def phone
+  def sms
     @user = User.new
   end
 
-  def phone_authen
+  def sms_confirmation
     @user = User.new
   end
 

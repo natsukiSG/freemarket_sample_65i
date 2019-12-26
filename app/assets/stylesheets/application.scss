@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+
+  @import "./reset";
+  @import "font-awesome";
+  @import "header";
+  @import "footer";
+  @import "nav";
+//  @import "slick-theme"; 
+//  @import "slick"; 
+//  @import "carousel";
