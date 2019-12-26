@@ -1,0 +1,91 @@
+.single-container
+  .ser
+    %header.single-header
+      %h1
+        -# = link_to image_tag("fmarket_logo_red.svg", class:"img"), root_path
+      %nav.progress
+        %ul.progress-bar
+          %li.through#red
+            会員情報
+            .progress-status#active
+            .progress-status_bar
+          %li.active
+            電話番号認証
+            .progress-status
+            .progress-status_bar
+          %li.address#address
+            お届け先住所入力
+            .progress-status
+            .progress-status_bar
+          %li.payment#payment
+            支払い方法
+            .progress-status
+            .progress-status_bar
+          %li.end#end
+            完了
+            .progress-status
+            .progress-status_bar
+  .info-contents
+    %h2.info-contents__input
+      会員情報入力
+    = form_with(model: @user, local: true, url: phone_path, method: :get, class: 'first-main__box') do |f|
+      .info-contents__forms
+        .info-contents__forms__form
+          .info-contents__forms__form--group--first
+            %label.nickname ニックネーム
+            %span.require 必須
+            = f.text_field :nickname, placeholder: '例) メルカリ太郎', class: "info-contents__forms__form--group--nickname"
+          .info-contents__forms__form--group
+            %label.email メールアドレス
+            %span.require 必須
+            = f.email_field :email, placeholder: 'PC・携帯どちらでも可', class: "info-contents__forms__form--group--email"
+          .info-contents__forms__form--group
+            %label.password パスワード
+            %span.require 必須
+            = f.password_field :encrypted_password, placeholder: '7文字以上', class: "info-contents__forms__form--group--password", id: "password"
+            -# .info-contents__forms__form--group--password--checkbox
+            -#   %input{type: "checkbox", id: "password-check", class: "checkbox"}
+          .info-contents__forms__form--group
+            %label.password パスワード (確認)
+            %span.require 必須
+            = f.password_field :password, placeholder: '7文字以上', class: "info-contents__forms__form--group--password", id: "password"
+          .info-contents__forms__form--person
+            %h3.confirmation
+              本人確認
+            %p.text1
+              安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+          .info-contents__forms__form--group
+            %div
+              %label お名前(全角)
+              %span.require 必須
+            = f.text_field :last_name, placeholder: '例) 山田', class: "full-name"
+            = f.text_field :first_name, placeholder: '例) 太郎', class: "full-name"
+          .info-contents__forms__form--group
+            %div
+              %label お名前(カナ)
+              %span.require 必須
+            = f.text_field :last_name_kana, placeholder: '例) ヤマダ', class: "full-name"
+            = f.text_field :first_name_kana, placeholder: '例) タロウ', class: "full-name"
+          .info-contents__forms__form--birthday
+            %label 生年月日
+            %span.require 必須
+            %br
+              .select-wrap
+                != sprintf(f.date_select(:birthday, prefix:"birth_date",with_css_classes:'XXXXX', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s'),'年','月')+'日'
+          %p.text2
+            ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+        .info-contents__forms__form
+          .form-group
+            %p.text3
+              「次へ進む」のボタンを押すことにより、
+              =link_to "", class: "terms" do
+                利用規約
+              に同意したものとみなします
+          .form-group
+            = f.submit '次へ進む',class: "next-btn"
+            .form-group__text
+              %p
+                =link_to "", class: "about" do
+                  本人情報の登録について
+                  = icon 'fas', 'chevron-right'
+-# = render 'shared/sub_footer'

@@ -1,0 +1,60 @@
+.single-container
+  .ser
+    %header.single-header
+      %h1
+        -# = link_to image_tag("logo.svg", class:"img"), root_path
+      %nav.progress
+        %ul.progress-bar
+          %li.through
+            会員情報
+            .progress-status#active
+            .progress-status_bar#active
+          %li.active#red
+            電話番号認証
+            .progress-status#active
+            .progress-status_bar
+          %li.address
+            お届け先住所入力
+            .progress-status
+            .progress-status_bar
+          %li.payment#payment
+            支払い方法
+            .progress-status
+            .progress-status_bar
+          %li.end#end
+            完了
+            .progress-status
+            .progress-status_bar
+    %main.single-main
+      .l-single-container
+        %h2.l-chapter-head.registration 電話番号認証
+        .l-single-inner.registration-form
+          = form_for @user, url:address_path, method: :get do |f|
+            %input{name: "after_save_callback", type: "hidden", value: ""}
+            .l-single-content
+              .form-group
+                %label{for: "captcha"} 認証番号
+                = f.text_field :phone, placeholder: "認証番号を入力", type: "number", value:"", class:"input-default"
+              %p.l-single-text SMSで届いた認証番号を入力してください
+              = f.submit "認証して完了", class:"btn-default btn-red"
+            %input{name: "__csrf_value", type: "hidden", value: "29877392f8ba8e6847a1ecaeb819a91eb2ef9819ba6446d7bc06042a92a3e40e7b660081f2d72e2ec6ea1952cc9a32f03d5a4fcd6e8244f8d2487802cccb178ef"}/
+            %input{name: "id", type: "hidden", value: "894807894"}/
+            .l-single-inner.registration-form
+              = form_for @user, url:"#", method: :get do |f|
+                %input{name: "after_save_callback", type: "hidden", value: ""}
+                .l-single-content
+                  %h3.l-chapter-sub-head 30秒たっても認証番号が届かない方へ
+                  %p.l-single-text 電話で認証番号を聞くこともできます。
+                  = f.submit "電話番号で認証番号を聞く(通話無料)", class:"btn-default btn-red"
+                %input{name: "__csrf_value", type: "hidden", value: "29877392f8ba8e6847a1ecaeb819a91eb2ef9819ba6446d7bc06042a92a3e40e7b660081f2d72e2ec6ea1952cc9a32f03d5a4fcd6e8244f8d2487802cccb178ef"}/
+                %input{name: "id", type: "hidden", value: "894807894"}/
+            .l-single-inner.registration-form
+              .l-single-content
+                %h3.l-chapter-sub-head 認証番号を再送することもできます。もう一度電話番号を入力して下さい。
+                %p
+                  = link_to "電話番号を再度入力する" ,"/jp/signup/sms_confirmation/" , class:"phone-link"
+                %p.l-single-text
+                  ※SMSが届かない場合は、
+                  = link_to "SMS受信設定", "/jp/help_center/" , class:"phone-link"
+                  を確認して、もう一度電話番号を入力してください。
+        -# = render "footer"
