@@ -1,9 +1,6 @@
-
--# ヘッダー部分
 .header
   = render 'layouts/header'
 
--# スタイダー
 .product-index_contents
   .product-index_contents__main
     .top-banner-slider
@@ -14,7 +11,6 @@
       %div
         = image_tag "sample3.png", class: "top-banner-slider-super-image"
 
--# カテゴリー
 .category-index
   .body_first
     %h2.body-category
@@ -80,15 +76,15 @@
   .body_second
     %h2.body-brand
       人気のブランド
-      %h2.brand
-        %a.brand-first
-          シャネル
-        %a.brand-second
-          ルイヴィトン
-        %a.brand-third
-          シュプリーム
-        %a.brand-fourth
-          ナイキ
+    %h2.brand
+      %a.brand-first
+        シャネル
+      %a.brand-second
+        ルイヴィトン
+      %a.brand-third
+        シュプリーム
+      %a.brand-fourth
+        ナイキ
   .brand-box
     .brand-box-one
       %h3.brands-first
