@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'tops#index'
+  root to: 'toppage#index'
 
   devise_for :users, controllers: {
     registrations: "users/registrations",
@@ -18,4 +18,7 @@ Rails.application.routes.draw do
     get     "done",            to: "users/registrations#done"
     post    "done",            to: "devise/registrations#create"
   end
+  
+  resources :users, only: [:show] 
+  resources :toppage, only: [:index]
 end
