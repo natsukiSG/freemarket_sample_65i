@@ -1,0 +1,13 @@
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+a{
+  text-decoration: none;
+}

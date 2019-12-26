@@ -1,8 +1,9 @@
-.mypage-side_bar{
+.side-bar-box{
   display: inline-block;
   width: 280px;
   background-color: #FFF;
   margin-right: 40px;
+  font-family: Arial,'游ゴシック体','YuGothic','メイリオ','Meiryo',sans-serif;
 }
 
 .mypage-nav{
@@ -11,11 +12,10 @@
   display: block;
   position: relative;
   &__link{
+    width: 280px;
     text-decoration: none;
     display: inline-block;
     padding: 16px;
-    width: 280px;
-    height: 48px;
     &__content{
       color: #333;
       font-size: 14px;
@@ -23,8 +23,8 @@
       justify-content: space-between;
     }
   }
-  &__link:hover:not(.active-nav){
-    background-color: #fafafa;
+  &__link:hover{
+    background-color: #eee;
   }
   &__link:hover .nav-right-icon{
     color: #333;
@@ -43,6 +43,6 @@
 
 .active-nav{
   color: #333;
-  background-color: #eee;
+  background-color: #ffffff;
   font-weight: bold;
 }
