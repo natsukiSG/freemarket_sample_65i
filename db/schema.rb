@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_19_111100) do
+ActiveRecord::Schema.define(version: 2019_12_25_063913) do
 
   create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -19,6 +19,23 @@ ActiveRecord::Schema.define(version: 2019_12_19_111100) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_sns_credentials_on_user_id"
+  end
+
+  create_table "street_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "address_first_name", null: false
+    t.string "address_last_name", null: false
+    t.string "address_first_name_kana", null: false
+    t.string "address_last_name_kana", null: false
+    t.integer "post_number", null: false
+    t.string "prefectures", null: false
+    t.string "city", null: false
+    t.integer "house_number", null: false
+    t.string "building_name"
+    t.integer "address_phone_number"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_street_addresses_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -32,7 +49,6 @@ ActiveRecord::Schema.define(version: 2019_12_19_111100) do
     t.integer "birth_year", null: false
     t.integer "birth_month", null: false
     t.integer "birth_day", null: false
-    t.text "comment", null: false
     t.string "phone_number", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -44,4 +60,5 @@ ActiveRecord::Schema.define(version: 2019_12_19_111100) do
   end
 
   add_foreign_key "sns_credentials", "users"
+  add_foreign_key "street_addresses", "users"
 end
