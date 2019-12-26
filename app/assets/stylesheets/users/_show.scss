@@ -1,0 +1,265 @@
+// .container{
+//   display: flex;
+//   justify-content: flex-start;
+// }
+
+// .mypage{
+//   width: 700px;
+//   background-repeat: no-repeat;
+//   margin: 0;
+//   padding: 0;
+//   color: #333333;
+//   text-decoration: inherit;
+//   vertical-align: inherit;
+//   &__user-icon{
+//     height: 200px;
+//     position: relative;
+//     padding: 20px;
+//     background: url(mypage_background.jpg);
+//     background-size: cover;
+//     text-align: center;
+//     margin: auto;
+//     vertical-align: middle;
+//     &--link{
+//     }
+
+//     &--name{
+//       line-height: 1.4;
+//       font-weight: 600;
+//       margin: 8px 0 0;
+//       font-size: 14px;
+//     }
+
+//     &--number{
+//       display: flex;
+//       justify-content: center;
+//     }
+    
+//   }
+
+// }
+
+
+.mypage{
+  padding-top: 40px;
+  background-color: #f5f5f5;
+  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+  &__container{
+    width: 1020px;
+    margin: 0 auto 0; 
+    padding-bottom: 40px;
+  }
+}
+
+.mypage-content{
+  width: 700px;
+  padding: 0 0 40px;
+  float: right;
+  &__user{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    &__profile{
+      position: absolute;
+      width: 128px;
+      left: 286px;
+    }
+  }
+  &__user:hover .user_link{
+    opacity: 0.8;
+    filter: alpha(opacity=70);
+  }
+}
+
+.user_link{
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+  text-decoration: none;
+  color: #333;
+  display: block;
+  &__icon{
+    margin: auto;
+    border-radius: 50%;
+  }
+  &__name{
+    margin-top: 8px;
+  }
+  &__detail{
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+  }
+  &--name:hover{
+    text-decoration: underline;
+  }
+}
+
+.mypage-tabs{
+  height: 74px;
+  display: flex;
+  font-size: 16px;
+  text-align: center;
+  font-weight: bold;
+  &__tab{
+    width: 50%;
+    background-color: #eee;
+    color: #333;
+    line-height: 74px;
+  }
+  &__tab:hover{
+    opacity: 0.7;
+    filter: alpha(opacity=70);
+  }
+}
+
+input[name="tab_item"] {
+  display: none;
+}
+
+.mypage-tabs input:checked + .mypage-tabs__tab {
+  background-color: #FFF;
+  border-top: 2px solid #ea352d;
+  color: #333;
+  line-height: 72px;
+}
+
+.tab-contents{
+  background-color: #FFF;
+  &__notification{
+    height: 80px;
+    width: 100%;
+    padding: 16px;
+    position: relative;
+    display: inline-block;
+  }
+  &__notification:hover{
+    background-color: #fafafa;
+  }
+}
+
+.list{
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.mercari-icon{
+  position: absolute;
+}
+
+.right-icon{
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translate(0, -50%);
+  color: #333;
+  font-size: 14px;
+}
+
+.notification-body{
+  margin: 0 40px 0 68px;
+  &__title{
+    color: #333;
+  }
+  &__time{
+    color: #888;
+    font-size: 14px;
+  }
+}
+
+.list-display{
+  height: 88px;
+  padding: 16px;
+  &__btn{
+    height: 56px;
+    background-color: #eee;
+    text-align: center;
+    color: #333;
+    line-height: 56px;
+    font-size: 14px;
+  }
+  &__btn:hover{
+    background-color: #fafafa;
+  }
+}
+
+.mypage-product-container{
+  margin-top: 40px;
+  background-color: #FFF;
+  color: #333;
+  &__head{
+    height: 72px;
+    padding: 0 16px; 
+    line-height: 72px;
+    font-size: 16px;
+    font-weight: bold;  
+  }
+  &__tabs{
+    height: 74px;
+    display: flex;
+    font-size: 16px;
+    text-align: center;
+    font-weight: bold;
+    &__tab{
+      width: 50%;
+      background-color: #eee;
+      color: #333;
+      line-height: 74px;
+    }
+    &__tab:hover{
+      opacity: 0.7;
+      filter: alpha(opacity=70);
+    }
+  }
+  &__content{
+    padding: 160px 0 60px;
+    text-align: center;
+    color: #ccc;
+    background-image: url("products-noimage.png");
+    background-repeat: no-repeat;
+    background-position: center 40px;
+    background-size: 18%;
+    font-weight: bold;
+  }
+}
+
+input[name="trade_item"] {
+  display: none;
+}
+
+.mypage-product-container__tabs input:checked + .mypage-product-container__tabs__tab {
+  background-color: #FFF;
+  border-top: 2px solid #ea352d;
+  color: #333;
+  line-height: 72px;
+}
+
+.active-tab{
+  background-color: #FFF;
+  border-top: 2px solid #ea352d;
+  color: #333;
+  line-height: 72px;
+}
+
+.nav-right-icon{
+  color: #ccc;
+}
+
+.active-icon{
+  color: #333;
+}
+
+.link{
+  text-decoration: none;
+}
+
+.num{
+  margin-left: 8px; 
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.products-num{
+  margin-left: 16px;
+}
