@@ -12,7 +12,7 @@ class User < ApplicationRecord
       end
     elsif
       user = User.new(
-        # id: User.all.last.id + 1,
+        id: User.all.last.id + 1,
         email: auth.info.email,
         password: Devise.friendly_token[0, 20],
         nickname: auth.info.name,
@@ -31,14 +31,16 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :sns_credentials, dependent: :destroy
+  has_one :street_address, dependent: :destroy
+  accepts_nested_attributes_for :street_address
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
          validates :nickname, presence: true,uniqueness: true, length: {maximum: 20}
-         validates :phone_number,presence: true,uniqueness: true
+         validates :phone_number, presence: true, uniqueness: true
 
          validates :first_name, :last_name, :first_name_kana, :last_name_kana,
-         :birth_year,:birth_month,:birth_day,:comment, presence: true
+         :birth_year, :birth_month, :birth_day, presence: true
   
          validates :password, length: {minimum: 7}
 end
