@@ -1,25 +1,27 @@
-.signup-header {
+.signup__header {
   width: 100%;
   background-color: #f5f5f5;
   text-align: center;
-}
-.logo {
+
+  &--logo {
   display: inline-block;
   height: 100px;
+  }
 }
-.signup_head-logo {
+.signup__head--logo {
   padding-top: 40px;
 }
-.signup-bar {
+.signup__bar {
   font-size: 14px;
   display: inline-block;
   vertical-align: top;
   margin-left:44px;
-}
-.signup-lists {
+
+&__lists {
   list-style: none;
+  }
 }
-.signup-list {
+.signup__list {
   float: left;
   position: relative;
   z-index: 2;
@@ -28,83 +30,66 @@
   color: #888;
 }
 
-.active-title{
+.signup__active--title{
   color:#ea352d;
 }
-.list-round-left {
+.list__round--left {
   width: 12px;
   height: 12px;
   margin: 8px auto 0;
   background: #ccc;
   border-radius: 50%;
-}
-.list-round-left::after {
-  left: 50%;
-  position: absolute;
-  bottom: 5px;
-  display: block;
-  content: '';
-  width: 100%;
-  height: 2px;
-  background: #ccc;
-  z-index: -1;
-}
-.list-round {
-  width: 12px;
-  height: 12px;
-  margin: 8px auto 0;
-  background: #ccc;
-  border-radius: 50%;
-}
-.list-round::before {
-  right: 50%;
-  position: absolute;
-  bottom: 5px;
-  display: block;
-  content: '';
-  width: 100%;
-  height: 2px;
-  background: #ccc;
-  z-index: -1;
-}
-.list-round::after {
-  left: 50%;
-  position: absolute;
-  bottom: 5px;
-  display: block;
-  content: '';
-  width: 100%;
-  height: 2px;
-  background: #ccc;
-  z-index: -1;
-}
-.list-round-right {
-  width: 12px;
-  height: 12px;
-  margin: 8px auto 0;
-  background: #ccc;
-  border-radius: 50%;
-}
-.list-round-right-red {
-  width: 12px;
-  height: 12px;
-  margin: 8px auto 0;
-  background:red;
-  border-radius: 50%;
-}
-.list-round-right-red::before {
-  right: 50%;
-  position: absolute;
-  bottom: 5px;
-  display: block;
-  content: '';
-  width: 100%;
-  height: 2px;
-  background:red;
-  z-index: -1;
-}
 
-.list-round-right::before {
+    &::after {
+    left: 50%;
+    position: absolute;
+    bottom: 5px;
+    display: block;
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: #ccc;
+    z-index: -1;
+  }
+}
+.list__round {
+  width: 12px;
+  height: 12px;
+  margin: 8px auto 0;
+  background: #ccc;
+  border-radius: 50%;
+
+  &::before {
+    right: 50%;
+    position: absolute;
+    bottom: 5px;
+    display: block;
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: #ccc;
+    z-index: -1;
+  }
+    &::after {
+      left: 50%;
+      position: absolute;
+      bottom: 5px;
+      display: block;
+      content: '';
+      width: 100%;
+      height: 2px;
+      background: #ccc;
+      z-index: -1;
+    }
+}
+.list__round--right {
+  width: 12px;
+  height: 12px;
+  margin: 8px auto 0;
+  background: #ccc;
+  border-radius: 50%;
+
+  &::before {
   right: 50%;
   position: absolute;
   bottom: 5px;
@@ -114,9 +99,30 @@
   height: 2px;
   background:#ccc;
   z-index: -1;
+  }
 }
 
-.list-active-left::after {
+.list__round--right-red {
+  width: 12px;
+  height: 12px;
+  margin: 8px auto 0;
+  background:red;
+  border-radius: 50%;
+
+  &::before {
+    right: 50%;
+    position: absolute;
+    bottom: 5px;
+    display: block;
+    content: '';
+    width: 100%;
+    height: 2px;
+    background:red;
+    z-index: -1;
+  }
+}
+
+.list__active--left::after {
   left: 50%;
   position: absolute;
   bottom: 5px;
@@ -129,7 +135,7 @@
 }
 
 
-.list-round-left {
+.list__round--left {
   width: 12px;
   height: 12px;
   margin: 8px auto 0;
@@ -137,25 +143,26 @@
   border-radius: 50%;
 }
 
-.list-active {
+.list__active {
   width: 12px;
   height: 12px;
   margin: 8px auto 0;
   background: #ea352d;
   border-radius: 50%;
+
+  &--a{
+    width: 12px;
+    height: 12px;
+    margin: 8px auto 0;
+    background: #ea352d;
+    border-radius: 50%;
+
+    &::before{
+      background: #ea352d;
+    }
+  }
 }
 
-.list-active-a{
-  width: 12px;
-  height: 12px;
-  margin: 8px auto 0;
-  background: #ea352d;
-  border-radius: 50%;
-}
-
-.list-active-a::before{
-  background: #ea352d;
-}
-.list-active-b::after{
+.list__active--b::after{
   background: #ea352d;
 }

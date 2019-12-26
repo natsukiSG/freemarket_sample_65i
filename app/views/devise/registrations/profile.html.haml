@@ -1,50 +1,50 @@
 .signup
-  .signup-header
-    .logo
-      .signup_head-logo
+  .signup__header
+    .signup__header--logo
+      .signup__head--logo
         =link_to root_path do
           = image_tag "fmarket_logo_red.svg",  size: "185x49"
-          
-        .signup-bar
-          %ol.signup-lists
-            %li.signup-list.active-title
+        
+        .signup__bar
+          %ol.signup__lists
+            %li.signup__list.signup__active--title
               会員情報
-              .list-round-left
-            %li.signup-list
+              .list__round--left
+            %li.signup__list
               電話番号認証
-              .list-round
-            %li.signup-list
+              .list__round
+            %li.signup__list
               お届け先住所入力
-              .list-round
-            %li.signup-list
+              .list__round
+            %li.signup__list
               支払い方法
-              .list-round
-            %li.signup-list
+              .list__round
+            %li.signup__list
               完了
-              .list-round-right
+              .list__round--right
 
-  .signup-main
-  .main-contents
-    .main-contents-title 会員情報入力
-    .form-group
-      .signup-error-message
+  .signup__main
+  .main__contents
+    .main__contents--title 会員情報入力
+    .form
+      .signup__error--message
         - if @user.errors.any?
           %ul
             - @user.errors.full_messages.each do |message|
               %li= message
     = form_for @user, url: "sms", method: :post do |f|
-      .form-group
-        %label.form-label ニックネーム
-        %span.form-require 必須
+      .form
+        %label.form__label ニックネーム
+        %span.form__require 必須
         = f.text_field :nickname, placeholder: '例) メルカリ太郎', class:'input-box'
-      .form-group
-        %label.form-label メールアドレス
-        %span.form-require 必須
+      .form
+        %label.form__label メールアドレス
+        %span.form__require 必須
         = f.email_field :email, placeholder: 'PC・携帯どちらでも可', class:'input-box'
       - if @user.email == ""
-        .form-group
-          %label.form-label パスワード
-          %span.form-require 必須
+        .form
+          %label.form__label パスワード
+          %span.form__require 必須
           = f.password_field :password, placeholder: '7文字以上の半角英数', class:'input-box'
           .form__info--text
             %p ※ 英字と数字の両方を含めて設定してください
@@ -57,28 +57,28 @@
       - else
         = f.hidden_field :password, placeholder: '7文字以上', class:'input-box'
         = f.hidden_field :password_confirmation, placeholder: '7文字以上', class:'input-box'
-      .form-group
+      .form
         %label 本人確認
         %p
           安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
-      .form-group
+      .form
         %div
-          %label.form-label お名前(全角)
-          %span.form-require 必須
+          %label.form__label お名前(全角)
+          %span.form__require 必須
         .flexer
           = f.text_field :last_name, placeholder: '例) 山田', class:'input-box first-half'
           = f.text_field :first_name, placeholder: '例) 彩', class:'input-box second-half'
-      .form-group
+      .form
         %div
-          %label.form-label お名前カナ(全角)
-          %span.form-require 必須
+          %label.form__label お名前カナ(全角)
+          %span.form__require 必須
         .flexer
           = f.text_field :last_name_kana, placeholder: '例) ヤマダ', class:'input-box first-half'
           = f.text_field :first_name_kana, placeholder: '例) アヤ', class:'input-box second-half'
-      .form-group
+      .form
         %div
-          %label.form-label 生年月日
-          %span.form-require 必須
+          %label.form__label 生年月日
+          %span.form__require 必須
         .select-wrapper
           .select-box
             .unit-box
@@ -95,17 +95,17 @@
               = fa_icon 'sort-down',class: 'fa-sort-down'
               = f.select :birth_day, [["--","--"],["1","1"],["2","2"],["3","3"],["4","4"],["5","5"],["6","6"],["7","7"],["8","8"],["9","9"],["10","10"],["11","11"],["12","12"],["13","13"],["14","14"],["15","15"],["16","16"],["17","17"],["18","18"],["19","19"],["20","20"],["21","21"],["22","22"],["23","23"],["24","24"],["25","25"],["26","26"],["27","27"],["28","28"],["29","29"],["30","30"],["31","31"]]
           %span.unit 日
-      .form-group
+      .form
         %p.txt
           ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
-      .form-group.text-center
+      .form.text__center
         %p
         「次へ進む」のボタンを押すことにより、
         %a{href: 'https://policies.google.com/privacy'}利用規約
         に同意したものとみなします
-      .form-group
+      .form
         = f.submit "次へ進む", class: 'next-button'
-        .recaptcha_term
+        .recaptcha__term
           %p This site is protected by reCAPTCHA and the Google 
           %a{href: 'https://policies.google.com/privacy'}Privacy Policy 
           and

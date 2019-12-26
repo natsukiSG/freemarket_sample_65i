@@ -1,12 +1,5 @@
 Rails.application.routes.draw do
   root to: 'tops#index'
-  # devise_for :users, controllers: {
-  #   registrations: 'users/registrations',
-  # }
-  # devise_scope :user do
-  #   get 'registration', to: 'users/registrations#new_registration'
-  #   post 'registration', to: 'users/registrations#create_registration'
-  # end
 
   devise_for :users, controllers: {
     registrations: "users/registrations",

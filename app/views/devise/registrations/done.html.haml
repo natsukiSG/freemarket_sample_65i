@@ -1,50 +1,50 @@
 .signup
-  .signup-header
-    .logo
-      .signup_head-logo
+  .signup__header
+    .signup__header--logo
+      .signup__head--logo
         =link_to root_path do
           = image_tag "fmarket_logo_red.svg",  size: "185x49"
           
-        .signup-bar
-          %ol.signup-lists
-            %li.signup-list
+        .signup__bar
+          %ol.signup__lists
+            %li.signup__list
               会員情報
-              .list-round-left.list-active-left
-            %li.signup-list
+              .list__round--left.list__active--left
+            %li.signup__list
               電話番号認証
-              .list-round.list-active-a.list-active-b
-            %li.signup-list
+              .list__round.list__active--a.list__active--b
+            %li.signup__list
               お届け先住所入力
-              .list-round.list-active-a.list-active-b
-            %li.signup-list
+              .list__round.list__active--a.list__active--b
+            %li.signup__list
               支払い方法
-              .list-round.list-active-a.list-active-b
-            %li.signup-list.active-title
+              .list__round.list__active--a.list__active--b
+            %li.signup__list.active--title
               完了
-              .list-round-right-red
-    .signup-main
-      .main-contents
-        .main-contents-title 会員登録完了
-        .form-group
-          %div.complete-txt
-            %p ありがとうございます。
-            %p 会員登録が完了しました。
-        .form-group
-          =link_to root_path ,class: 'link-button' do
-            メルカリをはじめる
-      .app-banner.add-m
-        .app-banner__ad
-          .app-banner__ad__download
-            .letter-app
-              スマホでかんたんフリマアプリ
-            .letter-download
-              今すぐ無料ダウンロード！
-            .store-btns
-              = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/mercari_icon-f75780e32e41e052c8aaa8b446331cd8.png", class: "store-btns_mercari-icon", size: "68x68"
-              = link_to "", class: "" do
-                = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/app-store-a5c17948c6fd6d5b60b13d421cd60b35.svg", class: "store-btns_appstore"
-              = link_to "", class: "" do
-                = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/google-play-495575abb895b405aa6336b2a4304958.svg", class: "store-btns_google"
-          .app-banner__ad__image
-            = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/download_app_pc-a4418175e8be071827ac88d073f40e4a.png", class: "app-image", size: "300x260"
-      = render 'signup_footer'
+              .list__round--right-red
+  .signup__main
+    .main__contents
+      .main__contents--title 会員登録完了
+      .form
+        %div.complete-txt
+          %p ありがとうございます。
+          %p 会員登録が完了しました。
+      .form
+        =link_to root_path ,class: 'link-button' do
+          メルカリをはじめる
+    .app-banner.add-m
+      .app-banner__ad
+        .app-banner__ad__download
+          .letter-app
+            スマホでかんたんフリマアプリ
+          .letter-download
+            今すぐ無料ダウンロード！
+          .store-btns
+            = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/mercari_icon-f75780e32e41e052c8aaa8b446331cd8.png", class: "store-btns_mercari-icon", size: "68x68"
+            = link_to "", class: "" do
+              = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/app-store-a5c17948c6fd6d5b60b13d421cd60b35.svg", class: "store-btns_appstore"
+            = link_to "", class: "" do
+              = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/google-play-495575abb895b405aa6336b2a4304958.svg", class: "store-btns_google"
+        .app-banner__ad__image
+          = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/download_app_pc-a4418175e8be071827ac88d073f40e4a.png", class: "app-image", size: "300x260"
+    = render 'signup_footer'
