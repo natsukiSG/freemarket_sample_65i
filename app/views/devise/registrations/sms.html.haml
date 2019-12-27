@@ -26,10 +26,10 @@
     .main__contents
       .main__contents--title 電話番号の確認
       .form
-      = form_for @user, url: "user2_signups_path", method: :post do |f|
+      = form_for @user, url: address_path, method: :get do |f|
         .form
           %label.form__label 携帯電話の番号
-          = f.text_field :nickname, placeholder: '携帯電話の番号を入力', class:'input-box'
+          = f.text_field :phone_number, placeholder: '携帯電話の番号を入力', class:'input-box'
 
           %p 本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
 
