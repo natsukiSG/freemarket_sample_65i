@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     get     "address",             to: "users/registrations#address"
     get     "credit",              to: "users/registrations#credit"
     get     "done",                to: "users/registrations#done"
-    post    "done",                to: "devise/registrations#create"
+    post    "done",                to: "users/registrations#create"
   end
 
   resources :users, only: [:show]
