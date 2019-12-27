@@ -1,20 +1,11 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
-  # # before_action :configure_account_update_params, only: [:update]
-  # before_action :set_user
-  before_action :validates_step1, only: :phone
-  before_action :validates_step2, only: :phone_authe
+  before_action :validates_step1, only: :sms
+  before_action :validates_step2, only: :address
   before_action :validates_step3, only: :create
 
   def new
   end
-# frozen_string_literal: true
-  # GET /resource/sign_up
-  def new_registration
-    @user = User.new
-  end
 
-  # POST /resource
   def profile
     @user = User.new
   end
@@ -40,9 +31,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     session[:first_name] = user_params[:first_name]
     session[:last_name_kana] = user_params[:last_name_kana]
     session[:first_name_kana] = user_params[:first_name_kana]
-    session[:birth_year] = params[:birth_date][:"birthday(1i)"]
-    session[:birth_month] = params[:birth_date][:"birthday(2i)"]
-    session[:birth_day] = params[:birth_date][:"birthday(3i)"]
+    session[:birth_year] = user_params[:birth_year]
+    session[:birth_month] = user_params[:birth_month]
+    session[:birth_day] = user_params[:birth_day]
     #バリデーション用に、仮でインスタンスを作成
     @user = User.new(
       nickname: session[:nickname], #sessionに保存された値を返す
@@ -78,7 +69,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       birth_day: session[:birth_day],
       phone_number: session[:phone_number]
     )
-    render 'phone' unless @user.valid?(:validates_step2)
+    render 'sms' unless @user.valid?(:validates_step2)
   end
 
   def validates_step3
@@ -98,7 +89,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       address_last_name_kana: session[:address_last_name_kana],
       address_first_name_kana: session[:address_first_name_kana],
       post_number: session[:post_number],
-      prefectures: "千葉県",
+      prefectures: session[:prefectures],
       city: session[:city],
       house_number: session[:house_number],
       building_name: session[:building_name],
@@ -113,8 +104,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   # session[:address_attributes] = user_params[:address_attributes]
   # end
 
-  def complete
-    # sign_in User.find(session[:id]) unless user_signed_in?
+  def done
+    sign_in User.find(session[:id]) unless user_signed_in?
     # session[:credit_attributes] = user_params[:credit_attributes]
     # session[:address_attributes] = user_params[:address_attributes]
   end
@@ -146,26 +137,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
       building_name: session[:building_name],
       address_phone_number: session[:address_phone_number]
     )
-    if @user.save!
+    if @user.save
+      @street_address.user = @user
+      @street_address.save
       session[:id] = @user.id
-      @street_address.save!
-      redirect_to complete_path
+      redirect_to done_path
     else
-      render 'new'
+      redirect_to new_user_registration_path
     end
   end
-    
-  #   if @user.save
-  #     session[:id] = @user.id
-  #     sign_in User.find(session[:id]) unless user_signed_in?
-  #     # session.clear
-  #     redirect_to root_path
-  #   else
-  #     # session.clear
-  #     redirect_to profile_path
-  #   end
-  # end
-
 
   protected
 
@@ -179,8 +159,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :first_name,
       :last_name_kana,
       :first_name_kana,
-      :phone_number,
-      
+      :birth_year,
+      :birth_month,
+      :birth_day,
+      :phone_number
     ) 
   end
 
@@ -199,24 +181,4 @@ class Users::RegistrationsController < Devise::RegistrationsController
     )
     
   end
-
-  # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-  # end
-
-  # If you have extra params to permit, append them to the sanitizer.
-  # def configure_account_update_params
-  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
-  # end
-
-  # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
-  # end
-
-  # The path used after sign up for inactive accounts.
-  # def after_inactive_sign_up_path_for(resource)
-  #   super(resource)
-  # end
 end
