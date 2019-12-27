@@ -11,7 +11,7 @@
         新規会員登録
       .signup__contents--form
         .signup__btn
-          = link_to "profile", class: "signup__btn--email" do
+          = link_to profile_path, class: "signup__btn--email" do
             メールアドレスで登録する
             = fa_icon 'envelope', class: 'fas.fa-envelope icon'
           = link_to user_facebook_omniauth_authorize_path, class: "signup__btn--facebook", method: :post do
