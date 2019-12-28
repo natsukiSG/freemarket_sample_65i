@@ -4,10 +4,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :validates_step3, only: :create
 
   def new
+    reset_session
   end
 
   def profile
-    @user = User.new
+    if session["devise.provider_data"].blank?
+      @user = User.new
+    else
+      @user = User.new(
+        nickname: session["devise.provider_data"]["info"]["name"],
+        email: session["devise.provider_data"]["info"]["email"],
+        password: session[:password]
+      )
+    end
   end
 
   def sms
@@ -137,9 +146,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
       building_name: session[:building_name],
       address_phone_number: session[:address_phone_number]
     )
+    @sns_credential = SnsCredential.new(
+      uid: session["devise.provider_data"]["uid"],
+      provider: session["devise.provider_data"]["provider"]
+    )
     if @user.save
       @street_address.user = @user
+      @sns_credential.user = @user
       @street_address.save
+      @sns_credential.save
       session[:id] = @user.id
       redirect_to done_path
     else
