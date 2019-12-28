@@ -21,4 +21,15 @@ Rails.application.routes.draw do
   
   resources :users, only: [:show] 
   resources :toppage, only: [:index]
+  
+  resources :card, only: [:new, :show] do
+    collection do
+      post 'show', to: 'card#show'
+      post 'pay', to: 'card#pay'
+      delete 'delete', to: 'card#delete'
+    end
+  end
+
+
 end
+

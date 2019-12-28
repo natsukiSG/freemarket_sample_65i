@@ -90,3 +90,6 @@ gem 'gretel'
 gem 'kaminari'
 gem 'jquery-rails'
 gem 'erb2haml'
+
+gem 'payjp'
+gem 'dotenv-rails'
