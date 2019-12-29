@@ -30,7 +30,8 @@ class User < ApplicationRecord
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  has_many :sns_credentials, dependent: :destroy
+  has_many :snscredentials, dependent: :destroy
+  has_one :creditcard, dependent: :destroy
   has_one :streetaddress, dependent: :destroy
   accepts_nested_attributes_for :streetaddress
 
