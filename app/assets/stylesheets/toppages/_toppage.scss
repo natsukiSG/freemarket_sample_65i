@@ -71,7 +71,8 @@ body {
         .category-first {
           height: 30px;
           line-height: 30px;
-          margin: 10px, 0, 0, 10px;
+          margin: 10px 0 0 10px;
+          padding: 8px 16px;
           background-color: rgb(239, 239, 239);
           display: inline-block;
           font-weight: 600;
@@ -80,6 +81,8 @@ body {
         .category-second {
           height: 30px;
           line-height: 30px;
+          margin: 10px 0 0 10px;
+          padding: 8px 16px;
           background-color: rgb(239, 239, 239);
           display: inline-block;
           font-weight: 600;
@@ -88,6 +91,8 @@ body {
         .category-third {
           height: 30px;
           line-height: 30px;
+          margin: 10px 0 0 10px;
+          padding: 8px 16px;
           background-color: rgb(239, 239, 239);
           display: inline-block;
           font-weight: 600;
@@ -96,6 +101,8 @@ body {
         .category-fourth {
           height: 30px;
           line-height: 30px;
+          margin: 10px 0 0 10px;
+          padding: 8px 16px;
           background-color: rgb(239, 239, 239);
           display: inline-block;
           font-weight: 600;
@@ -105,9 +112,8 @@ body {
   }
 // カテゴリー新着アイテム
 .product-index_categories {
-  padding: 42px 0px;
+  padding: 42px 0px 100px;
   width: 100%;
-
 }
   .item-box {
     vertical-align: baseline;
@@ -115,7 +121,6 @@ body {
   }
     .item-box-one {
       background-color: rgb(245, 245, 245);
-      height: 455px;
       width: 100%;
       display: block;
       text-align: center;
@@ -131,55 +136,19 @@ body {
       }
         .item_first_preview {
           font-size: 14px;
-          padding: 5px, 16px, 5px, 5px;
+          padding: 5px 16px 5px 5px;
           position: relative;
           cursor: pointer;
+          float: right;
           color: rgb(0, 149, 238);
-        }
-      .item-category-box {
-        height: 416px;
-        width: 700px;
-        background-color: rgb(245, 245, 245);
-        flex-wrap: wrap;
-        display: flex;
-        text-align: center;
-      }
-        .item-category-box-one {
-          background-color: blue;
-          height: 186px;
-          width: 124px;
-          margin: 5px;
-        }
-        .item-category-box-two {
-          background-color: green;
-          height: 186px;
-          width: 124px;
-          margin: 5px;
-        }
-        .item-category-box-three {
-          background-color: red;
-          height: 186px;
-          width: 124px;
-          margin: 5px;
-        }
-        .item-category-box-four {
-          background-color: yellow;
-          height: 186px;
-          width: 124px;
-          margin: 5px;
-        }
-        .item-category-box-five {
-          background-color: blue;
-          height: 186px;
-          width: 124px;
-          margin: 5px;
+          text-decoration: none;
         }
     .item-box-second {
       background-color: rgb(245, 245, 245);
-      height: 455px;
       width: 100%;
       display: block;
       text-align: center;
+    }
       .item_second {
         width: 609px;
         height: 33px;
@@ -188,18 +157,18 @@ body {
         display: inline-block;
         color: rgb(51, 51, 51);
         text-align: left;
+      }
         .item_second_preview {
           font-size: 14px;
           padding: 5px, 16px, 5px, 5px;
           position: relative;
           cursor: pointer;
           color: rgb(0, 149, 238);
+          float: right;
+          text-decoration: none;
           }
-        }
-      }
     .item-box-third {
       background-color: rgb(245, 245, 245);
-      height: 455px;
       width: 100%;
       display: block;
       text-align: center;
@@ -217,12 +186,13 @@ body {
           position: relative;
           cursor: pointer;
           color: rgb(0, 149, 238);
+          float: right;
+          text-decoration: none;
           }
         }
       }
     .item-box-fourth {
       background-color: rgb(245, 245, 245);
-      height: 455px;
       width: 100%;
       display: block;
       text-align: center;
@@ -240,40 +210,16 @@ body {
           position: relative;
           cursor: pointer;
           color: rgb(0, 149, 238);
+          float: right;
+          text-decoration: none;
           }
         }
       }
-  // .category-box_grid {
-  //   display: grid;
-  //   grid-template-columns: repeat(5, 1fr);
-  //   gap: 20px 20px;
-  // }
-  // .category-box_product {
-  //   background-color:  #fff;
-  //   box-shadow: 0 2px 4px rgba(0,0,0,.18);
-  //   width: 188px;
-  //   height: 252px;
-  //   align-items: center;
-  //   opacity: 0;
-  //   visibility: hidden;
-  //   transform: translateY(40px);
-  //   transition: all 1s;
-  // }
-  // .is-show {
-  //   opacity: 1;
-  //   visibility: visible;
-  //   transform: translateY(0px);
-  // }
-  
-  // .category-box_product_link {
-  //   width: 100%;
-  //   cursor: pointer;
-  //   display: inline-block;
-  //   position: relative;
-  //   text-decoration: none;
-  //   vertical-align: top;
-  //   text-decoration: none;
-  // }
+          .category-box_grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px 20px;
+          }
   // ブランドカテゴリー
 .body_second {
   text-align: center;
@@ -300,6 +246,8 @@ body {
       .brand-first {
         height: 30px;
         line-height: 30px;
+        margin: 10px 0 0 10px;
+        padding: 8px 16px;
         display: inline-block;
         font-weight: 600;
         border-radius: 15px;
@@ -308,6 +256,8 @@ body {
       .brand-second {
         height: 30px;
         line-height: 30px;
+        margin: 10px 0 0 10px;
+        padding: 8px 16px;
         display: inline-block;
         font-weight: 600;
         border-radius: 15px;
@@ -316,6 +266,8 @@ body {
       .brand-third {
         height: 30px;
         line-height: 30px;
+        margin: 10px 0 0 10px;
+        padding: 8px 16px;
         display: inline-block;
         font-weight: 600;
         border-radius: 15px;
@@ -324,6 +276,8 @@ body {
       .brand-fourth {
         height: 30px;
         line-height: 30px;
+        margin: 10px 0 0 10px;
+        padding: 8px 16px;
         display: inline-block;
         font-weight: 600;
         border-radius: 15px;
@@ -337,7 +291,6 @@ body {
     width: 100%;
     .brand-box-one {
       background-color: rgb(245, 245, 245);
-      height: 455px;
       width: 100%;
       display: block;
       text-align: center;
@@ -355,6 +308,8 @@ body {
           position: relative;
           cursor: pointer;
           color: rgb(0, 149, 238);
+          float: right;
+          text-decoration: none;
           }
         }
       }
@@ -380,12 +335,13 @@ body {
           position: relative;
           cursor: pointer;
           color: rgb(0, 149, 238);
+          float: right;
+          text-decoration: none;
         }
       }
     }
     .brand-box-third {
       background-color: rgb(245, 245, 245);
-      height: 455px;
       width: 100%;
       padding: 40px, 0, 100px;
       display: block;
@@ -404,12 +360,13 @@ body {
           position: relative;
           cursor: pointer;
           color: rgb(0, 149, 238);
+          float: right;
+          text-decoration: none;
         }
       }
     }
     .brand-box-fourth {
       background-color: rgb(245, 245, 245);
-      height: 455px;
       width: 100%;
       padding: 40px, 0, 100px;
       display: block;
@@ -428,6 +385,8 @@ body {
           position: relative;
           cursor: pointer;
           color: rgb(0, 149, 238);
+          float: right;
+          text-decoration: none;
         }
       }
     }

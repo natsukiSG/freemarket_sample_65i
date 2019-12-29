@@ -5,4 +5,7 @@ Rails.application.routes.draw do
   
   resources :users, only: [:show] 
   resources :toppage, only: [:index]
+
+  resources :brands , only: [:index, :show]
+  resources :brand_categories , only: [:show]
 end

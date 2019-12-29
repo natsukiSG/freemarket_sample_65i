@@ -1,0 +1,41 @@
+- breadcrumb :"brands/index"
+
+.header
+  = render 'layouts/header'
+
+= render 'layouts/nav'
+
+.brand-index_contents
+  .brand-index_conteiner
+    .brand-index_conteiner_title
+      ブランド一覧
+    .brand-index_category-list
+      - @brand_categories.each do |category|
+        - if category.id == 1
+          = link_to brand_category_path(category), class:"brand-index_category-link active-brand-category" do
+            .cbrand-index_category-name
+              = category.name
+        - else
+          = link_to brand_category_path(category), class:"brand-index_category-link" do
+            .cbrand-index_category-name
+              = category.name
+    .brand-index_list-box.clearfix
+      %div{ class: "brand-index_individual-box clearfix"}
+        .brand-index_list-box_category-name.clearfix
+          %h3.brand-category-name
+            = @brand_categories[0].name
+        .brand-index_individual-box_brand.clearfix
+          - @brand_categories[0].brands.each do |brand|
+            .brand_inner-box-name
+              = link_to "#{brand.name}", brand_path(brand), class: "brand_inner-box-name-link"
+                
+
+
+.app-banner
+  = render 'layouts/banner'
+    
+.footer
+  = render 'layouts/footer'
+
+.display-btn
+  = render "layouts/display_btn"
