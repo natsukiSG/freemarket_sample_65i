@@ -26,7 +26,7 @@
     .main__contents
       .main__contents--title 住所入力
       .signup__error--message
-      = form_for @streetaddress, url: done_path, method: :post do |f|
+      = form_for @streetaddress, url: credit_path, method: :get do |f|
         .form
           %div
             %label.form__label お名前
