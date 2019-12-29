@@ -1,7 +1,8 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+  require "payjp"
   before_action :validates_step1, only: :sms
   before_action :validates_step2, only: :address
-  before_action :validates_step3, only: :create
+  before_action :validates_step3, only: :credit
 
   def new
     reset_session
@@ -107,19 +108,37 @@ class Users::RegistrationsController < Devise::RegistrationsController
     render 'address' unless @street_address.valid?(:validates_step3)
   end
 
-  # 新規登録時のクレカと登録未実装の為
-  # def credit
-  #   # render layout: "application.registration" 
-  #   # session[:address_attributes] = user_params[:address_attributes]
-  # end
+  def credit
+    # render layout: "application.registration" 
+    # session[:address_attributes] = user_params[:address_attributes]
+  end
 
   def done
-    sign_in User.find(session[:id]) unless user_signed_in?
+    # sign_in User.find(session[:id]) unless user_signed_in?
     # session[:credit_attributes] = user_params[:credit_attributes]
     # session[:address_attributes] = user_params[:address_attributes]
   end
 
-  def create
+  def user_create
+    Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_PRIVATE_KEY)
+    # binding.pry
+      customer = Payjp::Customer.create(
+      # description: '登録テスト', #なくてもOK
+      card: params['payjp-token'],
+      )
+      # @card = Creditcard.new(customer_id: customer.id, card_id: customer.default_card)
+      # if @card.save
+      #   redirect_to action: "create"
+      # else
+      #   redirect_to action: "new"
+      # end
+
+    if session["devise.provider_data"].present?
+      @sns_credential = SnsCredential.new(
+        uid: session["devise.provider_data"]["uid"],
+        provider: session["devise.provider_data"]["provider"]
+      )
+    end
     @user = User.new(
       nickname: session[:nickname],
       email: session[:email],
@@ -146,16 +165,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
       building_name: session[:building_name],
       address_phone_number: session[:address_phone_number]
     )
-    @sns_credential = SnsCredential.new(
-      uid: session["devise.provider_data"]["uid"],
-      provider: session["devise.provider_data"]["provider"]
-    )
+    @creditcard = Creditcard.new(customer_id: customer.id, card_id: customer.default_card)
     if @user.save
       @street_address.user = @user
-      @sns_credential.user = @user
+      @creditcard.user = @user
       @street_address.save
-      @sns_credential.save
-      session[:id] = @user.id
+      @creditcard.save
+      if @sns_credential.present?
+        @sns_credential.user = @user
+        @sns_credential.save
+      end
+      # session[:id] = @user.id
       redirect_to done_path
     else
       redirect_to new_user_registration_path
@@ -194,6 +214,5 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :building_name,
       :address_phone_number
     )
-    
   end
 end
