@@ -4,3 +4,11 @@
       .signup__head--logo
         =link_to root_path do
           = image_tag "fmarket_logo_red.svg",  size: "185x49"
+
+  .login-block
+    .login-block__up
+      .login-block__up--text
+        アカウントをお持ちでない方はこちら
+      .login-block__up--link
+        =link_to "path", class: "login-block__up--link--address" do
+          新規会員登録
