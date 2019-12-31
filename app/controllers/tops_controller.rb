@@ -3,5 +3,6 @@ class TopsController < ApplicationController
   end
 
   def show
+    @product = 
   end
 end
