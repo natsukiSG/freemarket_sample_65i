@@ -68,6 +68,7 @@ body {
       width: 100%;
       cursor: pointer;
       font-size: 14px;
+      margin-bottom: 42px;
         .category-first {
           height: 30px;
           line-height: 30px;
@@ -142,75 +143,75 @@ body {
           color: rgb(0, 149, 238);
           text-decoration: none;
         }
-              .category-box_grid{
+      .category-box_grid{
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         gap: 20px 20px;
       }
-      .category-box_product{
-        background-color: #fff;
-        box-shadow: 0 2px 4px rgba(0,0,0,.18);
-        width: 100%;
-        align-items: center;
-      }
-      .category-box_product_link{
-        width: 100%;
-        cursor: pointer;
-        display: inline-block;
-        position: relative;
-        text-decoration: none;
-        vertical-align: top;
-        text-decoration: none;
-      }
-      .category-box_product-box{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        &__image{
-          position: relative;
-          height: 188px;
-        }
-        &__price{
-          position: absolute;
-          bottom: 8px;
-          left: 0;
-          background: rgba(0,0,0,.4);
-          border-radius: 0 14px 14px 0;
-          color: #fff;
-          display: inline-flex;
-          font-size: 17px;
-          height: 28px;
-          line-height: 28px;
-          letter-spacing: .02em;
-          padding: 0 12px;
-          z-index: 2;
-        }
-        &__title{
-          height: 64px;
+        .category-box_product{
+          background-color: #fff;
+          box-shadow: 0 2px 4px rgba(0,0,0,.18);
           width: 100%;
-          color: #222;
-          font-size: 14px;
-          line-height: 1.4em;
-          display: flex;
           align-items: center;
-          width: 188px;
-          &--name{
-            height: 2.8em;
-            overflow: hidden;
+        }
+        .category-box_product_link{
+          width: 100%;
+          cursor: pointer;
+          display: inline-block;
+          position: relative;
+          text-decoration: none;
+          vertical-align: top;
+          text-decoration: none;
+        }
+        .category-box_product-box{
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          &__image{
             position: relative;
-            word-wrap: break-word;
+            height: 188px;
           }
-          &--name:after{
-            background: linear-gradient(90deg,hsla(0,0%,100%,0),#fff 72%);
-            bottom: 0;
-            content: "";
-            height: 50%;
+          &__price{
             position: absolute;
-            right: 0;
-            width: 50%;
+            bottom: 8px;
+            left: 0;
+            background: rgba(0,0,0,.4);
+            border-radius: 0 14px 14px 0;
+            color: #fff;
+            display: inline-flex;
+            font-size: 17px;
+            height: 28px;
+            line-height: 28px;
+            letter-spacing: .02em;
+            padding: 0 12px;
+            z-index: 2;
+          }
+          &__title{
+            height: 64px;
+            width: 100%;
+            color: #222;
+            font-size: 14px;
+            line-height: 1.4em;
+            display: flex;
+            align-items: center;
+            width: 188px;
+            &--name{
+              height: 2.8em;
+              overflow: hidden;
+              position: relative;
+              word-wrap: break-word;
+            }
+            &--name:after{
+              background: linear-gradient(90deg,hsla(0,0%,100%,0),#fff 72%);
+              bottom: 0;
+              content: "";
+              height: 50%;
+              position: absolute;
+              right: 0;
+              width: 50%;
+            }
           }
         }
-      }
     .item-box-second {
       padding: 42px 0px 100px;
       width: 1020px;
@@ -277,75 +278,6 @@ body {
           color: rgb(0, 149, 238);
           float: right;
           text-decoration: none;
-          }
-        }
-      }
-      .category-box_grid{
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 20px 20px;
-      }
-      .category-box_product{
-        background-color: #fff;
-        box-shadow: 0 2px 4px rgba(0,0,0,.18);
-        width: 100%;
-        align-items: center;
-      }
-      .category-box_product_link{
-        width: 100%;
-        cursor: pointer;
-        display: inline-block;
-        position: relative;
-        text-decoration: none;
-        vertical-align: top;
-        text-decoration: none;
-      }
-      .category-box_product-box{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        &__image{
-          position: relative;
-          height: 188px;
-        }
-        &__price{
-          position: absolute;
-          bottom: 8px;
-          left: 0;
-          background: rgba(0,0,0,.4);
-          border-radius: 0 14px 14px 0;
-          color: #fff;
-          display: inline-flex;
-          font-size: 17px;
-          height: 28px;
-          line-height: 28px;
-          letter-spacing: .02em;
-          padding: 0 12px;
-          z-index: 2;
-        }
-        &__title{
-          height: 64px;
-          width: 100%;
-          color: #222;
-          font-size: 14px;
-          line-height: 1.4em;
-          display: flex;
-          align-items: center;
-          width: 188px;
-          &--name{
-            height: 2.8em;
-            overflow: hidden;
-            position: relative;
-            word-wrap: break-word;
-          }
-          &--name:after{
-            background: linear-gradient(90deg,hsla(0,0%,100%,0),#fff 72%);
-            bottom: 0;
-            content: "";
-            height: 50%;
-            position: absolute;
-            right: 0;
-            width: 50%;
           }
         }
       }
@@ -421,6 +353,7 @@ body {
   width: 100%;
   }
   .brand-box {
+    background-color: rgb(245, 245, 245);
     .brand-box-one {
       padding: 42px 0px 100px;
       width: 1020px;
