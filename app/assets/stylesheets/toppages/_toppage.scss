@@ -113,20 +113,19 @@ body {
 // カテゴリー新着アイテム
 .product-index_categories {
   padding: 42px 0px 100px;
+  background-color: rgb(245, 245, 245);
   width: 100%;
 }
   .item-box {
-    vertical-align: baseline;
-    width: 100%;
+    // vertical-align: baseline;
   }
     .item-box-one {
-      background-color: rgb(245, 245, 245);
-      width: 100%;
-      display: block;
-      text-align: center;
+      padding: 42px 0px 100px;
+      width: 1020px;
+      margin: auto;
     }
       .item_first {
-        width: 609px;
+        width: 1020px;
         height: 33px;
         margin-bottom: 16px;
         font-size: 24px;
@@ -143,14 +142,82 @@ body {
           color: rgb(0, 149, 238);
           text-decoration: none;
         }
+              .category-box_grid{
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 20px 20px;
+      }
+      .category-box_product{
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0,0,0,.18);
+        width: 100%;
+        align-items: center;
+      }
+      .category-box_product_link{
+        width: 100%;
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        text-decoration: none;
+        vertical-align: top;
+        text-decoration: none;
+      }
+      .category-box_product-box{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        &__image{
+          position: relative;
+          height: 188px;
+        }
+        &__price{
+          position: absolute;
+          bottom: 8px;
+          left: 0;
+          background: rgba(0,0,0,.4);
+          border-radius: 0 14px 14px 0;
+          color: #fff;
+          display: inline-flex;
+          font-size: 17px;
+          height: 28px;
+          line-height: 28px;
+          letter-spacing: .02em;
+          padding: 0 12px;
+          z-index: 2;
+        }
+        &__title{
+          height: 64px;
+          width: 100%;
+          color: #222;
+          font-size: 14px;
+          line-height: 1.4em;
+          display: flex;
+          align-items: center;
+          width: 188px;
+          &--name{
+            height: 2.8em;
+            overflow: hidden;
+            position: relative;
+            word-wrap: break-word;
+          }
+          &--name:after{
+            background: linear-gradient(90deg,hsla(0,0%,100%,0),#fff 72%);
+            bottom: 0;
+            content: "";
+            height: 50%;
+            position: absolute;
+            right: 0;
+            width: 50%;
+          }
+        }
+      }
     .item-box-second {
-      background-color: rgb(245, 245, 245);
-      width: 100%;
-      display: block;
-      text-align: center;
+      padding: 42px 0px 100px;
+      width: 1020px;
+      margin: auto;
     }
       .item_second {
-        width: 609px;
+        width: 1020px;
         height: 33px;
         margin-bottom: 16px;
         font-size: 24px;
@@ -168,12 +235,11 @@ body {
           text-decoration: none;
           }
     .item-box-third {
-      background-color: rgb(245, 245, 245);
-      width: 100%;
-      display: block;
-      text-align: center;
+      padding: 42px 0px 100px;
+      width: 1020px;
+      margin: auto;
       .item_third {
-        width: 609px;
+        width: 1020px;
         height: 33px;
         margin-bottom: 16px;
         font-size: 24px;
@@ -192,12 +258,11 @@ body {
         }
       }
     .item-box-fourth {
-      background-color: rgb(245, 245, 245);
-      width: 100%;
-      display: block;
-      text-align: center;
+      padding: 42px 0px 100px;
+      width: 1020px;
+      margin: auto;
       .item_fourth {
-        width: 609px;
+        width: 1020px;
         height: 33px;
         margin-bottom: 16px;
         font-size: 24px;
@@ -215,11 +280,75 @@ body {
           }
         }
       }
-          .category-box_grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 20px 20px;
+      .category-box_grid{
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 20px 20px;
+      }
+      .category-box_product{
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0,0,0,.18);
+        width: 100%;
+        align-items: center;
+      }
+      .category-box_product_link{
+        width: 100%;
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        text-decoration: none;
+        vertical-align: top;
+        text-decoration: none;
+      }
+      .category-box_product-box{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        &__image{
+          position: relative;
+          height: 188px;
+        }
+        &__price{
+          position: absolute;
+          bottom: 8px;
+          left: 0;
+          background: rgba(0,0,0,.4);
+          border-radius: 0 14px 14px 0;
+          color: #fff;
+          display: inline-flex;
+          font-size: 17px;
+          height: 28px;
+          line-height: 28px;
+          letter-spacing: .02em;
+          padding: 0 12px;
+          z-index: 2;
+        }
+        &__title{
+          height: 64px;
+          width: 100%;
+          color: #222;
+          font-size: 14px;
+          line-height: 1.4em;
+          display: flex;
+          align-items: center;
+          width: 188px;
+          &--name{
+            height: 2.8em;
+            overflow: hidden;
+            position: relative;
+            word-wrap: break-word;
           }
+          &--name:after{
+            background: linear-gradient(90deg,hsla(0,0%,100%,0),#fff 72%);
+            bottom: 0;
+            content: "";
+            height: 50%;
+            position: absolute;
+            right: 0;
+            width: 50%;
+          }
+        }
+      }
   // ブランドカテゴリー
 .body_second {
   text-align: center;
@@ -286,23 +415,26 @@ body {
     }
   }
   // ブランド新着
+.product-index_categories {
+  padding: 42px 0px 100px;
+  background-color: rgb(245, 245, 245);
+  width: 100%;
+  }
   .brand-box {
-    vertical-align: baseline;
-    width: 100%;
     .brand-box-one {
-      background-color: rgb(245, 245, 245);
-      width: 100%;
-      display: block;
-      text-align: center;
+      padding: 42px 0px 100px;
+      width: 1020px;
+      margin: auto;
+    }
       .brands-first {
-        width: 609px;
+        width: 1020px;
         height: 33px;
         margin-bottom: 16px;
         font-size: 24px;
         display: inline-block;
         color: rgb(51, 51, 51);
         text-align: left;
-        .brands_first_oreview {
+        .brands_first_preview {
           font-size: 14px;
           padding: 5px, 16px, 5px, 5px;
           position: relative;
@@ -313,16 +445,12 @@ body {
           }
         }
       }
-    }
     .brand-box-second {
-      background-color: rgb(245, 245, 245);
-      height: 455px;
-      width: 100%;
-      padding: 40px, 0, 100px;
-      display: block;
-      text-align: center;
+      padding: 42px 0px 100px;
+      width: 1020px;
+      margin: auto;
       .brands-second {
-        width: 609px;
+        width: 1020px;
         height: 33px;
         margin-bottom: 16px;
         font-size: 24px;
@@ -341,13 +469,11 @@ body {
       }
     }
     .brand-box-third {
-      background-color: rgb(245, 245, 245);
-      width: 100%;
-      padding: 40px, 0, 100px;
-      display: block;
-      text-align: center;
+      padding: 42px 0px 100px;
+      width: 1020px;
+      margin: auto;
       .brands-third {
-        width: 609px;
+        width: 1020px;
         height: 33px;
         margin-bottom: 16px;
         font-size: 24px;
@@ -366,13 +492,11 @@ body {
       }
     }
     .brand-box-fourth {
-      background-color: rgb(245, 245, 245);
-      width: 100%;
-      padding: 40px, 0, 100px;
-      display: block;
-      text-align: center;
+      padding: 42px 0px 100px;
+      width: 1020px;
+      margin: auto;
       .brands-fourth {
-        width: 609px;
+        width: 1020px;
         height: 33px;
         margin-bottom: 16px;
         font-size: 24px;

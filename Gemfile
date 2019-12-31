@@ -89,3 +89,5 @@ gem 'gretel'
 gem 'kaminari'
 gem 'jquery-rails'
 gem 'erb2haml'
+
+gem 'gon'
