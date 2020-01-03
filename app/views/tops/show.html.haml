@@ -10,7 +10,7 @@
       .product-show-image
         - if (@product.buyer_id.blank?)
           .product-show-image__main
-            = image_tag "#{@images[0].url}",class: "details__photo__main__image",id: "mainphoto", size: "300x300"
+            = image_tag "#{@images[0]&.url}",class: "details__photo__main__image",id: "mainphoto", size: "300x300"
           .product-show-image__under
             - @images.each do |image|
               = image_tag "#{image.url}",class: "details__photo__under__image", size: "60x60"
@@ -31,7 +31,7 @@
             出品者
           .product-show-td
             = link_to "", class: "product-show-td-link" do
-              = @seller.nickname
+              = @seller&.nickname
             .product-show-ratings
               .product-show-iconbox
                 = fa_icon 'heart',class: 'product-show-icon1'
@@ -47,14 +47,14 @@
             カテゴリー
           .product-show-td
             .product-show-linkbox
-              = link_to category_path(@parent), class: "product-show-categorylink" do
+              -# = link_to category_path(@parent), class: "product-show-categorylink" do
                 = @parent.name
             .product-show-linkbox
-              = link_to category_path(@child), class: "product-show-categorylink" do
+              -# = link_to category_path(@child), class: "product-show-categorylink" do
                 >
                 = @child.name
             .product-show-linkbox
-              = link_to category_path(@category), class: "product-show-categorylink" do
+              -# = link_to category_path(@category), class: "product-show-categorylink" do
                 >
                 = @category.name
         - if @brand.present?
@@ -131,7 +131,7 @@
 
     .product-show-itembutton
       .product-show-itembutton-left
-        = render partial: "likes/like", locals: { product: @product } 
+        -# = render partial: "likes/like", locals: { product: @product } 
         = link_to "" ,class: "product-show-reportlink" do
           = fa_icon 'flag',class: 'product-show-reporticon'
           .product-show-reporttext
@@ -166,9 +166,9 @@
     .product-show-items-box
       .product-show-items-name
         = link_to "", class: "product-show-text-link" do
-          = @seller.nickname + "さんのその他の出品"
+          @seller.nickname + "さんのその他の出品"
       .product-show-items-list
-        - @seller.seller_products.each.with_index(1) do |product, i|
+        -# - @seller.seller_products.each.with_index(1) do |product, i|
           - if (i <= 6)
             .product-show-item-box
               - if (product.buyer_id.blank?)

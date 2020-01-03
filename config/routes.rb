@@ -1,7 +1,38 @@
 Rails.application.routes.draw do
-  get 'users/show'
   root to: 'tops#index'
+  get 'users/show'
   get 'tops/show'
+
+  resources :tops do
+    member do
+      get 'buy_confirmation'
+      post 'onetimebuy'
+    end
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+      get 'get_size', defaults: { format: 'json' }
+      get 'get_brand', defaults: { format: 'json' }
+      get 'get_searchsize', defaults: { format: 'json' }
+      get 'search'
+      match 'search' => 'products#search', via: [:get, :post]
+    end
+    resources :creditcards, except: [:index, :new, :create, :edit, :show, :update, :destroy] do
+      collection do
+        post 'buy', to: 'creditcards#buy'
+      end
+    end
+  end
+
+  resources :categories , only: [:index, :show]do
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+    end
+  end
+
+
+
+
   devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
