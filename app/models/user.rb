@@ -11,4 +11,5 @@ class User < ApplicationRecord
         #  :birth_year,:birth_month,:birth_day,:comment, presence: true
   
         #  validates :password, length: {minimum: 7}
+  has_one :card, dependent: :destroy
 end

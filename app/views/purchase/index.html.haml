@@ -1,0 +1,65 @@
+.pruducts
+  .products__head
+    %h1.products__head--mercari
+      =link_to root_path class: "products__new--head-link" do
+        = image_tag "logo_white.svg", size: "185x49"
+  .products__new--main
+    .main__contents--title
+      購入内容の確認
+    .main__contents--title
+      %p apple watch
+      送料込み ¥1,000円
+    .buy__confirmation
+      .buy__confirmation--form      
+        .buy__confirmation--detail-price-cell
+          .buy__confirmation--detail-price-cell-left
+            支払い金額
+          .buy__confirmation--detail-price-cell-right
+            -# = "¥" + "#{@product.price}"
+            ¥900
+        .detail-price-cell-left-point
+          ポイントを使用(所持ポイント：P0)
+        .buy__confirmation--pay
+          .buy-confirmation-pay-content
+            .buy__confirmation---pay-text
+              %p 支払い方法
+              クレジットカード
+            .buy-confirmation-pay-change
+              = link_to new_card_path, class: "buy__confirmation--change-btn" do
+                変更する
+
+            .buy__confirmation--pay-box
+              -if current_user.card.present?
+                = "**** **** **** " + @default_card_information.last4
+                %br
+                - exp_month = @default_card_information.exp_month.to_s
+                - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+                = exp_month + " / " + exp_year
+                %br
+                .buy__confirmation--pay-box
+                  = image_tag "cardbrands/#{@default_card_information.brand}.svg"
+
+        .buy__confirmation--address
+          .buy__confirmation--address-content
+            .buy__confirmation--address-text
+              配送先
+            .buy__confirmation--address-box
+              .buy__confirmation--address-change
+              = link_to "", class: "buy__confirmation--change-btn" do
+                変更する
+              -# = "〒" + @streetaddress.post_number
+              -# %br
+              -# = "#{@streetaddress.prefecture}" + "#{@streetaddress.city}" + "#{@streetaddress.address}" + "#{@streetaddress.building_name}"
+              -# %br
+              -# = "#{@streetaddress.last_name}" + "#{@streetaddress.first_name}"
+              111
+              %br
+              111111
+              %br
+              111111
+      .buy__confirmation--btn
+        = form_tag(action: :pay, method: :post)
+        = submit_tag "購入する", class: 'buy-btn'
+  
+  = render 'devise/registrations/signup_footer'
+    

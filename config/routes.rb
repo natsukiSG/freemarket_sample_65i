@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'purchase/index'
+  get 'purchase/done'
   root to: 'toppage#index'
 
   devise_for :users, controllers: {
@@ -27,6 +29,14 @@ Rails.application.routes.draw do
       post 'show', to: 'card#show'
       post 'pay', to: 'card#pay'
       delete 'delete', to: 'card#delete'
+    end
+  end
+
+  resources :purchase, only: [:index] do
+    collection do
+      get 'index', to: 'purchase#index'
+      post 'pay', to: 'purchase#pay'
+      post 'done', to: 'purchase#done'
     end
   end
 
