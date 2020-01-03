@@ -5,10 +5,33 @@
         =link_to root_path do
           = image_tag "fmarket_logo_red.svg",  size: "185x49"
 
-  .login-block
-    .login-block__up
-      .login-block__up--text
+  .signin-main
+    .signin-main__up
+      .signin-main__up--text
         アカウントをお持ちでない方はこちら
-      .login-block__up--link
-        =link_to "path", class: "login-block__up--link--address" do
+      .signin-main__up--link
+        =link_to new_user_registration_path, class: "signin-main__up--link--address" do
           新規会員登録
+    
+    .signup__contents--form
+      .signup__btn
+        = link_to user_facebook_omniauth_authorize_path, class: "signup__btn--facebook", method: :post do
+          Facebookでログイン
+          = fa_icon 'facebook-square', class: 'fab.fa-facebook-square icon'
+        = link_to user_google_oauth2_omniauth_authorize_path, class: "signup__btn--google", method: :post do
+          Googleでログイン
+          = fa_icon 'google', class: 'fab.fa-google icon'
+
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .form
+          = f.email_field :email, autofocus: true, class:'input_box',  autocomplete: "email", placeholder: "メールアドレス"
+        .form
+          = f.password_field :password,class:'input_box', autocomplete: "current-password", placeholder: "パスワード"
+        .form
+          .g-recaptcha{"data-sitekey" => "6LcIossUAAAAADA3nkp9ST2RkQ8B9hHMkrQOm6F8"}
+        .form
+          = f.submit "ログイン", class:"next-button"
+        .form
+          =link_to "", class:"login-password-remember__a" do
+            パスワードをお忘れの方
+  = render 'signin_footer'
