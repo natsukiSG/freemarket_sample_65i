@@ -95,3 +95,4 @@ gem 'kaminari'
 gem 'jquery-rails'
 gem 'erb2haml'
 gem 'payjp'
+gem 'recaptcha', require: "recaptcha/rails"
