@@ -19,6 +19,6 @@ Rails.application.routes.draw do
     post    "done",            to: "devise/registrations#create"
   end
   
-  resources :users, only: [:show] 
+  resources :users, only: [:show, :edit] 
   resources :toppage, only: [:index]
 end
