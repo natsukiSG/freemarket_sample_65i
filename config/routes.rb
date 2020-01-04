@@ -5,9 +5,8 @@ Rails.application.routes.draw do
     sessions:      "users/sessions",
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
+
   devise_scope :user do
-    post    "sign_in",             to: "devise/sessions#new"
-    delete  "sign_out",            to: "devise/sessions#destroy"
     get     "index",               to: "users/registrations#index"
     get     "profile",             to: "users/registrations#profile"
     get     "sms",                 to: "users/registrations#sms"
@@ -15,9 +14,8 @@ Rails.application.routes.draw do
     get     "address",             to: "users/registrations#address"
     get     "credit",              to: "users/registrations#credit"
     get     "done",                to: "users/registrations#done"
-    post    "done",                to: "users/registrations#create"
   end
 
-  resources :users, only: [:show]
+  resources :users, only: [:index, :show]
   resources :toppage, only: [:index]
 end
