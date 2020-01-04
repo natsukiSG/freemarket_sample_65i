@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     get     "credit",              to: "users/registrations#credit"
     get     "done",                to: "users/registrations#done"
   end
-
-  resources :users, only: [:index, :show]
+  
+  resources :users, only: [:show, :edit]
   resources :toppage, only: [:index]
 end
