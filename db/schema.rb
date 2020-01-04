@@ -35,12 +35,12 @@ ActiveRecord::Schema.define(version: 2019_12_28_123826) do
     t.string "address_last_name", null: false
     t.string "address_first_name_kana", null: false
     t.string "address_last_name_kana", null: false
-    t.integer "post_number", null: false
+    t.string "post_number", null: false
     t.string "prefectures", null: false
     t.string "city", null: false
-    t.integer "house_number", null: false
+    t.string "house_number", null: false
     t.string "building_name"
-    t.integer "address_phone_number"
+    t.string "address_phone_number"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
