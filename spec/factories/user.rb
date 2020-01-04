@@ -12,7 +12,6 @@ FactoryBot.define do
     birth_year            {"1989"}
     birth_month           {"9"}
     birth_day             {"27"}
-    comment               {"qqqqq"}
     phone_number          {Faker::PhoneNumber}
   end
 
