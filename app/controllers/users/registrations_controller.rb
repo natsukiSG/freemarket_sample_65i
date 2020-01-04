@@ -109,29 +109,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def credit
-    # render layout: "application.registration" 
-    # session[:address_attributes] = user_params[:address_attributes]
   end
 
   def done
-    # sign_in User.find(session[:id]) unless user_signed_in?
-    # session[:credit_attributes] = user_params[:credit_attributes]
-    # session[:address_attributes] = user_params[:address_attributes]
   end
 
-  def user_create
+  def create
     Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_PRIVATE_KEY)
-    # binding.pry
       customer = Payjp::Customer.create(
-      # description: '登録テスト', #なくてもOK
       card: params['payjp-token'],
       )
-      # @card = Creditcard.new(customer_id: customer.id, card_id: customer.default_card)
-      # if @card.save
-      #   redirect_to action: "create"
-      # else
-      #   redirect_to action: "new"
-      # end
 
     if session["devise.provider_data"].present?
       @sns_credential = SnsCredential.new(
@@ -175,7 +162,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         @sns_credential.user = @user
         @sns_credential.save
       end
-      # session[:id] = @user.id
+      sign_in(:user, @user)
       redirect_to done_path
     else
       redirect_to new_user_registration_path
