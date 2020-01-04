@@ -12,9 +12,10 @@ Rails.application.routes.draw do
       get 'get_category_grandchildren', defaults: { format: 'json' }
     end
   end
+  
   resources :brands , only: [:index, :show]
   resources :brand_categories , only: [:show]
 
-  post   '/like/:product_id' => 'likes#like',   as: 'like'
-  delete '/like/:product_id' => 'likes#unlike', as: 'unlike'
+  # post   '/like/:product_id' => 'likes#like',   as: 'like'
+  # delete '/like/:product_id' => 'likes#unlike', as: 'unlike'
 end

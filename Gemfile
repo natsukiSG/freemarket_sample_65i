@@ -91,3 +91,4 @@ gem 'jquery-rails'
 gem 'erb2haml'
 
 gem 'gon'
+gem 'ancestry'

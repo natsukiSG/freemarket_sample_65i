@@ -1,9 +1,77 @@
 class ToppageController < ApplicationController
   def index
     # @categories = Category.roots
+    # @products = @categories.map{|root| Product.where(category_id: root.subtree)}
+    # @sorted_products = @products.sort {|a,b| b.length <=> a.length }
     @popular = []
+    # @sorted_products.each.with_index(1) do |products, i|
+      # if (i <= 4)
+      #   @popular << products
+      # else
+      #   break
+      # end
+  end
+
+  def new
+  end
+
+  def edit
   end
 
   def show
   end
+
+  def get_category_children
+    @category_children = Category.find_by(id: "#{params[:parent_id]}", ancestry: nil).children
+  end
+
+  def get_category_grandchildren
+    @category_grandchildren = Category.find("#{params[:child_id]}").children
+  end
+
+  def get_size
+    @sizes = Category.find("#{params[:grandchild_id]}").sizes
+
+  end
+
+  def get_brand
+    @brands = Brand.where('name LIKE(?)', "%#{params[:keyword]}%")
+  end
+
+  def get_searchsize
+    @searchsizes = Searchsize.find("#{params[:searchsize_id]}").sizes
+  end
+
+  def set_parent_category
+    @category_parent_array = [{name:'---', id:'---'}]
+    Category.roots.each do |parent|
+      @parent = {name: parent.name, id: parent.id}
+      @category_parent_array << @parent
+    end
+  end
+
+  def set_child_category
+    @product = Product.find(params[:id])
+    @category_children_array = [{name:'---', id:'---'}]
+      (@product.category.root.children).each do |child|
+        @children = {name: child.name, id: child.id}
+        @category_children_array << @children
+      end
+  end
+
+  def set_grandchild_category
+    @category_grandchildren_array = [{name:'---', id:'---'}]
+    (@product.category.parent.children).each do |grandchild|
+      @grandchildren = {name:grandchild.name, id:grandchild.id}
+      @category_grandchildren_array << @grandchildren
+    end
+  end
+
+  # def set_sizes
+  #   @sizes_array = [{name:'---', id:'---'}]
+  #   (@product.category.sizes).each do |size|
+  #     @size = {name: size.name, id: size.id}
+  #     @sizes_array << @size
+  #   end
+  # end
 end
