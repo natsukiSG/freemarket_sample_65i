@@ -25,7 +25,7 @@
   .signup__main
     .main__contents
       .main__contents--title 支払い方法
-      = form_tag(user_create_path, method: :post, id: 'charge-form',  name: "inputForm") do
+      = form_tag(user_registration_path, method: :post, id: 'charge-form',  name: "inputForm") do
         .form
           %label.form__label カード番号
           %span.form__require 必須
