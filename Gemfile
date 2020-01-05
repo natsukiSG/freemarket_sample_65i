@@ -85,3 +85,5 @@ gem 'fog-aws'
 gem 'haml-rails'
 gem "font-awesome-rails"
 gem 'gretel'
+
+gem 'ancestry'
