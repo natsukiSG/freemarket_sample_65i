@@ -25,6 +25,7 @@
 - has_many :likes, dependent: :destroy
 - has_one :street_addresses
 - has_one :creditcards
+- has_many :sns_credentials, dependent: :destroy
 
 ## productsテーブル
 |Column|Type|Options|
@@ -40,7 +41,7 @@
 |price|integer|null: false|
 |buyer_id|integer|class_name: "User"|
 |seller_id|integer|class_name: "User"|
-|category_id|integer|null: false,foreign_key: true|
+|category_id|references|null: false,foreign_key: true|
 |brand_id|integer|foreign_key: true|
 
 ### Associatioin
@@ -55,17 +56,27 @@
 ## likesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false,foreign_key: true|
-|product_id|integer|null: false, foreign_key: true|
+|user_id|references|null: false,foreign_key: true|
+|product_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
 - belongs_to :product
 
+## sns_credentialsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|references|null: false,foreign_key: true|
+|uid|string|null: false, unique: true|
+|provider|string|null: false|
+
+### Association
+- belongs_to :user, optional: true
+
 ## creditcardsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false,foreign_key: true|
+|user_id|references|null: false,foreign_key: true|
 |card_id|integer|null: false|
 |customer_id|integer|null: false|
 
@@ -76,8 +87,8 @@
 |Column|Type|Options|
 |------|----|-------|
 |text|text|null: false|
-|user_id|integer|null: false,foreign_key: true|
-|product_id|integer|null: false,foreign_key: true|
+|user_id|references|null: false,foreign_key: true|
+|product_id|references|null: false,foreign_key: true|
 
 ### Associatioin
 - belongs_to :user
@@ -114,7 +125,7 @@
 |address|string|null: false|
 |building_name|string||
 |phone_number|string||
-|user_id|integer|null: false,foreign_key: true|
+|user_id|references|null: false,foreign_key: true|
 
 ### Associatioin
 - belongs_to :user
@@ -123,7 +134,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |url|text|null: false|
-|product_id|integer|null:false,foreign_key:true|
+|product_id|references|null:false,foreign_key:true|
 
 ### Associatioin
 belongs_to :product

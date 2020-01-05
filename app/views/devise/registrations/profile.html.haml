@@ -32,7 +32,7 @@
           %ul
             - @user.errors.full_messages.each do |message|
               %li= message
-    = form_for @user, url: "sms", method: :post do |f|
+    = form_for @user, url: sms_path, method: :get do |f|
       .form
         %label.form__label ニックネーム
         %span.form__require 必須
