@@ -1,0 +1,12 @@
+.header
+  = render 'layouts/header'
+
+.signup__main
+  .logout
+    .form
+      .logout-page
+        = link_to destroy_user_session_path, method: :delete, class: 'link-button' do
+          ログアウト
+
+.footer
+  = render 'layouts/footer'
