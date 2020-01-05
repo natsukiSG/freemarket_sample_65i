@@ -1,6 +1,7 @@
 class ToppageController < ApplicationController
   def index
-    # @categories = Category.roots
+    @brands = []
+    @categories = Category.roots
     # @products = @categories.map{|root| Product.where(category_id: root.subtree)}
     # @sorted_products = @products.sort {|a,b| b.length <=> a.length }
     @popular = []
@@ -13,14 +14,40 @@ class ToppageController < ApplicationController
   end
 
   def new
+    @product = Product.new
+    @product.images.build
+    gon.count = 0
   end
 
   def edit
+    @product = Product.find(params[:id])
+    gon.count = @product.images.length
+    if @product.buyer_id != nil || @product.seller_id != current_user.id
+      redirect_to root_path
+    end
+    @profit = (@product.price * 0.9).round
+    @fee = @product.price - @profit
   end
 
   def show
   end
 
+  def create
+    @product = Product.new(product_params)
+    if (params[:images] != nil)
+      if @product.save
+        params[:images]['url'].each do |image|
+        @product.images.create(url: image, product_id: @product.id)
+        end
+        redirect_to root_path
+      else
+        redirect_to new_product_path
+      end
+    else
+      redirect_to new_product_path
+    end
+  end
+  
   def get_category_children
     @category_children = Category.find_by(id: "#{params[:parent_id]}", ancestry: nil).children
   end
@@ -41,6 +68,7 @@ class ToppageController < ApplicationController
   def get_searchsize
     @searchsizes = Searchsize.find("#{params[:searchsize_id]}").sizes
   end
+
 
   def set_parent_category
     @category_parent_array = [{name:'---', id:'---'}]
@@ -67,11 +95,11 @@ class ToppageController < ApplicationController
     end
   end
 
-  # def set_sizes
-  #   @sizes_array = [{name:'---', id:'---'}]
-  #   (@product.category.sizes).each do |size|
-  #     @size = {name: size.name, id: size.id}
-  #     @sizes_array << @size
-  #   end
-  # end
+  def set_sizes
+    @sizes_array = [{name:'---', id:'---'}]
+    (@product.category.sizes).each do |size|
+      @size = {name: size.name, id: size.id}
+      @sizes_array << @size
+    end
+  end
 end

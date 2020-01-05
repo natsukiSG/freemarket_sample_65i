@@ -4,8 +4,6 @@ class ApplicationController < ActionController::Base
   before_action :set_parents
   protect_from_forgery with: :exception
 
-  private
-
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :name_kana, :nickname, :email, :password, :password_confirmation, :birthday, :comment, :payment])
   end
@@ -22,5 +20,17 @@ class ApplicationController < ActionController::Base
 
   def set_parents
     @parents = Category.where(ancestry: nil).order("id ASC")
+  end
+
+  def set_brands
+    # brand_ids = Product.group(:brand_id).order('count_brand_id DESC').limit(4).count(:brand_id).keys
+    # popular_brands = []
+    # brand_ids.each do |id|
+    #   if id != nil
+    #     popular_brands << id
+    #   end
+    # end
+    @brands = popular_brands.map { |id| Brand.find(id) }
+  # end
   end
 end

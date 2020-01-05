@@ -12,6 +12,13 @@ Rails.application.routes.draw do
       get 'get_category_grandchildren', defaults: { format: 'json' }
     end
   end
+
+  resources :products do
+    member do
+      get 'buy_confirmation'
+      post 'onetimebuy'
+    end
+  end
   
   resources :brands , only: [:index, :show]
   resources :brand_categories , only: [:show]
