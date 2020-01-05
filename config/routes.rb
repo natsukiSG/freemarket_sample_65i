@@ -6,6 +6,12 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
+  resources :users , only: [:index] do
+    collection do
+      get 'logout'
+    end
+  end
+
   devise_scope :user do
     get     "index",               to: "users/registrations#index"
     get     "profile",             to: "users/registrations#profile"
