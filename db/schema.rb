@@ -45,6 +45,40 @@ ActiveRecord::Schema.define(version: 2020_01_03_104401) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+
+  create_table "creditcards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "card_id", null: false
+    t.string "customer_id", null: false
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_creditcards_on_user_id"
+  end
+
+  create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "uid", null: false
+    t.string "provider", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sns_credentials_on_user_id"
+  end
+
+  create_table "street_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "address_first_name", null: false
+    t.string "address_last_name", null: false
+    t.string "address_first_name_kana", null: false
+    t.string "address_last_name_kana", null: false
+    t.string "post_number", null: false
+    t.string "prefectures", null: false
+    t.string "city", null: false
+    t.string "house_number", null: false
+    t.string "building_name"
+    t.string "address_phone_number"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_street_addresses_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -58,7 +92,6 @@ ActiveRecord::Schema.define(version: 2020_01_03_104401) do
     t.integer "birth_year", null: false
     t.integer "birth_month", null: false
     t.integer "birth_day", null: false
-    t.text "comment", null: false
     t.string "phone_number", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -70,4 +103,7 @@ ActiveRecord::Schema.define(version: 2020_01_03_104401) do
   end
 
   add_foreign_key "size_categories", "sizes"
+  add_foreign_key "creditcards", "users"
+  add_foreign_key "sns_credentials", "users"
+  add_foreign_key "street_addresses", "users"
 end

@@ -4,7 +4,7 @@ describe User do
   describe '#create' do
     let(:user){create(:user)}
   
-    it "name,name_kana,nickname,email,password,password_confirmation,birthday,comment,が存在すれば登録できること" do
+    it "name,name_kana,nickname,email,password,password_confirmation,birthdayが存在すれば登録できること" do
       user = build(:user)
       expect(user).to be_valid
     end
@@ -64,13 +64,6 @@ describe User do
       user = build(:user, birth_day: "")
       user.valid?
       expect(user.errors[:birth_day]).to include("can't be blank")
-    end
-
-  
-    it "commentが未入力だと登録できない" do
-      user = build(:user, comment: "")
-      user.valid?
-      expect(user.errors[:comment]).to include("can't be blank")
     end
 
     it "電話番号が未入力だと登録できない" do
