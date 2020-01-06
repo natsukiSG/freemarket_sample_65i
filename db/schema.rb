@@ -32,6 +32,15 @@ ActiveRecord::Schema.define(version: 2020_01_03_104401) do
     t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
+  create_table "creditcards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "card_id", null: false
+    t.string "customer_id", null: false
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_creditcards_on_user_id"
+  end
+
   create_table "size_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "size_id"
     t.bigint "category_id"
@@ -45,14 +54,6 @@ ActiveRecord::Schema.define(version: 2020_01_03_104401) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-
-  create_table "creditcards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "card_id", null: false
-    t.string "customer_id", null: false
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_creditcards_on_user_id"
   end
 
   create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -102,8 +103,8 @@ ActiveRecord::Schema.define(version: 2020_01_03_104401) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "size_categories", "sizes"
   add_foreign_key "creditcards", "users"
+  add_foreign_key "size_categories", "sizes"
   add_foreign_key "sns_credentials", "users"
   add_foreign_key "street_addresses", "users"
 end
