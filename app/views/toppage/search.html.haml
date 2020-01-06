@@ -1,0 +1,192 @@
+.product-search-wrapper
+  .header
+    = render "layouts/header"
+
+  .product-search-main
+    .product-search-left-side
+      = search_form_for(@q, url: search_products_path) do |f|
+        .product-search-sort
+          = f.select( :sorts, { '並び替え': 'id desc', '価格の安い順': 'price asc', '価格の高い順': 'price desc', '出品の古い順': 'updated_at asc', '出品の新しい順': 'updated_at desc' } , { selected: params[:q][:sorts] }, { onchange: 'this.form.submit()',class:'product-search-order'} )
+
+        .product-search-dropdown-content
+          %h3.product-search-visible
+            詳細検索
+          .product-search-formgroup
+            .product-search-plustext
+              = fa_icon 'plus',class: 'product-search-plusicon'
+              .product-search-textkeyword
+                キーワードを追加する
+            .product-search-nameinput
+              = f.search_field :name_cont, class: 'product-search-namebox', placeholder: '例) 値下げ'
+          .product-search-category-formgroup
+            .product-search-categorytext
+              = fa_icon 'list-ul',class: 'product-search-listicon'
+              .product-search-categorykeyword
+                カテゴリーを選択する
+          .product-search-categorybox
+            = f.select :category_name_not_eq, options_for_select(@category_parent_array.map{|parent| [parent[:name], parent[:id]]}), {}, {class: 'product-search-select-default', id: 'parent_category_search'}
+            .product-search-category-child
+            .product-search-category-grid
+          .product-search-brand-formgroup
+            .product-search-blandtext
+              = fa_icon 'tags',class: 'product-search-blandicon'
+              .product-search-blandkeyword
+                ブランド名から探す
+            .product-search-blandform
+              = f.search_field :brand_name_cont,class: 'product-search-blandbox', placeholder: '例) シャネル'
+
+          .product-search-size-formgroup
+            .product-search-sizetext
+              = fa_icon 'square',class: 'product-search-sizeicon'
+              .product-search-sizekeyword
+                サイズを指定する
+          .product-search-sizebox
+            %select#product-search-size-default
+              %option{value:""}
+                すべて
+              - @searchsizes.each do |searchsize|
+                %option{value:searchsize.id}
+                  = searchsize.name
+            .product-search-size-grid
+
+          .product-search-price-formgroup
+            .product-search-pricetext
+              = fa_icon 'circle',class: 'product-search-priceicon'
+              .product-search-pricekeyword
+                価格
+
+          .product-search-minmaxbox
+            = f.number_field :price_gteq, class: 'product-search-minbox', placeholder: '¥Min'
+            %span ~
+            = f.number_field :price_lteq, class: 'product-search-maxbox', placeholder: '¥Max'
+
+          .product-search-statusgroup
+            .product-search-statustext
+              = fa_icon 'star',class: 'product-search-statusicon'
+              .product-search-sizekeyword
+                商品の状態
+            .product-search-status-grid
+              .status-checkbox-block
+                = f.check_box :status_in ,{name: 'q[status_in][]'},checked_value = 1, unchecked_value = false
+                新品、未使用
+              .status-checkbox-block
+                = f.check_box :status_in ,{name: 'q[status_in][]'},checked_value = 2, unchecked_value = false
+                未使用に近い
+              .status-checkbox-block
+                = f.check_box :status_in ,{name: 'q[status_in][]'},checked_value = 3, unchecked_value = false
+                目立った傷や汚れなし
+              .status-checkbox-block
+                = f.check_box :status_in ,{name: 'q[status_in][]'},checked_value = 4, unchecked_value = false
+                やや傷や汚れがあり
+              .status-checkbox-block
+                = f.check_box :status_in ,{name: 'q[status_in][]'},checked_value = 5, unchecked_value = false
+                傷や汚れあり
+              .status-checkbox-block
+                = f.check_box :status_in ,{name: 'q[status_in][]'},checked_value = 6, unchecked_value = false
+                全体的に状態が悪い
+
+          .product-search-deliveryfeegroup
+            .product-search-deliveryfeetext
+              = fa_icon 'truck',class: 'product-search-deliveryfeeicon'
+              .product-search-deliveryfeekeyword
+                配送料の負担
+            .product-search-deliveryfee-grid
+              .deliveryfee-checkbox-block
+                = f.check_box :costcharge_in , {name: 'q[costcharge_in][]'},checked_value = "1", unchecked_value = false
+                着払い(購入者負担)
+              .deliveryfee-checkbox-block
+                = f.check_box :costcharge_in , {name: 'q[costcharge_in][]'},checked_value = "2", unchecked_value = false
+                送料込み(出品者負担)
+
+          .product-search-salegroup
+            .product-search-saletext
+              = fa_icon 'shopping-cart',class: 'product-search-deliveryfeeicon'
+              .product-search-salekeyword
+                販売状況
+            .product-search-salefee-grid
+              .sale-checkbox-block
+                = f.check_box :transaction_id_in , {name: 'q[transaction_id_in][]'},checked_value = "1", unchecked_value = false
+                販売中
+              .sale-checkbox-block
+                = f.check_box :transaction_id_in , {name: 'q[transaction_id_in][]'},checked_value = "2", unchecked_value = false
+                売り切れ
+
+          .product-search-extendbtn
+            = link_to 'クリア', request.path, class: 'reset-btn'
+            = f.submit '完了', class: 'btn-primary'
+
+    - if (@namesearchs.present?)
+      .product-search-right-side
+        .product-search-right-side_header
+          .search-title
+            = "#{params[:keyword]}"
+            %span 検索結果
+          .product-search-right-side_count
+            = "#{@namesearchs.length}" + "件表示"
+          .category-box_items
+            .product-search-box_grid
+              - @namesearchs.each do |namesearch|
+                .product-search-box_product
+                  = link_to product_path(namesearch.id), class: "category-box_product_link" do
+                    .category-box_product-box
+                      - if (namesearch.buyer_id.blank?)
+                        .category-box_product-box__image
+                          = image_tag "#{namesearch.images[0].url}", size: "160x160", class: "product-box-img"
+                          .category-box_product-box__price
+                            = "¥" + "#{namesearch.price}"
+                        .category-box_product-box__titlename
+                          .category-box_product-box__titlename--name
+                            = namesearch.name
+                      - else
+                        .category-box_product-box__image
+                          .product_sold-out_badge
+                          .product_sold-out_badge-text
+                            SOLD
+                          = image_tag "#{namesearch.images[0].url}", size: "160x160"
+                          .category-box_product-box__price
+                            = "¥" + "#{namesearch.price}"
+                        .category-box_product-box__titlename
+                          .category-box_product-box__titlename--name
+                            = namesearch.name
+
+    - else
+      .product-search-right-side
+        .product-search-right-side_header
+          .search-title
+            %span 検索結果
+          .product-search-right-side_count
+            = "#{@products.length}" + "件表示"
+          .category-box_items
+            .product-search-box_grid
+              - @products.each do |product|
+                .product-search-box_product
+                  = link_to product_path(product.id), class: "category-box_product_link" do
+                    .category-box_product-box
+                      - if (product.buyer_id.blank?)
+                        .category-box_product-box__image
+                          = image_tag "#{product.images[0].url}", size: "160x160", class: "product-box-img"
+                          .category-box_product-box__price
+                            = "¥" + "#{product.price}"
+                        .category-box_product-box__titlename
+                          .category-box_product-box__titlename--name
+                            = product.name
+                      - else
+                        .category-box_product-box__image
+                          .product_sold-out_badge
+                          .product_sold-out_badge-text
+                            SOLD
+                          = image_tag "#{product.images[0].url}", size: "160x160"
+                          .category-box_product-box__price
+                            = "¥" + "#{product.price}"
+                        .category-box_product-box__titlename
+                          .category-box_product-box__titlename--name
+                            = product.name
+
+
+  -# .app-banner
+  -#   = render "layouts/banner"
+
+  .footer
+    = render "layouts/footer"
+  -# .display-btn
+  -#   = render "layouts/display_btn"
