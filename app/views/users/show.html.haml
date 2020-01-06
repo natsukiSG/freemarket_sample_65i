@@ -1,4 +1,61 @@
 .header
   = render 'layouts/header'
-  
-= render 'layouts/nav'
+
+.pankuzu-nav
+  = render 'nav'
+
+.mypage
+  .mypage__container
+    = render 'side-bar'
+    .mypage-content
+      .mypage-content__user
+        = image_tag "mypage_background.jpg", class: "user-bg-img", size: "700x200"
+        .mypage-content__user__profile
+          .mypage-content__user__profile--detail
+            = link_to "", class: "user_link user_link--name" do
+              = image_tag "member_photo_noimage_thumb.png", class: "user_link__icon", size: "60x60"
+              .user_link__name.bold
+                @user.nickname
+          .mypage-content__user--rating
+            = link_to "", class: "user_link" do
+              .user_link__detail
+                .user-rate
+                  評価
+                  %span.num
+                    1 
+                .products-num
+                  出品数
+                  %span.num
+                    0
+      .mypage-content__tab
+        .mypage-tabs
+          %input#my-notification-tab{checked: "checked", name: "tab_item", type: "radio"}
+          %label.mypage-tabs__tab{for: "my-notification-tab"}
+            お知らせ
+          %input#my-todo-tab{checked: "checked", name: "tab_item", type: "radio"}
+          %label.mypage-tabs__tab{for: "my-todo-tab"}
+            やることリスト
+        .tab-contents
+          = render 'notification-list'
+          
+
+      .mypage-product-container
+        .mypage-product-container__head
+          購入した商品
+        .mypage-product-container__tabs
+          %input#my-trading-tab{checked: "checked", name: "trade_item", type: "radio"}
+          %label.mypage-product-container__tabs__tab{for: "my-trading-tab"}
+            取引中
+          %input#my-traded-tab{name: "trade_item", type: "radio"}
+          %label.mypage-product-container__tabs__tab{for: "my-traded-tab"}
+            過去の取引
+        .mypage-product-container__content
+          取引中の商品はありません
+    
+= render 'layouts/sell-btn'
+
+.app-banner
+  = render 'layouts/banner'
+
+.footer
+  = render 'layouts/footer'
