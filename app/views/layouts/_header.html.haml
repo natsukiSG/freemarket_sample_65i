@@ -17,32 +17,26 @@
     .nav-left__brand
       = fa_icon 'tag', class: 'left-nav-btn'
       ブランドから探す
-
   .nav-right
-    .nav-right__like
-      =link_to "", class: "pc-header-menu-link" do
-        = fa_icon 'heart-o', class: 'right-nav-btn', id:'right-nav-btn-heart'
-        いいね ! 一覧
-    .nav-right__info
-      =link_to "", class: "pc-header-menu-link" do
-        = fa_icon 'bell-o', class: 'right-nav-btn', id:'right-nav-btn-bell'
-        お知らせ
-    .nav-right__todo
-      =link_to "", class: "pc-header-menu-link" do
-        = fa_icon 'check', class: 'right-nav-btn', id: 'right-nav-btn-check'
-        やることリスト
-    .nav-right__mypage
-      =link_to "", class: "pc-header-menu-link" do
-        = image_tag "member_photo_noimage_thumb.png", class: 'user-circle-btn', size: "32x32"
-        マイページ
-
-
-
--# ログインでの場合分け別途必要
-
--#     - if user_signed_in?
--#     - else
--#       .nav-right__signup
--#         = link_to "新規会員登録", new_user_registration_path, class: "signup-link"
--#       .nav-right__login
--#         = link_to "ログイン", new_user_session_path, class: "login-link"
+    - if user_signed_in?
+      .nav-right__like
+        =link_to "", class: "pc-header-menu-link" do
+          = fa_icon 'heart-o', class: 'right-nav-btn', id:'right-nav-btn-heart'
+          いいね ! 一覧
+      .nav-right__info
+        =link_to "", class: "pc-header-menu-link" do
+          = fa_icon 'bell-o', class: 'right-nav-btn', id:'right-nav-btn-bell'
+          お知らせ
+      .nav-right__todo
+        =link_to "", class: "pc-header-menu-link" do
+          = fa_icon 'check', class: 'right-nav-btn', id: 'right-nav-btn-check'
+          やることリスト
+      .nav-right__mypage
+        =link_to "", class: "pc-header-menu-link" do
+          = image_tag "member_photo_noimage_thumb.png", class: 'user-circle-btn', size: "32x32"
+          マイページ
+    - else
+      .nav-right__signup
+        = link_to "新規会員登録", new_user_registration_path, class: "signup-link"
+      .nav-right__login
+        = link_to "ログイン", new_user_session_path, class: "login-link"

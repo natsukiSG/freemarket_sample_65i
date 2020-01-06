@@ -1,8 +1,11 @@
 !!!
 %html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+
+    %meta{content: "text/html; charset=UTF-8", http: {equiv: "Content-Type"}}/
     %title FreemarketSample65i
+    %script{src: "https://js.pay.jp/", type: "text/javascript"}
+    %script{:async => "", :defer => "defer", :src => "https://www.google.com/recaptcha/api.js"}
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
