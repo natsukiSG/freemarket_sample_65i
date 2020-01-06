@@ -1,0 +1,17 @@
+.app-banner__ad
+  .app-banner__ad__download
+    .letter-app
+      スマホでかんたんフリマアプリ
+    .letter-download
+      今すぐ無料ダウンロード！
+    .app_banner-btns
+      = image_tag 'merkari-icon.png', class: "store-btns__mercari-icon", size: "68x68"
+      .app_store-btns
+        .app_store-btns__appstore
+          = link_to "", class: "" do
+            = image_tag 'AppStore.svg'
+        .app_store-btns__google
+          = link_to "", class: "" do
+            = image_tag 'GooglePlay.svg'
+  .app-banner__ad__image
+    = image_tag 'iphonephoto.png', class: "app-image", size: "300x260"
