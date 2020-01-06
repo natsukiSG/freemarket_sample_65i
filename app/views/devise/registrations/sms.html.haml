@@ -1,0 +1,42 @@
+.signup
+  .signup__header
+    .signup__header--logo
+      .signup__head--logo
+        =link_to root_path do
+          = image_tag "fmarket_logo_red.svg",  size: "185x49"
+          
+        .signup__bar
+          %ol.signup__lists
+            %li.signup__list
+              会員情報
+              .list__round--left.list__active--left
+            %li.signup__list.active--title
+              電話番号認証
+              .list__round.list__active--a
+            %li.signup__list
+              お届け先住所入力
+              .list__round
+            %li.signup__list
+              支払い方法
+              .list__round
+            %li.signup__list
+              完了
+              .list__round--right
+  .signup__main
+    .main__contents
+      .main__contents--title 電話番号の確認
+      .form
+      = form_for @user, url: address_path, method: :get do |f|
+        .form
+          %label.form__label 携帯電話の番号
+          = f.text_field :phone_number, placeholder: '携帯電話の番号を入力', class:'input-box'
+
+          %p 本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
+
+        .form
+          = f.submit "SMSを送信する", class: 'sms-button'
+          %p ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
+        .form.text-right
+          %p 
+            %a{href: "https://www.mercari.com/jp/help_center/article/244/"}電話番号の確認が必要な理由
+  = render 'signup_footer'
