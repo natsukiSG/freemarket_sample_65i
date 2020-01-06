@@ -28,6 +28,10 @@
           家電・スマホ・カメラ
         %a.category-fourth
           おもちゃ・ホビー・グッズ
+.logout-page
+= link_to destroy_user_session_path, method: :delete, class: "logout-page__btn" do
+  ログアウト
+
 
 .product-index_categories
   .item-box
