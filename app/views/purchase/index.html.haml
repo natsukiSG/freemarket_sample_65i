@@ -29,7 +29,7 @@
                 変更する
 
             .buy__confirmation--pay-box
-              -if current_user.card.present?
+              -if current_user.creditcard.present?
                 = "**** **** **** " + @default_card_information.last4
                 %br
                 - exp_month = @default_card_information.exp_month.to_s
@@ -47,16 +47,11 @@
               .buy__confirmation--address-change
               = link_to "", class: "buy__confirmation--change-btn" do
                 変更する
-              -# = "〒" + @streetaddress.post_number
-              -# %br
-              -# = "#{@streetaddress.prefecture}" + "#{@streetaddress.city}" + "#{@streetaddress.address}" + "#{@streetaddress.building_name}"
-              -# %br
-              -# = "#{@streetaddress.last_name}" + "#{@streetaddress.first_name}"
-              111
+              = "〒" + @streetaddress.post_number
               %br
-              111111
+              = "#{@streetaddress.prefectures}" + "#{@streetaddress.city}" + "#{@streetaddress.house_number}" + "#{@streetaddress.building_name}"
               %br
-              111111
+              = "#{@streetaddress.address_last_name}" + "#{@streetaddress.address_first_name}"
       .buy__confirmation--btn
         = form_tag(action: :pay, method: :post)
         = submit_tag "購入する", class: 'buy-btn'
