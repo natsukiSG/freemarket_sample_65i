@@ -23,14 +23,6 @@ class ApplicationController < ActionController::Base
   end
 
   def set_brands
-    # brand_ids = Product.group(:brand_id).order('count_brand_id DESC').limit(4).count(:brand_id).keys
-    # popular_brands = []
-    # brand_ids.each do |id|
-    #   if id != nil
-    #     popular_brands << id
-    #   end
-    # end
     @brands = popular_brands.map { |id| Brand.find(id) }
-  # end
   end
 end

@@ -1,4 +1,4 @@
-.brand-index_contents {
+.brand__index--contents {
   font-family: Arial,"游ゴシック体","YuGothic","メイリオ","Meiryo",sans-serif;
   width: 700px;
   background: transparent;
@@ -7,11 +7,11 @@
   color: #333;
 }
 
-.brand-index_conteiner{
+.brand__index--conteiner{
   display: block;
 }
 
-.brand-index_conteiner_title{
+.brand__index--conteiner_title{
   padding: 8px 0;
   font-size: 22px;
   line-height: 1.4;
@@ -19,7 +19,7 @@
   font-weight: 700;
 }
 
-.brand-index_category-link{
+.brand__index--category-link{
   display: inline-block;
   border-radius: 4px;
   box-shadow: 1px 1px 1px 1px rgba(14,14,14,0.0580392);

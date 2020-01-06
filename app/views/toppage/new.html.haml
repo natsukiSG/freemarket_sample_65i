@@ -63,7 +63,7 @@
             .products-new-redbtn
               必須
           .detail-right-status-box
-            -# = f.select :status, ['新品、未使用', '未使用に近い', '目立った傷や汚れなし'], {include_blank: '---'},  class: 'select-default'
+            = f.select :status, ['新品、未使用', '未使用に近い', '目立った傷や汚れなし'], {include_blank: '---'},  class: 'select-default'
             = f.select :status, Product.statuses.keys,{include_blank: '---'}, class: 'select-default'
       .products-new_main-delivary
         .products-new_main-delivary-left-head
