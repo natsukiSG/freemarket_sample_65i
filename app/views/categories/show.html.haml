@@ -20,27 +20,27 @@
         -if (@products.length != 0)
           .show-category-box_grid
             - @products.each do |product|
-              .show-category-box_product
-                = link_to product_path(product), class: "show-category-box_product_link" do
-                  .show-category-box_product-box
+              .show-category__box--product
+                = link_to product_path(product), class: "show-category__box--product_link" do
+                  .show-category__box--product-box
                     - if (product.buyer_id.blank?)
-                      .show-category-box_product-box__image
+                      .show-category__box--product-box__image
                         = image_tag "#{product.images.last.url}", size: "188x188", class: "product-box-img"
-                        .show-category-box_product-box__price
+                        .show-category__box--product-box__price
                           = "¥" + "#{product.price}"
-                      .show-category-box_product-box__title
-                        .show-category-box_product-box__title--name
+                      .show-category__box--product-box__title
+                        .show-category__box--product-box__title--name
                           = product.name
                     - else
-                      .show-category-box_product-box__image
+                      .show-category__box--product-box__image
                         .product_sold-out_badge
                         .product_sold-out_badge-text
                           SOLD
                         = image_tag "#{product.images.last.url}", size: "188x188"
-                        .show-category-box_product-box__price
+                        .show-category__box--product-box__price
                           = "¥" + "#{product.price}"
-                      .show-category-box_product-box__title
-                        .show-category-box_product-box__title--name
+                      .show-category__box--product-box__title
+                        .show-category__box--product-box__title--name
                           = product.name
         - else
           .show-category-box_no-items

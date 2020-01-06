@@ -5,7 +5,7 @@ body {
 
   }
 
-  .product-index_contents {
+  .product__index--contents {
     width: 1020px;
     margin: 0 auto;
     z-index: 0;
@@ -112,20 +112,20 @@ body {
     }
   }
 // カテゴリー新着アイテム
-.product-index_categories {
+.product__index--categories {
   padding: 42px 0px 100px;
   background-color: rgb(245, 245, 245);
   width: 100%;
 }
-  .item-box {
+  .item__box {
     // vertical-align: baseline;
   }
-    .item-box-one {
+    .item__box--one {
       padding: 42px 0px 100px;
       width: 1020px;
       margin: auto;
     }
-      .item_first {
+      .item__first {
         width: 1020px;
         height: 33px;
         margin-bottom: 16px;
@@ -134,7 +134,7 @@ body {
         color: rgb(51, 51, 51);
         text-align: left;
       }
-        .item_first_preview {
+        .__preview {
           font-size: 14px;
           padding: 5px 16px 5px 5px;
           position: relative;
@@ -148,13 +148,13 @@ body {
         grid-template-columns: repeat(5, 1fr);
         gap: 20px 20px;
       }
-        .category-box_product{
+        .category__box--product{
           background-color: #fff;
           box-shadow: 0 2px 4px rgba(0,0,0,.18);
           width: 100%;
           align-items: center;
         }
-        .category-box_product_link{
+        .category__box--product_link{
           width: 100%;
           cursor: pointer;
           display: inline-block;
@@ -163,7 +163,7 @@ body {
           vertical-align: top;
           text-decoration: none;
         }
-        .category-box_product-box{
+        .category__box--product-box{
           display: flex;
           flex-direction: column;
           justify-content: center;
