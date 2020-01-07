@@ -161,7 +161,7 @@
           .mypage-nav__link__content__icon
             = fa_icon 'chevron-right', class: "nav-right-icon"
     .mypage-nav
-      = link_to "", class: "mypage-nav__link active-nav" do
+      = link_to logout_users_path, class: "mypage-nav__link active-nav" do
         .mypage-nav__link__content
           .mypage-nav__link__content__title
             %li ログアウト
