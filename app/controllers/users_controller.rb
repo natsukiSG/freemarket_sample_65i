@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   def show
   end
   def logout
-    
+  end
+  def info_check
   end
 end
