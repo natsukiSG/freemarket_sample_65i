@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   root to: 'toppages#index'
   get 'users/show'
-  get 'toppages/show'
 
   resources :toppages do
     member do

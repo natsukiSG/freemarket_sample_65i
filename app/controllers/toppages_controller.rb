@@ -7,9 +7,13 @@ class ToppagesController < ApplicationController
   end
 
   def show
-    @product = Product.new
-    @images = @product.images.order("id DESC")
+    @product = Product.find(params[:id])
     @seller = @product.seller
+    @images = @product.images.order("id DESC")
+    @category = @product.category
+    @child = @category&.parent
+    @parent = @category&.root
+    @brand = @product.brand
   end
 
 end
