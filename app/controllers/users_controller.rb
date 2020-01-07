@@ -6,5 +6,6 @@ class UsersController < ApplicationController
   def logout
   end
   def info_check
+    @streetaddress = StreetAddress.find_by(user_id: current_user.id)
   end
 end
