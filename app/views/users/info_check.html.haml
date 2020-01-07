@@ -7,7 +7,62 @@
 .mypage
   .mypage__container
     = render 'side-bar'
-
+    .info_page
+      .info_page__contents
+        .info_page__contents--title 本人情報の登録
+        .info_page__contents--text
+          %p お客さまの本人情報をご登録ください。 
+          %br
+          登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+          %p.info-pop
+            = link_to "", class: "info-pop__text" do
+              本人確認書類のアップロードについて
+            = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right fa-blue"
+        = form_for @streetaddress, url: credit_path, method: :get do |f|
+          .form-info
+            %div
+              %label.form-info__data お名前
+              = current_user.last_name 
+              = current_user.first_name
+          .form-info
+            %div
+              %label.form-info__data お名前カナ
+              = current_user.last_name_kana
+              = current_user.first_name_kana
+          .form-info
+            %div
+              %label.form-info__data 生年月日
+              = current_user.birth_year.to_s + "/"
+              = current_user.birth_month.to_s + "/"
+              = current_user.birth_day.to_s
+          .form-info
+            %label.form-info__label 郵便番号
+            %span.form__any 任意
+            = f.text_field :post_number, placeholder: '例) 123-4567', class: 'input_box'
+          .form-info
+            %label.form-info__label 都道府県
+            %span.form__any 任意
+            .select-box2
+              = fa_icon 'sort-down',class: 'fa-sort-down2'
+              = f.select :prefectures, StreetAddress.prefectures.keys, {prompt: "--"}, {class: 'select-box'}
+          .form-info
+            %label.form-info__label 市区町村
+            %span.form__any 任意
+            = f.text_field :city, placeholder: '例) 横浜市緑区', class: 'input_box'
+          .form-info
+            %label.form-info__label 番地
+            %span.form__any 任意
+            = f.text_field :house_number, placeholder: '例) 青山1-1-1', class: 'input_box'
+          .form-info
+            %label.form-info__label 建物名
+            %span.form__any 任意
+            = f.text_field :building_name, placeholder: '例) 柳ビル103', class: 'input_box'
+          = link_to  root_path,  class: 'link_button' do
+            登録する
+          %p.info-pop
+            = link_to "", class: "info-pop__text" do
+              本人情報の登録について
+              = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right fa-blue"
 
 = render 'layouts/sell-btn'
 
