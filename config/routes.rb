@@ -6,6 +6,12 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
+  resources :users , only: [:index] do
+    collection do
+      get 'logout'
+    end
+  end
+
   devise_scope :user do
     get     "index",               to: "users/registrations#index"
     get     "profile",             to: "users/registrations#profile"
@@ -18,7 +24,6 @@ Rails.application.routes.draw do
   
   resources :users, only: [:show, :edit]
   resources :toppage, only: [:index]
-  
   resources :categories , only: [:index, :show]do
     collection do
       get 'get_category_children', defaults: { format: 'json' }
