@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_03_104401) do
+ActiveRecord::Schema.define(version: 2020_01_06_105422) do
 
   create_table "brand_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -39,6 +39,25 @@ ActiveRecord::Schema.define(version: 2020_01_03_104401) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_creditcards_on_user_id"
+  end
+
+  create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "comment", null: false
+    t.integer "price", null: false
+    t.string "size"
+    t.string "status", null: false
+    t.string "costcharge", null: false
+    t.string "delivery_way", null: false
+    t.string "delivery_area", null: false
+    t.string "delivery_date", null: false
+    t.bigint "buyer_id", null: false
+    t.bigint "seller_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["buyer_id"], name: "index_products_on_buyer_id"
+    t.index ["name"], name: "index_products_on_name", unique: true
+    t.index ["seller_id"], name: "index_products_on_seller_id"
   end
 
   create_table "size_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -104,6 +123,8 @@ ActiveRecord::Schema.define(version: 2020_01_03_104401) do
   end
 
   add_foreign_key "creditcards", "users"
+  add_foreign_key "products", "users", column: "buyer_id"
+  add_foreign_key "products", "users", column: "seller_id"
   add_foreign_key "size_categories", "sizes"
   add_foreign_key "sns_credentials", "users"
   add_foreign_key "street_addresses", "users"

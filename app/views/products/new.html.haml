@@ -4,7 +4,7 @@
     .products-new_head
       %h1.products-new_head_mercari
         =link_to root_path, class: "products-new_head-link" do
-          = image_tag "logo-products_new.svg", size: "185x49"
+          = image_tag "", size: "185x49"
     .products-new_main
       %h2.sell-form__header
         商品情報を入力
@@ -17,17 +17,17 @@
           最大10枚までアップロードできます
         = f.fields_for :images do |image|
           .dropzone-container
-            #preview
-            .dropzone-area
-              = image.label :url, class: "dropzone-box", for: "upload-image" do
-                .input_area
-                  = image.file_field :url, multiple: true, name: 'images[url][]', id: "upload-image", class: "upload-image", 'data-image': 0
-                  %p ドラッグ&ドロップまたはクリックしてファイルをアップロード
-          .dropzone-container2
-            #preview2
-            .dropzone-area2
-              = image.label :url, class: "dropzone-box", for: "upload-image" do
+          #preview
+          .dropzone-area
+            = image.label :url, class: "dropzone-box", for: "upload-image" do
+              .input_area
+                = image.file_field :url, multiple: true, name: 'images[url][]', id: "upload-image", class: "upload-image", 'data-image': 0
                 %p ドラッグ&ドロップまたはクリックしてファイルをアップロード
+          .dropzone-container2
+          #preview2
+          .dropzone-area2
+            = image.label :url, class: "dropzone-box", for: "upload-image" do
+              %p ドラッグ&ドロップまたはクリックしてファイルをアップロード
 
       .products-new_main-content
         .main-content-group
@@ -55,7 +55,7 @@
               .products-new-redbtn
                 必須
             .detail-right-cate-top
-              = f.select :category_id, options_for_select(@category_parent_array.map{|parent| [parent[:name], parent[:id]]}), {}, {class: 'select-default', id: 'parent_category'}
+              -# = f.select :category_id, options_for_select(@category_parent_array.map{|parent| [parent[:name], parent[:id]]}), {}, {class: 'select-default', id: 'parent_category'}
 
 
           .products-new_main-detail-right-status
@@ -64,7 +64,7 @@
               必須
           .detail-right-status-box
             = f.select :status, ['新品、未使用', '未使用に近い', '目立った傷や汚れなし'], {include_blank: '---'},  class: 'select-default'
-            = f.select :status, Product.statuses.keys,{include_blank: '---'}, class: 'select-default'
+            -# = f.select :status, Product.statuses.keys,{include_blank: '---'}, class: 'select-default'
       .products-new_main-delivary
         .products-new_main-delivary-left-head
           配送について
@@ -78,15 +78,14 @@
                 .products-new-redbtn
                   必須
               .delivary-right-burden-box
-                -# = f.select :costcharge, ['送料込み(出品者負担)', '着払い(購入者負担)'], {include_blank: '---'}, {class: 'select-default', id: 'delivary-right-burden-box'}       
-                = f.select :costcharge, Product.costcharges.keys,{include_blank: '---'}, {class: 'select-default', id: 'delivary-right-burden-box'}
+                = f.select :costcharge, ['送料込み(出品者負担)', '着払い(購入者負担)'], {include_blank: '---'}, {class: 'select-default', id: 'delivary-right-burden-box'}       
           .products-new_main-delivary-right-area
             .delivary-right-area-head
               発送元の地域
               .products-new-redbtn
                 必須
             .delivary-right-area-box
-              = f.select :delivery_area, Streetaddress.prefectures.keys,{include_blank: '---'}, {class: 'select-default'}
+              = f.select :delivery_area, StreetAddress.prefectures.keys,{include_blank: '---'}, {class: 'select-default'}
           .products-new_main-delivary-right-day
             .delivary-right-day-head
               発送までの日数
@@ -110,14 +109,13 @@
               ¥
               .main-price-right-head-input-tab
                 = f.number_field :price, placeholder: "例) 300",class: 'input-price',id:'price_calc'
-                -# = f.text_field :price, class: 'input-price', placeholder: '例)300'
           .main-price-right-fee
             販売手数料(10%)
             .right_bar
               ー
           .main-price-right-profit
             #price
-            -# = f.number_field :price, style: "display: none", id: "price"
+            = f.number_field :price, style: "display: none", id: "price"
             販売利益
             .right_bar_2
               ー
@@ -140,20 +138,20 @@
           = f.submit "", class: 'exhibit-btn', value: '出品する'
         .products-new_mainbtn-text-gray
           = f.submit "", class: 'return-btn', value: 'もどる'
-      = render 'signups/signup_footer'
+      -# = render 'signups/signup_footer'
 
-    -# .products-footter
-    -#   .products-footter-top
-    -#     .products-footter-top-list
-    -#       = link_to "", class: "products-footter-detail" do
-    -#         プライバシーポリシー
-    -#     .products-footter-top-list
-    -#       = link_to "", class: "products-footter-detail" do
-    -#         メルカリ利用規約
-    -#     .products-footter-top-list
-    -#       = link_to "", class: "products-footter-detail" do
-    -#         特定商取引に関する表記
-    -#   .products-footter-main
-    -#     = image_tag "https://www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?3466462615", size: "80x65" 
-    -#   .products-footter-bottom
-    -#     © 2019 Mercari
+    .products-footter
+      .products-footter-top
+        .products-footter-top-list
+          = link_to "", class: "products-footter-detail" do
+            プライバシーポリシー
+        .products-footter-top-list
+          = link_to "", class: "products-footter-detail" do
+            メルカリ利用規約
+        .products-footter-top-list
+          = link_to "", class: "products-footter-detail" do
+            特定商取引に関する表記
+      .products-footter-main
+        = image_tag "https://www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?3466462615", size: "80x65" 
+      .products-footter-bottom
+        © 2019 Mercari
