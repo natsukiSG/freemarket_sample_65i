@@ -6,17 +6,24 @@
   .products__new--main
     .main__contents--title
       購入内容の確認
-    .main__contents--title
-      %p apple watch
-      送料込み ¥1,000円
+    .buy__confirmation--main
+      .buy__confirmation--item       
+        = image_tag "#{@product.images[0].url}", size: "80x60"
+        .buy__confirmation--detail
+          .buy__confirmation--item-main
+            = @product.name
+          .buy__confirmation--item-sub
+            .buy-confirmation-detail-price
+              ="¥" + "#{@product.price.to_s(:delimited)}" 
+            .buy-confirmation-detail-price-postage
+              (税込)送料込み
     .buy__confirmation
       .buy__confirmation--form      
         .buy__confirmation--detail-price-cell
           .buy__confirmation--detail-price-cell-left
             支払い金額
           .buy__confirmation--detail-price-cell-right
-            -# = "¥" + "#{@product.price}"
-            ¥900
+            = "¥" + "#{@product.price.to_s(:delimited)}"
         .detail-price-cell-left-point
           ポイントを使用(所持ポイント：P0)
         .buy__confirmation--pay

@@ -37,6 +37,15 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :products do
+    member do
+      get 'buy_confirmation'
+      post 'pay'
+      get 'done', to:'products#done'
+
+    end
+  end
+
 
 end
 

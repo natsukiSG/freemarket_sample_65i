@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_28_123826) do
+ActiveRecord::Schema.define(version: 2020_01_07_022754) do
 
   create_table "creditcards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "card_id", null: false
@@ -19,6 +19,30 @@ ActiveRecord::Schema.define(version: 2019_12_28_123826) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_creditcards_on_user_id"
+  end
+
+  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "url", null: false
+    t.bigint "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_images_on_product_id"
+  end
+
+  create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "comment", null: false
+    t.integer "price", null: false
+    t.string "size"
+    t.string "status", null: false
+    t.string "costcharge", null: false
+    t.string "delivery_way", null: false
+    t.string "delivery_area", null: false
+    t.string "delivery_date", null: false
+    t.bigint "buyer", null: false
+    t.bigint "seller", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -64,9 +88,12 @@ ActiveRecord::Schema.define(version: 2019_12_28_123826) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "creditcards", "users"
+  add_foreign_key "images", "products"
   add_foreign_key "sns_credentials", "users"
   add_foreign_key "street_addresses", "users"
 end

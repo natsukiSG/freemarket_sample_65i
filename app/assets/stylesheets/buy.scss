@@ -33,7 +33,36 @@
   border-top: 1px solid #f5f5f5;
   max-width: 320px;
   margin: 0 auto;
-  padding: 24px 0 0 0;
+  padding: 24px 16px;
+  border-bottom: 1px solid #f5f5f5;
+
+  &--main{
+    border-top: 1px solid #f5f5f5;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 24px 16px;
+    border-bottom: 1px solid #f5f5f5;
+    
+  }
+
+  &--item{
+    display:flex;
+    padding:0 162.5px;
+  }
+
+  &--detail{
+    margin-left:16px;
+    width:100%;
+  }
+
+  &--item-main{
+    font-size: 14px;
+    margin: 0;
+    padding: 0 0 8px;
+    line-height: 1.5;
+    text-align: left;
+  }
+
 
 
 
@@ -96,7 +125,6 @@
 
 &--address {
   padding: 20px 0;
-  margin: 32px 0 0;
   border-top: 1px solid #f5f5f5;
   font-size: 14px;
   }
@@ -131,4 +159,18 @@
   background: #ea352d;
   color: #fff;
   text-align: center;
+}
+
+
+
+
+.buy__confirmation--item-sub{
+  display:flex;
+  text-align: center;
+  line-height:21px;
+  font-weight: bold;
+}
+
+.buy-confirmation-detail-price-postage{
+  margin-left:15px;
 }
