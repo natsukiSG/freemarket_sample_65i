@@ -1,12 +1,21 @@
 .header
   = render 'layouts/header'
 
-.signup__main
-  .logout
-    .form
-      .logout-page
-        = link_to destroy_user_session_path, method: :delete, class: 'link-button' do
-          ログアウト
+.pankuzu-nav
+  = render 'nav'
 
+.mypage
+  .mypage__container
+    = render 'side-bar'
+    .logout_page
+      .logout_page__box
+        .logout_page__box--button
+          = link_to destroy_user_session_path, method: :delete, class: 'logout-button' do
+            ログアウト
+
+= render 'layouts/sell-btn'
+
+.app-banner
+  = render 'layouts/banner'
 .footer
   = render 'layouts/footer'
