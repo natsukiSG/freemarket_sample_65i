@@ -61,7 +61,7 @@ $(function(){
     if(images.length == (4 - count)) {
       dropzone.find('p').replaceWith('<i class="fa fa-camera"></i>')
     }
-    if(images.length == (9 - count)) {
+    if(images.length == (10 - count)) {
       dropzone2.css({
         display: 'none'
       })
