@@ -112,7 +112,6 @@
                 .products-new-redbtn
                   必須
               .delivary-right-burden-box
-                -# = f.select :costcharge, ['送料込み(出品者負担)', '着払い(購入者負担)'], {include_blank: '---'}, {class: 'select-default', id: 'delivary-right-burden-box'}
                 = f.select :costcharge, Product.costcharges.keys,{include_blank: '---'}, {class: 'select-default', id: 'delivary-right-burden-box'}
           .products-new_main-delivary-right-area
             .delivary-right-area-head
@@ -144,7 +143,6 @@
               ¥
               .main-price-right-head-input-tab
                 = f.number_field :price, placeholder: "例) 300",class: 'input-price',id:'price_calc'
-                -# = f.text_field :price, class: 'input-price', placeholder: '例)300'
           .main-price-right-fee
             販売手数料(10%)
             .right_bar

@@ -23,8 +23,8 @@ class ProductsController < ApplicationController
     if (params[:images] != nil)
       if @product.save
         params[:images]['url'].each do |image|
-        @product.images.create(url: image, product_id: @product.id)
-        end
+          @product.images.create(url: image, product_id: @product.id)
+          end
         redirect_to root_path
       else
         redirect_to new_product_path
