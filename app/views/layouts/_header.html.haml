@@ -13,10 +13,23 @@
       カテゴリーから探す
       .header_category-nav
         %ul.header_parents-nav
+          - @parents.each do |parent|
+            %li.header_parent-list{id: "#{parent.id}"}
+              = link_to "#{parent.name}", category_path(parent), class: "header_parent-link"
           %li.header_all-list
+            = link_to categories_path, class: "header_all-link" do
+              カテゴリー一覧
     .nav-left__brand
-      = fa_icon 'tag', class: 'left-nav-btn'
-      ブランドから探す
+      = link_to brands_path, class:"header_popular-brand-list" do
+        = fa_icon 'tag', class: 'left-nav-btn'
+        ブランドから探す
+      %ul.header_brands-nav
+        - @brands.each do |brand|
+          %li.header_brand-list
+            = link_to "#{brand.name}", brand_path(brand), class: "header_brand-link"
+        %li.header_all-list
+          = link_to brands_path, class: "header_all-link" do
+            ブランド一覧
   .nav-right
     - if user_signed_in?
       .nav-right__like

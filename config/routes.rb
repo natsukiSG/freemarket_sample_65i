@@ -38,6 +38,14 @@ Rails.application.routes.draw do
     end
   end
   
+
+  resources :categories , only: [:index, :show]do
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+    end
+  end
+  
   resources :brands , only: [:index, :show]
   resources :brand_categories , only: [:show]
 

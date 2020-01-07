@@ -1,0 +1,140 @@
+= form_for @product do |f|
+  = f.hidden_field :transaction_id, value:1
+  .pruducts-new_content
+    .products-new_head
+      %h1.products-new_head_mercari
+        =link_to root_path, class: "products-new_head-link" do
+          = image_tag "fmarket_logo_red", size: "185x49"
+    .products-new_main
+      %h2.sell-form__header
+        商品情報を入力
+      .sell-form-container
+        %label.sell-form-container__label
+          出品画像
+        %span.sell-form-container__btn
+          必須
+        .sell-form-container__require
+          最大10枚までアップロードできます
+        = f.fields_for :Images do |image|
+          .dropzone-container
+            #preview
+            .dropzone-area
+              = image.label :url, class: "dropzone-box", for: "upload-image" do
+                .input_area
+                  = image.file_field :url, multiple: true, name: 'images[url][]', id: "upload-image", class: "upload-image", 'data-image': 0
+                  %p ドラッグ&ドロップまたはクリックしてファイルをアップロード
+          .dropzone-container2
+            #preview2
+            .dropzone-area2
+              = image.label :url, class: "dropzone-box2", for: "upload-image" do
+                %p ドラッグ&ドロップまたはクリックしてファイルをアップロード
+
+      .products-new_main-content
+        .main-content-group
+          .main-content-group-name
+            商品名
+            .products-new-redbtn
+              必須
+          .main-content-group-name-box
+            = f.text_field :name, class: 'input-name-box', placeholder: '商品名(必須40文字まで)'
+        .main-content-form
+          .main-content-form-name
+            商品の説明
+            .products-new-redbtn
+              必須
+          .main-content-form-name-box
+            = f.text_area :comment, class: 'input-formarea',placeholder: '商品の説明(必須1,000文字以内)(色、素材、重さ、低下、注意点など) 例)2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。'
+
+      .products-new_main-detail
+        .products-new_main-detail-left
+          商品の詳細
+        .products-new_main-detail-right
+          .products-new_main-right-details
+            .products-new_main-detail-right-cate
+              カテゴリー
+              .products-new-redbtn
+                必須
+            .detail-right-cate-top
+              = f.select :costcharge, Product.costcharges.keys,{include_blank: '---'}, {class: 'select-default', id: 'delivary-right-burden-box'}
+
+          .products-new_main-detail-right-status
+            商品状態
+            .products-new-redbtn
+              必須
+          .detail-right-status-box
+            = f.select :status, ['新品、未使用', '未使用に近い', '目立った傷や汚れなし'], {include_blank: '---'},  class: 'select-default'
+            -# = f.select :status, Product.statuses.keys,{include_blank: '---'}, class: 'select-default'
+      .products-new_main-delivary
+        .products-new_main-delivary-left-head
+          配送について
+          .products-new_main-delivary-left-guide
+            ?
+        .products-new_main-delivary-right
+          .products-new_main-delivary-detail
+            .products-new_main-delivary-right-burden
+              .delivary-right-burden-head
+                配送料の負担
+                .products-new-redbtn
+                  必須
+              .delivary-right-burden-box
+                = f.select :costcharge, ['送料込み(出品者負担)', '着払い(購入者負担)'], {include_blank: '---'}, {class: 'select-default', id: 'delivary-right-burden-box'}       
+          .products-new_main-delivary-right-area
+            .delivary-right-area-head
+              発送元の地域
+              .products-new-redbtn
+                必須
+            .delivary-right-area-box
+              = f.select :delivery_area, StreetAddress.prefectures.keys,{include_blank: '---'}, {class: 'select-default'}
+          .products-new_main-delivary-right-day
+            .delivary-right-day-head
+              発送までの日数
+              .products-new-redbtn
+                必須
+            .delivary-right-day-box
+              = f.select :delivery_date, ['1~2日で発送', '2~3日で発送', '4~7日で発送'], {include_blank: '---'},  class: 'select-default'
+
+      .products-new_main-price
+        .products-new_main-price-left-head
+          販売価格(300~9,999,999)
+          .products-new_main-price-left-guide
+            ?
+        .products-new_main-price-right
+          .main-price-right-head
+            .main-price-right-head-label
+              価格
+              .main-price-right-head-lebl-red
+                必須
+            .main-price-right-head-input
+              ¥
+              .main-price-right-head-input-tab
+                = f.number_field :price, placeholder: "例) 300",class: 'input-price',id:'price_calc'
+          .main-price-right-fee
+            販売手数料(10%)
+            .right_bar
+              ー
+          .main-price-right-profit
+            #price
+            = f.number_field :price, style: "display: none", id: "price"
+            販売利益
+            .right_bar_2
+              ー
+
+      .products-new_mainbtn
+        .products-new_mainbtn-text
+          %span{style: "color: #0099e8;"}>禁止されている出品
+          、
+          %span{style: "color: #0099e8;"}>行為
+          を必ずご確認ください。
+          %br
+          またブランド品でシリアルナンバー等がある場合はご記載ください。
+          %span{style: "color: #0099e8;"}>偽ブランドの販売
+          は犯罪であり処罰される可能性があります。
+          %br
+          また、出品をもちまして
+          %span{style: "color: #0099e8;"}>加盟店規約
+          に同意したことになります。
+        .products-new_mainbtn-text-red
+          = f.submit "", class: 'exhibit-btn', value: '出品する'
+        .products-new_mainbtn-text-gray
+          = f.submit "", class: 'return-btn', value: 'もどる'
+      = render 'signup/signup_footer'
