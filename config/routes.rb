@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  root to: 'tops#index'
+  root to: 'toppages#index'
   get 'users/show'
-  get 'tops/show'
+  get 'toppages/show'
 
-  resources :tops do
+  resources :toppages do
     member do
       get 'buy_confirmation'
       post 'onetimebuy'

@@ -168,7 +168,7 @@
         = link_to "", class: "product-show-text-link" do
           @seller.nickname + "さんのその他の出品"
       .product-show-items-list
-        - @seller.seller_products.each.with_index(1) do |product, i|
+        - @seller&.seller_products&.each&.with_index(1) do |product, i|
           - if (i <= 6)
             .product-show-item-box
               - if (product.buyer_id.blank?)
