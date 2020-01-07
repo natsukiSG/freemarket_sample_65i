@@ -28,22 +28,22 @@ $(function(){
 
     if(images.length >= (5 - count)) {
       dropzone2.css({
-        'display': 'block'
+        display: 'block'
       })
       dropzone.css({
-        'display': 'none'
+        display: 'none'
       })
       $.each(images, function(index, image) {
         image.attr('data-image', index);
         preview2.append(image);
 
         dropzone2.css({
-          'width': `calc(100% - (126px * ${images.length - 5 + count}))`
+          width: `calc(100% - (126px * ${images.length - 5 + count}))`
         })
       })
       if(images.length >= (6 - count)) {
         dropzone2.css({
-          'position': 'absolute'
+          position: 'absolute'
         })
       }
       if(images.length == (9 - count)) {
@@ -55,15 +55,15 @@ $(function(){
         preview.append(image);
       })
       dropzone.css({
-        'width': `calc(100% - (126px * ${images.length + count}))`
+        width: `calc(100% - (126px * ${images.length + count}))`
       })
     }
     if(images.length == (4 - count)) {
       dropzone.find('p').replaceWith('<i class="fa fa-camera"></i>')
     }
-    if(images.length == (10 - count)) {
+    if(images.length == (9 - count)) {
       dropzone2.css({
-        'display': 'none'
+        display: 'none'
       })
       return;
     }

@@ -4,7 +4,7 @@
     .products-new_head
       %h1.products-new_head_mercari
         =link_to root_path, class: "products-new_head-link" do
-          = image_tag "", size: "185x49"
+          = image_tag "mercari_logo_vertical", size: "185x49"
     .products-new_main
       %h2.sell-form__header
         商品情報を入力
@@ -15,19 +15,19 @@
           必須
         .sell-form-container__require
           最大10枚までアップロードできます
-        = f.fields_for :images do |image|
+        = f.fields_for :Images do |image|
           .dropzone-container
-          #preview
-          .dropzone-area
-            = image.label :url, class: "dropzone-box", for: "upload-image" do
-              .input_area
-                = image.file_field :url, multiple: true, name: 'images[url][]', id: "upload-image", class: "upload-image", 'data-image': 0
-                %p ドラッグ&ドロップまたはクリックしてファイルをアップロード
+            #preview
+            .dropzone-area
+              = image.label :url, class: "dropzone-box", for: "upload-image" do
+                .input_area
+                  = image.file_field :url, multiple: true, name: 'images[url][]', id: "upload-image", class: "upload-image", 'data-image': 0
+                  %p ドラッグ&ドロップまたはクリックしてファイルをアップロード
           .dropzone-container2
-          #preview2
-          .dropzone-area2
-            = image.label :url, class: "dropzone-box", for: "upload-image" do
-              %p ドラッグ&ドロップまたはクリックしてファイルをアップロード
+            #preview2
+            .dropzone-area2
+              = image.label :url, class: "dropzone-box2", for: "upload-image" do
+                %p ドラッグ&ドロップまたはクリックしてファイルをアップロード
 
       .products-new_main-content
         .main-content-group
@@ -55,8 +55,7 @@
               .products-new-redbtn
                 必須
             .detail-right-cate-top
-              -# = f.select :category_id, options_for_select(@category_parent_array.map{|parent| [parent[:name], parent[:id]]}), {}, {class: 'select-default', id: 'parent_category'}
-
+              = f.select :costcharge, Product.costcharges.keys,{include_blank: '---'}, {class: 'select-default', id: 'delivary-right-burden-box'}
 
           .products-new_main-detail-right-status
             商品状態
@@ -138,20 +137,4 @@
           = f.submit "", class: 'exhibit-btn', value: '出品する'
         .products-new_mainbtn-text-gray
           = f.submit "", class: 'return-btn', value: 'もどる'
-      -# = render 'signups/signup_footer'
-
-    .products-footter
-      .products-footter-top
-        .products-footter-top-list
-          = link_to "", class: "products-footter-detail" do
-            プライバシーポリシー
-        .products-footter-top-list
-          = link_to "", class: "products-footter-detail" do
-            メルカリ利用規約
-        .products-footter-top-list
-          = link_to "", class: "products-footter-detail" do
-            特定商取引に関する表記
-      .products-footter-main
-        = image_tag "https://www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?3466462615", size: "80x65" 
-      .products-footter-bottom
-        © 2019 Mercari
+      = render 'signup/signup_footer'

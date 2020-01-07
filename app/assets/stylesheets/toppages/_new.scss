@@ -1,5 +1,6 @@
 .pruducts-new_content {
   height: 100%;
+  background-color: #F5F5F5;
 }
 
 .products-new_head {
@@ -58,6 +59,7 @@
 }
 
 .sell-form-container__require {
+  flex-wrap: wrap;
   margin: 8px 0 0;
   line-height: 1.5;
   height: 21px;
@@ -72,6 +74,7 @@
 
 .dropzone-container2 {
   width: 620px;
+  margin: 16px auto 0;
   position: relative;
 }
 
@@ -112,14 +115,17 @@
   display: none;
   bottom: 0;
   right: 0;
+
 }
 
 #preview {
   display: flex;
+ 
 }
 
 #preview2 {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .upload-image {
@@ -516,18 +522,4 @@
   font-size: 12px;
   vertical-align: top;
   background: #ccc;
-}
-
-.products-footter {
-  .products-footter-top {
-    .products-footter-top-list {
-      font: 12px;
-    .products-footter-main {
-      text-align: center; 
-    .products-footter-bottom {
-      font: 13px;
-      }
-      }
-    }
-  }
 }
