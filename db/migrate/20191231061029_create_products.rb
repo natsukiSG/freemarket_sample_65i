@@ -10,7 +10,7 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.string      :delivery_way, null: false
       t.string      :delivery_area, null: false
       t.string      :delivery_date, null: false
-      t.references  :buyer, foreign_key: { to_table: :users }, null: false
+      t.references  :buyer, foreign_key: { to_table: :users }
       t.references  :seller, foreign_key: { to_table: :users }, null: false
       t.timestamps
     end

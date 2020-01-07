@@ -51,21 +51,20 @@ ActiveRecord::Schema.define(version: 2020_01_07_045828) do
     t.string "name", null: false
     t.text "comment", null: false
     t.integer "price", null: false
+    t.string "size"
     t.string "status", null: false
     t.string "costcharge", null: false
     t.string "delivery_way", null: false
     t.string "delivery_area", null: false
     t.string "delivery_date", null: false
-    t.bigint "buyer_id", null: false
+    t.bigint "buyer_id"
     t.bigint "seller_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "category_id"
     t.bigint "size_id"
     t.bigint "brand_id"
     t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["buyer_id"], name: "index_products_on_buyer_id"
-    t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["name"], name: "index_products_on_name", unique: true
     t.index ["seller_id"], name: "index_products_on_seller_id"
     t.index ["size_id"], name: "index_products_on_size_id"
@@ -101,7 +100,6 @@ ActiveRecord::Schema.define(version: 2020_01_07_045828) do
 
   add_foreign_key "images", "products"
   add_foreign_key "products", "brands"
-  add_foreign_key "products", "categories"
   add_foreign_key "products", "sizes"
   add_foreign_key "products", "users", column: "buyer_id"
   add_foreign_key "products", "users", column: "seller_id"
