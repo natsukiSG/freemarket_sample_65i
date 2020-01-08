@@ -25,7 +25,12 @@
   .signup__main
     .main__contents
       .main__contents--title 住所入力
-      .signup__error--message
+      .form
+        .signup__error--message
+          - if @streetaddress.errors.any?
+            %ul
+              - @streetaddress.errors.full_messages.each do |message|
+                %li= message
       = form_for @streetaddress, url: credit_path, method: :get do |f|
         .form
           %div
@@ -49,7 +54,7 @@
           %label.form__label 都道府県
           %span.form__require 必須
           .select-box2
-            = fa_icon 'sort-down',class: 'fa-sort-down2'
+            = fa_icon 'chevron-down',class: 'fa-chevron-down'
             = f.select :prefectures, StreetAddress.prefectures.keys, {prompt: "--"}, {class: 'select_box'}
         .form
           %label.form__label 市区町村

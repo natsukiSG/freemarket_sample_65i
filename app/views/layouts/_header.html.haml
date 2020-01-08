@@ -45,7 +45,7 @@
           = fa_icon 'check', class: 'right-nav-btn', id: 'right-nav-btn-check'
           やることリスト
       .nav-right__mypage
-        =link_to "", class: "pc-header-menu-link" do
+        =link_to user_path(current_user.id), class: "pc-header-menu-link" do
           = image_tag "member_photo_noimage_thumb.png", class: 'user-circle-btn', size: "32x32"
           マイページ
     - else
