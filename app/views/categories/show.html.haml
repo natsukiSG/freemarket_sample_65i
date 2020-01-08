@@ -1,0 +1,66 @@
+- if (@category.ancestry == nil)
+  - breadcrumb :"categories/show", @category
+- elsif (@category.parent.ancestry == nil)
+  - breadcrumb :"categories/child", @category
+- else
+  - breadcrumb :"categories/grandchild", @category
+
+.header
+  = render 'layouts/header'
+
+= render 'layouts/nav'
+
+.show-category_contents
+  .show-category_categorys
+    .show-category-box
+      .show-category-box_header
+        .show-category-box_title
+          = @category.name + "の商品一覧"
+      .show-category-box_items
+        -if (@products.length != 0)
+          .show-category-box_grid
+            - @products.each do |product|
+              .show-category__box--product
+                = link_to product_path(product), class: "show-category__box--product_link" do
+                  .show-category__box--product-box
+                    - if (product.buyer_id.blank?)
+                      .show-category__box--product-box__image
+                        = image_tag "#{product.images.last.url}", size: "188x188", class: "product-box-img"
+                        .show-category__box--product-box__price
+                          = "¥" + "#{product.price}"
+                      .show-category__box--product-box__title
+                        .show-category__box--product-box__title--name
+                          = product.name
+                    - else
+                      .show-category__box--product-box__image
+                        .product_sold-out_badge
+                        .product_sold-out_badge-text
+                          SOLD
+                        = image_tag "#{product.images.last.url}", size: "188x188"
+                        .show-category__box--product-box__price
+                          = "¥" + "#{product.price}"
+                      .show-category__box--product-box__title
+                        .show-category__box--product-box__title--name
+                          = product.name
+        - else
+          .show-category-box_no-items
+            = fa_icon 'times-circle', class: "no-items-icon"
+            出品中の商品はありません
+  .category-show_explanation-box
+    .category-show_explanation-box_parent
+      %h3.root-category-name
+        - if (@category.ancestry != nil)
+          = "#{@category.name}" + "(" + "#{@category.parent.name}" + ")"
+        - else
+          = @category.name
+    .category-show_explanation-box_text
+      .category-show_explanation-box_inner-box
+        = "#{@category.name}" + "の着ない服、いらない洋服を売るならメルカリへ。" + "#{@category.name}" + "の買い取りやリサイクル処分、服の整理を検討中の方にお勧めです。"
+
+.app-banner
+  = render 'layouts/banner'
+
+.footer
+  = render "layouts/footer"
+.display-btn
+  = render "layouts/display_btn"
