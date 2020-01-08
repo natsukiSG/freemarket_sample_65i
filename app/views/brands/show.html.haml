@@ -1,0 +1,59 @@
+
+- breadcrumb :"brands/show", @brand
+
+.header
+  = render 'layouts/header'
+
+= render 'layouts/nav'
+
+.show-brand_contents
+  .show-brand_products
+    .show-brand-box
+      .show-brand-box_header
+        .show-brand-box_title
+          = @brand.name + "の商品一覧"
+      .show-brand-box_items
+        -if (@products.length != 0)
+          .show-brand-box_grid
+            - @products.each do |product|
+              .show-brand-box_product
+                = link_to product_path(product), class: "show-brand-box_product_link" do
+                  .show-brand-box_product-box
+                    - if (product.buyer_id.blank?)
+                      .show-brand-box_product-box__image
+                        = image_tag "#{product.images.last.url}", size: "188x188", class: "product-box-img"
+                        .show-brand-box_product-box__price
+                          = "¥" + "#{product.price}"
+                      .show-brand-box_product-box__title
+                        .show-brand-box_product-box__title--name
+                          = product.name
+                    - else
+                      .show-brand-box_product-box__image
+                        .product_sold-out_badge
+                        .product_sold-out_badge-text
+                          SOLD
+                        = image_tag "#{product.images.last.url}", size: "188x188"
+                        .show-brand-box_product-box__price
+                          = "¥" + "#{product.price}"
+                      .show-brand-box_product-box__title
+                        .show-brand-box_product-box__title--name
+                          = product.name
+        - else
+          .show-brand-box_no-items
+            = fa_icon 'times-circle', class: "no-items-icon"
+            出品中の商品はありません
+  .brand-show_explanation-box
+    .brand-show_explanation-box_parent
+      %h3.show-brand-name
+        = @brand.name
+    .brand-show_explanation-box_text
+      .brand-show_explanation-box_inner-box
+        = "#{@brand.name}" + "の商品を売るならメルカリへ。" + "#{@brand.name}" + "の商品の買い取りやリサイクル処分を検討中の方にお勧めです。"
+
+.app-banner
+  = render 'layouts/banner'
+
+.footer
+  = render "layouts/footer"
+.display-btn
+  = render "layouts/display_btn"

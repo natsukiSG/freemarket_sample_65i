@@ -8,6 +8,12 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
+  resources :users , only: [:index] do
+    collection do
+      get 'logout'
+    end
+  end
+
   devise_scope :user do
     get     "index",               to: "users/registrations#index"
     get     "profile",             to: "users/registrations#profile"
@@ -20,6 +26,7 @@ Rails.application.routes.draw do
   
   resources :users, only: [:show, :edit]
   resources :toppage, only: [:index]
+
   
   resources :card, only: [:new, :show] do
     collection do
@@ -34,18 +41,43 @@ Rails.application.routes.draw do
       get 'index', to: 'purchase#index'
       post 'pay', to: 'purchase#pay'
       post 'done', to: 'purchase#done'
+
+  resources :categories , only: [:index, :show]do
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+
     end
   end
 
   resources :products do
     member do
       get 'buy_confirmation'
+
       post 'pay'
       get 'done', to:'products#done'
 
     end
   end
 
+
+      post 'onetimebuy'
+    end
+  end
+  
+
+  resources :categories , only: [:index, :show]do
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+    end
+  end
+  
+  resources :brands , only: [:index, :show]
+  resources :brand_categories , only: [:show]
+
+  post   '/like/:product_id' => 'likes#like',   as: 'like'
+  delete '/like/:product_id' => 'likes#unlike', as: 'unlike'
 
 end
 

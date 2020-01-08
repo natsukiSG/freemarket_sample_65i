@@ -1,0 +1,90 @@
+.brand__index--contents {
+  font-family: Arial,"游ゴシック体","YuGothic","メイリオ","Meiryo",sans-serif;
+  width: 700px;
+  background: transparent;
+  margin: 40px auto;
+  z-index: 0;
+  color: #333;
+}
+
+.brand__index--conteiner{
+  display: block;
+}
+
+.brand__index--conteiner_title{
+  padding: 8px 0;
+  font-size: 22px;
+  line-height: 1.4;
+  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo';
+  font-weight: 700;
+}
+
+.brand__index--category-link{
+  display: inline-block;
+  border-radius: 4px;
+  box-shadow: 1px 1px 1px 1px rgba(14,14,14,0.0580392);
+  padding: 0 30px;
+  margin: 5px;
+  font-size: 16px;
+  line-height: 40px;
+  text-decoration: none;
+  color: #333;
+  background-color: #fff;
+}
+.brand-index_category-link:hover{
+  background-color: #ea352d;
+  color: #fff;
+}
+
+.brand-index_category-name{
+  display: inline-block;
+  text-size-adjust: 100%;
+}
+
+.brand-index_list-box{
+  margin: 30px auto;
+}
+
+.brand-index_list-box_category-name{
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  padding: 7px 30px 0 30px;
+  height: 40px;
+  background-color: #ea352d;
+  color: #fff;
+}
+
+.brand-category-name{
+  line-height: 22px;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.brand-index_individual-box_brand{
+  padding: 10px 50px 10px;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.brand_inner-box-name{
+  display: inline-block;
+  float: left;
+  width: 50%;
+  padding-right: 20px;
+}
+
+.brand_inner-box-name-link{
+  display: inline-block;
+  margin: 8px 0;
+  color: rgb(0, 153, 232);
+}
+.brand_inner-box-name-link:hover{
+  text-decoration: underline;
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+}
+
+.active-brand-category{
+  background-color: #ea352d;
+  color: #fff;
+}

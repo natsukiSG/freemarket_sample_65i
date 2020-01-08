@@ -1,0 +1,62 @@
+// バナー
+.app-banner {
+  font-family: Arial,'游ゴシック体','YuGothic','メイリオ','Meiryo',sans-serif;
+  width: 100vw;
+  height: 260px;
+  background-image: url("https://web-jp-assets.mercdn.net/_next/static/images/download_app_bg-b57d6f1a32f2aebd89cf6f43bc2e4b39.jpg");
+  background-position: cover;
+  background-size: cover;
+  position: relative;
+  top: 0px;
+  &__ad{
+    width: 750px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    color: #FFF;
+    &__download{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  } 
+}
+
+.letter-app{
+  font-size: 24px;
+  line-height: 24px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.letter-download{
+  font-size: 35px;
+  line-height: 35px;
+  margin-bottom: 20px;
+}
+
+.app_banner-btns{
+  height: 68px;
+  display: flex;
+}
+
+.app_store-btns{
+  margin: 0 0 0 24px;
+  line-height: 68px;
+  display: flex;
+  &__appstore{
+    display: inline;
+    margin: 14px 8px 14px 0;
+  }
+  &__google{
+    display: inline;
+    margin: 14px 0;
+  }
+}
+.store-btns_mercari-icon{
+  margin-right: 20px;
+}
+
+.app-image{
+  display: inline-block;
+}

@@ -1,0 +1,14 @@
+- if user_signed_in?
+  = link_to new_product_path, class: "display-btn--link" do
+    .display-btn__detail
+      .display-btn__detail--text
+        出品
+      .display-btn__detail--icon
+        = fa_icon "camera", class: ""
+- else
+  = link_to new_user_session_path, class: "display-btn--link" do
+    .display-btn__detail
+      .display-btn__detail--text
+        出品
+      .display-btn__detail--icon
+        = fa_icon "camera", class: ""

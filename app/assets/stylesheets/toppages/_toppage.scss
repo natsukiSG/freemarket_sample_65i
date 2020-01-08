@@ -2,9 +2,10 @@ body {
    background-color: white;
    font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
    font-size: 14px;
+
   }
 
-  .product-index_contents {
+  .product__index--contents {
     width: 1020px;
     margin: 0 auto;
     z-index: 0;
@@ -16,7 +17,6 @@ body {
     overflow: scroll;
   }
   
-  // スライダー
   .product-index_contents {
     width: 1020px;
     margin: 0 auto;
@@ -66,63 +66,67 @@ body {
       display: block;
       text-align: center;
       width: 100%;
-      margin: 10px, 0px, 0px, 10px;
       cursor: pointer;
       font-size: 14px;
-      .category-first {
-        height: 30px;
-        line-height: 30px;
-        background-color: rgb(239, 239, 239);
-        display: inline-block;
-        font-weight: 600;
-        border-radius: 15px;
-      }
-      .category-second {
-        height: 30px;
-        line-height: 30px;
-        background-color: rgb(239, 239, 239);
-        display: inline-block;
-        font-weight: 600;
-        border-radius: 15px;
-      }
-      .category-third {
-        height: 30px;
-        line-height: 30px;
-        background-color: rgb(239, 239, 239);
-        display: inline-block;
-        font-weight: 600;
-        border-radius: 15px;
-      }
-      .category-fourth {
-        height: 30px;
-        line-height: 30px;
-        background-color: rgb(239, 239, 239);
-        display: inline-block;
-        font-weight: 600;
-        border-radius: 15px;
-      }
+      margin-bottom: 42px;
+        .category-first {
+          height: 30px;
+          line-height: 30px;
+          margin: 10px 0 0 10px;
+          padding: 8px 16px;
+          background-color: rgb(239, 239, 239);
+          display: inline-block;
+          font-weight: 600;
+          border-radius: 15px;
+        }
+        .category-second {
+          height: 30px;
+          line-height: 30px;
+          margin: 10px 0 0 10px;
+          padding: 8px 16px;
+          background-color: rgb(239, 239, 239);
+          display: inline-block;
+          font-weight: 600;
+          border-radius: 15px;
+        }
+        .category-third {
+          height: 30px;
+          line-height: 30px;
+          margin: 10px 0 0 10px;
+          padding: 8px 16px;
+          background-color: rgb(239, 239, 239);
+          display: inline-block;
+          font-weight: 600;
+          border-radius: 15px;
+        }
+        .category-fourth {
+          height: 30px;
+          line-height: 30px;
+          margin: 10px 0 0 10px;
+          padding: 8px 16px;
+          background-color: rgb(239, 239, 239);
+          display: inline-block;
+          font-weight: 600;
+          border-radius: 15px;
+        }
     }
   }
 // カテゴリー新着アイテム
-.product-index_categories {
-  padding: 42px 0px;
+.product__index--categories {
+  padding: 42px 0px 100px;
+  background-color: rgb(245, 245, 245);
   width: 100%;
-  display: block;
 }
-  .item-box {
-    vertical-align: baseline;
-    width: 100%;
+  .item__box {
+    // vertical-align: baseline;
   }
-    .item-box-one {
-      background-color: rgb(245, 245, 245);
-      height: 455px;
-      width: 100%;
-      padding: 40px, 0, 100px;
-      display: block;
-      text-align: center; 
+    .item__box--one {
+      padding: 42px 0px 100px;
+      width: 1020px;
+      margin: auto;
     }
-      .item_first {
-        width: 609px;
+      .item__first {
+        width: 1020px;
         height: 33px;
         margin-bottom: 16px;
         font-size: 24px;
@@ -130,258 +134,316 @@ body {
         color: rgb(51, 51, 51);
         text-align: left;
       }
-        .item_first_preview {
-          width: 91px;
-          height: 24px;
+        .__preview {
           font-size: 14px;
-          padding: 5px, 16px, 5px, 5px;
+          padding: 5px 16px 5px 5px;
           position: relative;
           cursor: pointer;
+          float: right;
           color: rgb(0, 149, 238);
+          text-decoration: none;
         }
-      .item-category-box {
-        height: 416px;
-        width: 700px;
-        background-color: rgb(245, 245, 245);
-        flex-wrap: wrap;
-        display: flex;
-        text-align: center;
+      .category-box_grid{
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 20px 20px;
       }
-        .item-category-box-one {
-          background-color: blue;
-          height: 186px;
-          width: 124px;
-          margin: 5px;
+        .category__box--product{
+          background-color: #fff;
+          box-shadow: 0 2px 4px rgba(0,0,0,.18);
+          width: 100%;
+          align-items: center;
         }
-        .item-category-box-two {
-          background-color: green;
-          height: 186px;
-          width: 124px;
-          margin: 5px;
+        .category__box--product_link{
+          width: 100%;
+          cursor: pointer;
+          display: inline-block;
+          position: relative;
+          text-decoration: none;
+          vertical-align: top;
+          text-decoration: none;
         }
-        .item-category-box-three {
-          background-color: red;
-          height: 186px;
-          width: 124px;
-          margin: 5px;
+        .category__box--product-box{
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          &__image{
+            position: relative;
+            height: 188px;
+          }
+          &__price{
+            position: absolute;
+            bottom: 8px;
+            left: 0;
+            background: rgba(0,0,0,.4);
+            border-radius: 0 14px 14px 0;
+            color: #fff;
+            display: inline-flex;
+            font-size: 17px;
+            height: 28px;
+            line-height: 28px;
+            letter-spacing: .02em;
+            padding: 0 12px;
+            z-index: 2;
+          }
+          &__title{
+            height: 64px;
+            width: 100%;
+            color: #222;
+            font-size: 14px;
+            line-height: 1.4em;
+            display: flex;
+            align-items: center;
+            width: 188px;
+            &--name{
+              height: 2.8em;
+              overflow: hidden;
+              position: relative;
+              word-wrap: break-word;
+            }
+            &--name:after{
+              background: linear-gradient(90deg,hsla(0,0%,100%,0),#fff 72%);
+              bottom: 0;
+              content: "";
+              height: 50%;
+              position: absolute;
+              right: 0;
+              width: 50%;
+            }
+          }
         }
-        .item-category-box-four {
-          background-color: yellow;
-          height: 186px;
-          width: 124px;
-          margin: 5px;
-        }
-        .item-category-box-five {
-          background-color: blue;
-          height: 186px;
-          width: 124px;
-          margin: 5px;
-        }
-    .item-box-second {
-      background-color: rgb(245, 245, 245);
-      height: 455px;
-      width: 100%;
-      padding: 40px, 0, 100px;
-      display: block;
-      text-align: center;
-      .item_second {
-        width: 609px;
+    .item-box-second {
+      padding: 42px 0px 100px;
+      width: 1020px;
+      margin: auto;
+    }
+      .item_second {
+        width: 1020px;
         height: 33px;
         margin-bottom: 16px;
         font-size: 24px;
         display: inline-block;
         color: rgb(51, 51, 51);
         text-align: left;
-        .item_second-preview {
-          width: 91px;
-          height: 24px;
+      }
+        .item_second_preview {
           font-size: 14px;
           padding: 5px, 16px, 5px, 5px;
           position: relative;
           cursor: pointer;
           color: rgb(0, 149, 238);
+          float: right;
+          text-decoration: none;
+          }
+    .item-box-third {
+      padding: 42px 0px 100px;
+      width: 1020px;
+      margin: auto;
+      .item_third {
+        width: 1020px;
+        height: 33px;
+        margin-bottom: 16px;
+        font-size: 24px;
+        display: inline-block;
+        color: rgb(51, 51, 51);
+        text-align: left;
+        .item_third_preview {
+          font-size: 14px;
+          padding: 5px, 16px, 5px, 5px;
+          position: relative;
+          cursor: pointer;
+          color: rgb(0, 149, 238);
+          float: right;
+          text-decoration: none;
           }
         }
       }
-    .item-box-third {
-      background-color: rgb(245, 245, 245);
-      height: 455px;
-      width: 100%;
-      padding: 40px, 0px, 100px;
-    .item_third {
-        width: 609px;
+    .item-box-fourth {
+      padding: 42px 0px 100px;
+      width: 1020px;
+      margin: auto;
+      .item_fourth {
+        width: 1020px;
         height: 33px;
         margin-bottom: 16px;
         font-size: 24px;
         display: inline-block;
         color: rgb(51, 51, 51);
         text-align: left;
-      .item_third-preview {
-        font-size: 12px;
-        color: rgb(0, 149, 238);
-        padding: 5px, 14px, 5px, 5px;
+        .item_fourth_preview {
+          font-size: 14px;
+          padding: 5px, 16px, 5px, 5px;
+          position: relative;
+          cursor: pointer;
+          color: rgb(0, 149, 238);
+          float: right;
+          text-decoration: none;
+          }
         }
       }
-    }
-    .item-box-fourth {
-      background-color: rgb(245, 245, 245);
-      height: 455px;
-      width: 100%;
-      padding: 40px, 0px, 100px;
-      .item_fourth {
-        font-size: 24px;
-        display: inline-block;
-      .item_first-preview {
-        font-size: 12px;
-        color: rgb(0, 149, 238);
-        }
-      }
-    }
-  .category-box_grid{
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 20px 20px;
-  }
-  .category-box_product{
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,.18);
-    width: 188px;
-    height: 252px;
-    align-items: center;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(40px);
-    transition: all 1s;
-  }
-  .is-show {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0px);
-  }
-  
-  .category-box_product_link{
-    width: 100%;
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    text-decoration: none;
-    vertical-align: top;
-    text-decoration: none;
-  }
   // ブランドカテゴリー
-.body_second {
-  text-align: center;
-  background-color: white;
-  padding: 56px, 0px, 30px;
-  position: relative;
+.body_second {
+  text-align: center;
+  background-color: white;
+  padding: 56px, 0px, 30px;
+  position: relative;
   top: 0px;
   width: 100%;
-  .body-brand {
-    margin-bottom: 16px;
-    text-align: center;
-    font-size: 28px;
-    color: #333;
+  .body-brand {
+    margin-bottom: 16px;
+    text-align: center;
+    font-size: 28px;
+    color:  #333;
     }
-    .brand {
+    .brand {
       display: block;
       text-align: center;
       width: 100%;
       margin: 10px, 0px, 0px, 10px;
       cursor: pointer;
       font-size: 14px;
-      .brand-first {
+      padding: 8px, 16px;
+      margin-bottom: 42px;
+      .brand-first {
         height: 30px;
         line-height: 30px;
-        background-color: rgb(239, 239, 239);
+        margin: 10px 0 0 10px;
+        padding: 8px 16px;
         display: inline-block;
         font-weight: 600;
         border-radius: 15px;
+        background-color: rgb(239, 239, 239);
       }
-      .brand-second {
+      .brand-second {
         height: 30px;
         line-height: 30px;
-        background-color: rgb(239, 239, 239);
+        margin: 10px 0 0 10px;
+        padding: 8px 16px;
         display: inline-block;
         font-weight: 600;
         border-radius: 15px;
+        background-color: rgb(239, 239, 239);
       }
-      .brand-third {
+      .brand-third {
         height: 30px;
         line-height: 30px;
-        background-color: rgb(239, 239, 239);
+        margin: 10px 0 0 10px;
+        padding: 8px 16px;
         display: inline-block;
         font-weight: 600;
         border-radius: 15px;
+        background-color: rgb(239, 239, 239);
       }
-      .brand-fourth {
+      .brand-fourth {
         height: 30px;
         line-height: 30px;
-        background-color: rgb(239, 239, 239);
+        margin: 10px 0 0 10px;
+        padding: 8px 16px;
         display: inline-block;
         font-weight: 600;
         border-radius: 15px;
+        background-color: rgb(239, 239, 239);
       }
     }
   }
   // ブランド新着
-  .brand-box 
-  .brand-box-one {
-    background-color: rgb(245, 245, 245);
-    height: 455px;
-    width: 100%;
-    padding: 42px, 0px, 100px;
-    .brands-first {
-      margin-bottom: 16px;
-      font-size: 24px;
-    .brands-first_preview {
-      font-size: 12px;
-      color: rgb(0, 149, 238);
-      padding: 5px, 14px, 5px, 5px;
-      }
-    }
+.product-index_categories {
+  padding: 42px 0px 100px;
+  background-color: rgb(245, 245, 245);
+  width: 100%;
   }
-  .brand-box-second {
+  .brand-box {
     background-color: rgb(245, 245, 245);
-    height: 455px;
-    width: 100%;
-    padding: 40px, 0px, 100px;
-    .brands-second {
-      margin-bottom: 16px;
-      font-size: 24px;
-    .brands-second_preview {
-      font-size: 12px;
-      color: rgb(0, 149, 238);
-      padding: 5px, 14px, 5px, 5px;
+    .brand-box-one {
+      padding: 42px 0px 100px;
+      width: 1020px;
+      margin: auto;
+    }
+      .brands-first {
+        width: 1020px;
+        height: 33px;
+        margin-bottom: 16px;
+        font-size: 24px;
+        display: inline-block;
+        color: rgb(51, 51, 51);
+        text-align: left;
+        .brands_first_preview {
+          font-size: 14px;
+          padding: 5px, 16px, 5px, 5px;
+          position: relative;
+          cursor: pointer;
+          color: rgb(0, 149, 238);
+          float: right;
+          text-decoration: none;
+          }
+        }
+      }
+    .brand-box-second {
+      padding: 42px 0px 100px;
+      width: 1020px;
+      margin: auto;
+      .brands-second {
+        width: 1020px;
+        height: 33px;
+        margin-bottom: 16px;
+        font-size: 24px;
+        display: inline-block;
+        color: rgb(51, 51, 51);
+        text-align: left;
+        .brands_second_preview {
+          font-size: 14px;
+          padding: 5px, 16px, 5px, 5px;
+          position: relative;
+          cursor: pointer;
+          color: rgb(0, 149, 238);
+          float: right;
+          text-decoration: none;
+        }
       }
     }
-  }
-  .brand-box-third {
-    background-color: rgb(245, 245, 245);
-    height: 455px;
-    width: 100%;
-    padding: 40px, 0px, 100px;
-    .brands-third {
-      margin-bottom: 16px;
-      font-size: 24px;
-    .brands-third_preview {
-      font-size: 12px;
-      color: rgb(0, 149, 238);
-      padding: 5px, 14px, 5px, 5px;
+    .brand-box-third {
+      padding: 42px 0px 100px;
+      width: 1020px;
+      margin: auto;
+      .brands-third {
+        width: 1020px;
+        height: 33px;
+        margin-bottom: 16px;
+        font-size: 24px;
+        display: inline-block;
+        color: rgb(51, 51, 51);
+        text-align: left;
+        .brands_third_preview {
+          font-size: 14px;
+          padding: 5px, 16px, 5px, 5px;
+          position: relative;
+          cursor: pointer;
+          color: rgb(0, 149, 238);
+          float: right;
+          text-decoration: none;
+        }
       }
     }
-  }
-  .brand-box-fourth {
-    background-color: rgb(245, 245, 245);
-    height: 455px;
-    width: 100%;
-    padding: 40px, 0px, 100px;
-    .brands-fourth {
-      margin-bottom: 16px;
-      font-size: 24px;
-      .brands-fourth_preview {
-        font-size: 12px;
-        color: rgb(0, 149, 238);
-        padding: 5px, 14px, 5px, 5px;
+    .brand-box-fourth {
+      padding: 42px 0px 100px;
+      width: 1020px;
+      margin: auto;
+      .brands-fourth {
+        width: 1020px;
+        height: 33px;
+        margin-bottom: 16px;
+        font-size: 24px;
+        display: inline-block;
+        color: rgb(51, 51, 51);
+        text-align: left;
+        .brands_fourth_preview {
+          font-size: 14px;
+          padding: 5px, 16px, 5px, 5px;
+          position: relative;
+          cursor: pointer;
+          color: rgb(0, 149, 238);
+          float: right;
+          text-decoration: none;
+        }
       }
     }
-  }
