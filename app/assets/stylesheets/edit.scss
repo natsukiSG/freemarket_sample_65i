@@ -6,6 +6,7 @@
     background-color: white;
     width: 700px;
     margin:0 auto;
+    height:100%;
   }
 
   &__title {
@@ -18,8 +19,6 @@
 
   &__icon-area {
     background-image: image_url('profile-bg.jpg');
-    width: 668px;
-    height: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,7 +30,6 @@
     }
     &__nickname {
       width: 186px;
-      height: 28px;
       margin-left: 8px;
       padding: 10px 16px 8px;
       font-size: 16px;
@@ -55,6 +53,7 @@
       padding: 10px;
       font-size: 16px;
       overflow: auto;
+      border: 1px solid #ccc;
       &:focus {
         outline: 0px #0099e8 solid;
         border-color: #0099e8;
