@@ -41,5 +41,6 @@ class CardController < ApplicationController
       @customer_card = customer.cards.retrieve(@card.card_id)
     end
   end
+  
 
 end

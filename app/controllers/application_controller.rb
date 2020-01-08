@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
   def set_card
     @card = Creditcard.find_by(user_id: current_user.id)
   end
-end
+
   def set_parents
     @parents = Category.where(ancestry: nil).order("id ASC")
   end

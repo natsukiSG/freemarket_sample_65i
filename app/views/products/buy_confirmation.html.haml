@@ -37,14 +37,14 @@
 
             .buy__confirmation--pay-box
               -if current_user.creditcard.present?
-                = "**** **** **** " + @default_card_information.last4
+                = "**** **** **** " + @customer_card.last4
                 %br
-                - exp_month = @default_card_information.exp_month.to_s
-                - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+                - exp_month = @customer_card.exp_month.to_s
+                - exp_year = @customer_card.exp_year.to_s.slice(2,3)
                 = exp_month + " / " + exp_year
                 %br
                 .buy__confirmation--pay-box
-                  = image_tag "cardbrands/#{@default_card_information.brand}.svg"
+                  = image_tag "cardbrands/#{@customer_card.brand}.svg"
 
         .buy__confirmation--address
           .buy__confirmation--address-content

@@ -36,12 +36,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :purchase, only: [:index] do
-    collection do
-      get 'index', to: 'purchase#index'
-      post 'pay', to: 'purchase#pay'
-      post 'done', to: 'purchase#done'
-
   resources :categories , only: [:index, :show]do
     collection do
       get 'get_category_children', defaults: { format: 'json' }
@@ -60,11 +54,6 @@ Rails.application.routes.draw do
     end
   end
 
-
-      post 'onetimebuy'
-    end
-  end
-  
 
   resources :categories , only: [:index, :show]do
     collection do
