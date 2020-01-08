@@ -1,7 +1,6 @@
 class BrandsController < ApplicationController
   def index
     @brand_categories = BrandCategory.all
-
   end
 
   def show

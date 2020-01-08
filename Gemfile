@@ -81,9 +81,23 @@ end
 
 gem 'carrierwave'
 gem 'fog-aws'
+gem "omniauth-rails_csrf_protection"
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem 'dotenv-rails'
+gem "font-awesome-rails"
 
 gem 'haml-rails'
 gem "font-awesome-rails"
 gem 'gretel'
 
+gem 'kaminari'
+gem 'jquery-rails'
+gem 'erb2haml'
+
+gem 'gon'
 gem 'ancestry'
+gem 'payjp'
+gem 'recaptcha', require: "recaptcha/rails"
+
+gem 'active_hash'

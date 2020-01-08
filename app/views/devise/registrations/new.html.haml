@@ -1,0 +1,24 @@
+.signup
+  .signup__header
+    .signup__header--logo
+      .signup__head--logo
+        =link_to root_path do
+          = image_tag "fmarket_logo_red.svg",  size: "185x49"
+
+  .signup__main
+    .signup__contents
+      .signup__contents--title
+        新規会員登録
+      .signup__contents--form
+        .signup__btn
+          = link_to profile_path, class: "signup__btn--email" do
+            メールアドレスで登録する
+            = fa_icon 'envelope', class: 'fas.fa-envelope icon'
+          = link_to user_facebook_omniauth_authorize_path, class: "signup__btn--facebook", method: :post do
+            Facebookで登録する
+            = fa_icon 'facebook-square', class: 'fab.fa-facebook-square icon'
+          = link_to user_google_oauth2_omniauth_authorize_path, class: "signup__btn--google", method: :post do
+            Googleで登録する
+            = fa_icon 'google', class: 'fab.fa-google icon'
+    
+  = render 'signup_footer'

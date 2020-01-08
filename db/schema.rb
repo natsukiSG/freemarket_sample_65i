@@ -45,6 +45,13 @@ ActiveRecord::Schema.define(version: 2020_01_08_024709) do
     t.integer "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  create_table "creditcards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "card_id", null: false
+    t.string "customer_id", null: false
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_creditcards_on_user_id"
   end
 
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -78,6 +85,7 @@ ActiveRecord::Schema.define(version: 2020_01_08_024709) do
     t.datetime "updated_at", null: false
     t.index ["brand_category_id"], name: "index_set_brands_on_brand_category_id"
     t.index ["brand_id"], name: "index_set_brands_on_brand_id"
+
   end
 
   create_table "size_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -95,21 +103,30 @@ ActiveRecord::Schema.define(version: 2020_01_08_024709) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "streetaddresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "last_name", null: false
-    t.string "first_name", null: false
-    t.string "last_name_kana", null: false
-    t.string "first_name_kana", null: false
+  create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "uid", null: false
+    t.string "provider", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sns_credentials_on_user_id"
+  end
+
+  create_table "street_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "address_first_name", null: false
+    t.string "address_last_name", null: false
+    t.string "address_first_name_kana", null: false
+    t.string "address_last_name_kana", null: false
     t.string "post_number", null: false
-    t.integer "prefecture", null: false
+    t.string "prefectures", null: false
     t.string "city", null: false
-    t.string "address", null: false
+    t.string "house_number", null: false
     t.string "building_name"
-    t.string "phone_number"
+    t.string "address_phone_number"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_streetaddresses_on_user_id"
+    t.index ["user_id"], name: "index_street_addresses_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -123,7 +140,6 @@ ActiveRecord::Schema.define(version: 2020_01_08_024709) do
     t.integer "birth_year", null: false
     t.integer "birth_month", null: false
     t.integer "birth_day", null: false
-    t.text "comment", null: false
     t.string "phone_number", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -138,10 +154,12 @@ ActiveRecord::Schema.define(version: 2020_01_08_024709) do
   add_foreign_key "products", "brands"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "sizes"
-  add_foreign_key "products", "users", column: "buyer_id"
-  add_foreign_key "products", "users", column: "seller_id"
   add_foreign_key "set_brands", "brand_categories"
   add_foreign_key "set_brands", "brands"
+  add_foreign_key "creditcards", "users"
+  add_foreign_key "products", "users", column: "buyer_id"
+  add_foreign_key "products", "users", column: "seller_id"
   add_foreign_key "size_categories", "sizes"
-  add_foreign_key "streetaddresses", "users"
+  add_foreign_key "sns_credentials", "users"
+  add_foreign_key "street_addresses", "users"
 end
