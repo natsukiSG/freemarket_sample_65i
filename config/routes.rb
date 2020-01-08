@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'purchase/index'
-  get 'purchase/done'
   root to: 'toppage#index'
   devise_for :users, controllers: {
     registrations: "users/registrations",
@@ -35,7 +33,8 @@ Rails.application.routes.draw do
       post 'show', to: 'card#show'
       post 'pay', to: 'card#pay'
       delete 'delete', to: 'card#delete'
-
+    end
+  end
 
   resources :toppages do
     member do
