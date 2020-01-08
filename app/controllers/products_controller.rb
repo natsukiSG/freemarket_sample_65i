@@ -25,7 +25,6 @@ class ProductsController < ApplicationController
   end
 
   def create
-    binding.pry
     @product = Product.new(product_params)
     if (params[:images] != nil)
       if @product.save
@@ -77,7 +76,7 @@ class ProductsController < ApplicationController
 
   private
   def  product_params
-    params.require(:product).permit(:name, :comment, :price, :costcharge, :delivery_way, :delivery_area, :delivery_date, :category_id,)
+    params.require(:product).permit(:name, :comment, :price, :costcharge, :status, :delivery_way, :delivery_area, :delivery_date, :category_id).merge(seller_id: current_user.id)
   end
   
   def search_params
