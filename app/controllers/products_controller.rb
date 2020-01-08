@@ -3,6 +3,8 @@ class ProductsController < ApplicationController
   before_action :set_child_category, only: [ :edit, :update]
   before_action :set_grandchild_category, only: [ :edit, :update]
   before_action :set_sizes, only: [ :edit, :update]
+  before_action :set_product, :set_card
+  require "payjp"
 
   def index
     @categories = Category.roots
@@ -109,3 +111,28 @@ class ProductsController < ApplicationController
     end
   end
 end
+
+  def buy_confirmation
+    @streetaddress = StreetAddress.find_by(user_id: current_user.id)
+      if @card.present?
+        Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+        customer = Payjp::Customer.retrieve(@card.customer_id)
+        @customer_card = customer.cards.retrieve(@card.card_id)
+    else
+      redirect_to root_path
+    end
+  end
+  
+
+  def pay 
+    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+    Payjp::Charge.create(
+    :amount => @product.price, #支払金額
+    :customer => @card.customer_id, #顧客ID
+    :currency => 'jpy',
+  )
+  redirect_to action: 'done'
+  end
+  
+end
+

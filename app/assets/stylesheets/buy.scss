@@ -1,0 +1,166 @@
+.pruducts {
+  height: 100%;
+  background: rgb(245, 245, 245);
+  font-family: Source Sans Pro, Helvetica , Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+}
+
+.products__head {
+  height: 128px;
+  text-align: center;
+  background: rgb(245, 245, 245);
+
+  &--mercari{
+    display: inline-block;
+    margin: 40px 0 0;
+    height: 65px;
+    width: 185px;
+  }
+
+&__head-link{
+  display: inline-block;
+  line-height: 49px;
+  margin-right: 8px;
+  }
+}
+
+.products__new--main {
+  width: 700px;
+  margin: 0 auto;
+  background: #fff;
+}
+
+.buy__confirmation {
+  border-top: 1px solid #f5f5f5;
+  max-width: 320px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  border-bottom: 1px solid #f5f5f5;
+
+  &--main{
+    border-top: 1px solid #f5f5f5;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 24px 16px;
+    border-bottom: 1px solid #f5f5f5;
+    
+  }
+
+  &--item{
+    display:flex;
+    padding:0 162.5px;
+  }
+
+  &--detail{
+    margin-left:16px;
+    width:100%;
+  }
+
+  &--item-main{
+    font-size: 14px;
+    margin: 0;
+    padding: 0 0 8px;
+    line-height: 1.5;
+    text-align: left;
+  }
+
+  &--form{
+    height:442.59px;
+    width:343px;
+    }
+
+  &--detail-price-cell {
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+    font-weight:bold;
+    }
+
+  &--detail-price-cell-left {
+    padding: 16px 0;
+    font-size:18px;
+    font-weight: 600;
+  }
+
+  &--detail-price-cell-right {
+    padding: 16px 0;
+    float: right;
+    font-size: 30px;
+  }
+
+.detail-price-cell-left-point{
+  font-size:14px;
+  color: #888;
+  &::before{
+  font-family:'Font Awesome 5 Free';
+	content: '\f0c8';
+  background-color:#888888;
+  width:20px;
+  height:20px;
+  }
+}
+
+  &--pay {
+    padding: 20px 0;
+    margin: 32px 0 0;
+    border-top: 1px solid #f5f5f5;
+    font-size: 14px;
+    }
+
+
+  &--pay-content {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  &--pay-box{
+    margin:8px 0 0;
+
+  }
+
+&--address {
+  padding: 20px 0;
+  border-top: 1px solid #f5f5f5;
+  font-size: 14px;
+  }
+  
+&__adress-content {
+  max-width: 320px;
+  margin: 0 auto;
+  font-size: 14px;
+}
+
+&--change-btn {
+  color: #0099e8;
+  text-decoration: none;
+  display: block;
+  text-align: right;
+}
+  &--btn{
+    border-top: 1px solid #f5f5f5;
+    padding: 32px 0;
+    font-size: 14px;
+
+  }
+}
+
+.buy-btn {
+  display: inline-block;
+  width: 320px;
+  line-height: 48px;
+  font-size: 14px;
+  border: 1px solid  #ea352d;
+  background: #ea352d;
+  color: #fff;
+  text-align: center;
+}
+
+.buy__confirmation--item-sub{
+  display:flex;
+  text-align: center;
+  line-height:21px;
+  font-weight: bold;
+}
+
+.buy-confirmation-detail-price-postage{
+  margin-left:15px;
+}
