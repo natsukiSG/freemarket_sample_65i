@@ -9,8 +9,9 @@
 .nav
   .nav-left
     .nav-left__cate
-      = fa_icon 'list-ul', class: 'left-nav-btn'
-      カテゴリーから探す
+      = link_to categories_path, class:"header_category-list" do
+        = fa_icon 'list-ul', class: 'left-nav-btn'
+        カテゴリーから探す
       .header_category-nav
         %ul.header_parents-nav
           - @parents.each do |parent|
@@ -19,6 +20,7 @@
           %li.header_all-list
             = link_to categories_path, class: "header_all-link" do
               カテゴリー一覧
+
     .nav-left__brand
       = link_to brands_path, class:"header_popular-brand-list" do
         = fa_icon 'tag', class: 'left-nav-btn'

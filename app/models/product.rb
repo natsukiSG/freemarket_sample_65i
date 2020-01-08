@@ -11,7 +11,7 @@ class Product < ApplicationRecord
   has_many :liking_users, through: :likes, source: :user
   accepts_nested_attributes_for :images
 
-  extend ActiveHash::Associations::ActiveRecordExtensions
+  # extend ActiveHash::Associations::ActiveRecordExtensions
   # belongs_to_active_hash :transaction
 
   validates :name,                  presence: true, length: { maximum: 40 }
