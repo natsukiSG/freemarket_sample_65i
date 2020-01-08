@@ -17,24 +17,25 @@
           %p.info-pop
             = link_to "", class: "info-pop__text" do
               本人確認書類のアップロードについて
-            = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right fa-blue"
+              = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right info-pop__text--icon"
         = form_for @streetaddress, url: credit_path, method: :get do |f|
           .form-info
-            %div
-              %label.form-info__data お名前
-              = current_user.last_name 
-              = current_user.first_name
+            %label.form-info__data お名前
+            = current_user.last_name 
+            = current_user.first_name
           .form-info
-            %div
-              %label.form-info__data お名前カナ
-              = current_user.last_name_kana
-              = current_user.first_name_kana
+            %label.form-info__data お名前カナ
+            = current_user.last_name_kana
+            = current_user.first_name_kana
           .form-info
-            %div
-              %label.form-info__data 生年月日
-              = current_user.birth_year.to_s + "/"
-              = current_user.birth_month.to_s + "/"
-              = current_user.birth_day.to_s
+            %label.form-info__data 生年月日
+            .form-info__birthday
+              .form-info__birthday--year
+                = current_user.birth_year.to_s + "/"
+              .form-info__birthday--month
+                = current_user.birth_month.to_s + "/"
+              .form-info__birthday--day
+                = current_user.birth_day.to_s
           .form-info
             %label.form-info__label 郵便番号
             %span.form__any 任意
@@ -43,7 +44,7 @@
             %label.form-info__label 都道府県
             %span.form__any 任意
             .select-box2
-              = fa_icon 'sort-down',class: 'fa-sort-down2'
+              = fa_icon 'chevron-down',class: 'fa-chevron-down'
               = f.select :prefectures, StreetAddress.prefectures.keys, {prompt: "--"}, {class: 'select-box'}
           .form-info
             %label.form-info__label 市区町村
@@ -62,7 +63,7 @@
           %p.info-pop
             = link_to "", class: "info-pop__text" do
               本人情報の登録について
-              = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right fa-blue"
+              = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right info-pop__text--icon"
 
 = render 'layouts/sell-btn'
 
