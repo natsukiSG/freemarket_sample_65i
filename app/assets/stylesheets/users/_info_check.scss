@@ -30,7 +30,28 @@
   &__label {
     font-weight: bold;
   }
+  &__birthday {
+    display: flex;
+  }
 }
+
+.info-pop {
+  text-align: right;
+  padding: 10px;
+  &__text {
+    color: blue;
+    &--icon:before {
+      color: blue;
+    }
+    &--icon:hover::before  {
+      color: #0099e8;
+    }
+  }
+  &__text:hover {
+    color: #0099e8;
+  }
+}
+
 .link_button {
   display: inline-block;
   width: 588px;
@@ -44,6 +65,7 @@
   text-decoration: none;
   margin-left: 40px;
 }
+
 .select-box {
   width: 588px;
   height: 48px;
@@ -52,20 +74,9 @@
   margin-top: 5px;
 }
 
-.info-pop {
-  text-align: right;
-  padding: 10px;
-  &__text {
-    color: blue;
-  }
-  &__text:hover {
-    color: #0099e8;
-  }
-}
-
-.fa-blue:before {
-  color: blue;
-}
-.fa-blue:hover:before {
-  color: #0099e8;
-}
+// .fa-blue:before {
+//   color: blue;
+// }
+// .fa-blue:hover:before {
+//   color: #0099e8;
+// }
