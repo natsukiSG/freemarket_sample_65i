@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
   belongs_to :buyer, class_name: 'User', foreign_key: 'buyer_id',optional: true
   belongs_to :seller, class_name: 'User', foreign_key: 'seller_id',optional: true
+  # has_many :comments, dependent: :destroy
   has_many :comments, dependent: :destroy
   belongs_to :category,optional: true
 
@@ -11,7 +12,7 @@ class Product < ApplicationRecord
   has_many :liking_users, through: :likes, source: :user
   accepts_nested_attributes_for :images
 
-  # extend ActiveHash::Associations::ActiveRecordExtensions
+  extend ActiveHash::Associations::ActiveRecordExtensions
   # belongs_to_active_hash :transaction
 
   validates :name,                  presence: true, length: { maximum: 40 }

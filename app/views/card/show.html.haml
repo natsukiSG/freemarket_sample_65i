@@ -1,0 +1,31 @@
+=render 'layouts/header'
+.credit
+  .credit__container
+    .credit-content
+      %h2.credit-content-title 
+        支払い方法
+      .credit-content-main
+        .creditcard-box
+          .creditcard
+            .creditcard__title
+              クレジットカード一覧
+          - if @creditcard.blank?
+            .creditcard
+              .creditcard-details
+                %ul
+                  %li.creditcard-detail
+                    = image_tag "cardbrands/#{@customer_card.brand}.svg"
+                  %li.creditcard-detail
+                    = "**** **** **** " + @customer_card.last4
+                  %li.creditcard-detail
+                    - exp_month = @customer_card.exp_month.to_s
+                    - exp_year = @customer_card.exp_year.to_s.slice(2,3)
+                    = exp_month + " / " + exp_year
+                = link_to delete_card_index_path, method: :delete, class: 'creditcard-remove' do
+                  削除する
+          - else
+            .creditcard-add-box
+              = link_to new_creditcard_path, method: :get, class: 'creditcard-add-link' do
+                .creditcard-add
+                  = fa_icon 'credit-card',class: 'credit-card-icon'
+                  クレジットカードを追加する

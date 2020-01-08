@@ -19,6 +19,15 @@ class ApplicationController < ActionController::Base
     end
   end
 
+
+  def set_product
+    @product = Product.find(params[:id])
+  end
+
+  def set_card
+    @card = Creditcard.find_by(user_id: current_user.id)
+  end
+
   def set_parents
     @parents = Category.where(ancestry: nil).order("id ASC")
   end
@@ -29,5 +38,4 @@ class ApplicationController < ActionController::Base
     popular_brands = brand_ids.select { |id| id != nil }
     @brands = popular_brands.map { |id| Brand.find(id) }
   end
-  
 end

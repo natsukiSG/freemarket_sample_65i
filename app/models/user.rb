@@ -66,6 +66,13 @@ class User < ApplicationRecord
     return user
   end
 
+
+         validates :first_name, :last_name, :first_name_kana, :last_name_kana,
+         :birth_year, :birth_month, :birth_day, presence: true
+  
+        #  validates :password, length: {minimum: 7}
+  has_one :card, dependent: :destroy
+
   has_one :streetaddress, dependent: :destroy
   has_one :creditcard, dependent: :destroy
   has_many :seller_products, class_name: 'Product', foreign_key: 'seller_id'
@@ -90,4 +97,5 @@ class User < ApplicationRecord
   :birth_year,:birth_month,:birth_day,:comment, presence: true
 
   validates :password, length: {minimum: 7}
+
 end
