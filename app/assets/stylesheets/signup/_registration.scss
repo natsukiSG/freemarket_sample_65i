@@ -72,6 +72,8 @@
 .select_box {
   width: 377px;
   height: 48px;
+  background-color:white;
+  border:1px solid #ccc;
 }
 
 #streetaddress_prefecture {
@@ -91,8 +93,17 @@
 }
 .fa-sort-down {
   position: absolute;
-  top: 8px;
+  top: 15px;
   right: 1px;
+  z-index: 2;
+  font-size: 24px;
+  color: #888;
+}
+
+.fa-chervron-down {
+  position: absolute;
+  top: 15px;
+  right: 10px;
   z-index: 2;
   font-size: 24px;
   color: #888;
