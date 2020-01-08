@@ -3,9 +3,7 @@ require 'carrierwave/storage/file'
 require 'carrierwave/storage/fog'
 
 CarrierWave.configure do |config|
-  if Rails.env.development? || Rails.env.test? #開発とテストは今まで通りに
-    config.storage = :file
-  elsif Rails.env.production? #本番はS3に保存する
+ #本番はS3に保存する
     config.storage = :fog
 
     config.fog_provider = 'fog/aws'
@@ -17,5 +15,4 @@ CarrierWave.configure do |config|
     }
     config.fog_directory  = 'mercari-bucket'
     config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/mercari-bucket'
-  end
 end
