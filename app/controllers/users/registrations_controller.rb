@@ -93,7 +93,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     session[:house_number] = address_params[:house_number]
     session[:building_name] = address_params[:building_name]
     session[:address_phone_number] = address_params[:address_phone_number]
-    @street_address = StreetAddress.new(
+    @streetaddress = StreetAddress.new(
       address_last_name: session[:address_last_name],
       address_first_name: session[:address_first_name],
       address_last_name_kana: session[:address_last_name_kana],
@@ -105,7 +105,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       building_name: session[:building_name],
       address_phone_number: session[:address_phone_number]
     )
-    render 'address' unless @street_address.valid?(:validates_step3)
+    render 'address' unless @streetaddress.valid?(:validates_step3)
   end
 
   def credit

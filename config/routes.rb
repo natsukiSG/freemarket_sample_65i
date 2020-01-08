@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :users , only: [:index] do
     collection do
       get 'logout'
+      get 'info_check'
     end
   end
 
@@ -25,7 +26,8 @@ Rails.application.routes.draw do
   end
   
   resources :users, only: [:show, :edit]
-  resources :toppage, only: [:index]
+
+
 
   
   resources :card, only: [:new, :show] do
@@ -33,6 +35,27 @@ Rails.application.routes.draw do
       post 'show', to: 'card#show'
       post 'pay', to: 'card#pay'
       delete 'delete', to: 'card#delete'
+
+
+  resources :toppages do
+    member do
+      get 'buy_confirmation'
+      post 'onetimebuy'
+    end
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+      get 'get_size', defaults: { format: 'json' }
+      get 'get_brand', defaults: { format: 'json' }
+      get 'get_searchsize', defaults: { format: 'json' }
+      get 'search'
+      match 'search' => 'products#search', via: [:get, :post]
+    end
+    resources :creditcards, except: [:index, :new, :create, :edit, :show, :update, :destroy] do
+      collection do
+        post 'buy', to: 'creditcards#buy'
+      end
+
     end
   end
 
