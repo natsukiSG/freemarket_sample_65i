@@ -18,4 +18,13 @@ class ApplicationController < ActionController::Base
       username == ENV["BASIC_AUTH_USER"] && password == ENV["BASIC_AUTH_PASSWORD"]
     end
   end
+
+
+  def set_product
+    @product = Product.find(params[:id])
+  end
+
+  def set_card
+    @card = Creditcard.find_by(user_id: current_user.id)
+  end
 end
