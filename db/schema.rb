@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_07_045828) do
+ActiveRecord::Schema.define(version: 2020_01_08_024709) do
 
   create_table "brand_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -51,9 +51,8 @@ ActiveRecord::Schema.define(version: 2020_01_07_045828) do
     t.string "name", null: false
     t.text "comment", null: false
     t.integer "price", null: false
-    t.string "size"
-    t.string "status", null: false
-    t.string "costcharge", null: false
+    t.integer "status", null: false
+    t.integer "costcharge", null: false
     t.string "delivery_way", null: false
     t.string "delivery_area", null: false
     t.string "delivery_date", null: false
@@ -63,17 +62,54 @@ ActiveRecord::Schema.define(version: 2020_01_07_045828) do
     t.datetime "updated_at", null: false
     t.bigint "size_id"
     t.bigint "brand_id"
+    t.bigint "category_id"
     t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["buyer_id"], name: "index_products_on_buyer_id"
+    t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["name"], name: "index_products_on_name", unique: true
     t.index ["seller_id"], name: "index_products_on_seller_id"
     t.index ["size_id"], name: "index_products_on_size_id"
+  end
+
+  create_table "set_brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "brand_id", null: false
+    t.bigint "brand_category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["brand_category_id"], name: "index_set_brands_on_brand_category_id"
+    t.index ["brand_id"], name: "index_set_brands_on_brand_id"
+  end
+
+  create_table "size_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "size_id"
+    t.bigint "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_size_categories_on_category_id"
+    t.index ["size_id"], name: "index_size_categories_on_size_id"
   end
 
   create_table "sizes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "streetaddresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "last_name", null: false
+    t.string "first_name", null: false
+    t.string "last_name_kana", null: false
+    t.string "first_name_kana", null: false
+    t.string "post_number", null: false
+    t.integer "prefecture", null: false
+    t.string "city", null: false
+    t.string "address", null: false
+    t.string "building_name"
+    t.string "phone_number"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_streetaddresses_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -100,7 +136,12 @@ ActiveRecord::Schema.define(version: 2020_01_07_045828) do
 
   add_foreign_key "images", "products"
   add_foreign_key "products", "brands"
+  add_foreign_key "products", "categories"
   add_foreign_key "products", "sizes"
   add_foreign_key "products", "users", column: "buyer_id"
   add_foreign_key "products", "users", column: "seller_id"
+  add_foreign_key "set_brands", "brand_categories"
+  add_foreign_key "set_brands", "brands"
+  add_foreign_key "size_categories", "sizes"
+  add_foreign_key "streetaddresses", "users"
 end

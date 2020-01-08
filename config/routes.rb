@@ -30,7 +30,9 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :brands , only: [:index, :show]
 
+  resources :brand_categories , only: [:show]
 
 
   devise_for :users

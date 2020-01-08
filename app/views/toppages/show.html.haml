@@ -10,13 +10,13 @@
       .product-show-image
         - if (@product.buyer_id.blank?)
           .product-show-image__main
-            = image_tag "#{@images[0]&.url}",class: "details__photo__main__image",id: "mainphoto", size: "300x300"
+            = image_tag "#{@images[0].url}",class: "details__photo__main__image",id: "mainphoto", size: "300x300"
           .product-show-image__under
             - @images.each do |image|
               = image_tag "#{image.url}",class: "details__photo__under__image", size: "60x60"
         - else
           .product-show-image__main
-            = image_tag "#{@images[0]&.url}",class: "details__photo__main__image",id: "mainphoto", size: "300x300"
+            = image_tag "#{@images[0].url}",class: "details__photo__main__image",id: "mainphoto", size: "300x300"
             .product-show_sold-out_badge
             .product-show_sold-out_badge-text
               SOLD
@@ -47,14 +47,14 @@
             カテゴリー
           .product-show-td
             .product-show-linkbox
-              -# = link_to category_path(@parent), class: "product-show-categorylink" do
+              = link_to category_path(@parent), class: "product-show-categorylink" do
                 = @parent.name
             .product-show-linkbox
-              -# = link_to category_path(@child), class: "product-show-categorylink" do
+              = link_to category_path(@child), class: "product-show-categorylink" do
                 >
                 = @child.name
             .product-show-linkbox
-              -# = link_to category_path(@category), class: "product-show-categorylink" do
+              = link_to category_path(@category), class: "product-show-categorylink" do
                 >
                 = @category.name
         - if @brand.present?
@@ -74,7 +74,7 @@
           .product-show-block1
             商品の状態
           .product-show-block2
-            =@product.status
+            = @product.status
         .product-show-tr
           .product-show-block1
             配送料の負担
@@ -98,7 +98,7 @@
             = @product.delivery_date
     .product-show-pricebox
       .product-show-price
-        = "#{@product.price}" + "円"
+        = "¥" + "#{@product.price.to_s(:delimited, delimiter: ',')}" + "円"
       .product-show-tax
         (税込)
       .product-show-shipping-fee
@@ -203,7 +203,7 @@
             - if (i <= 6)
               .product-show-item-box
                 - if (product.buyer_id.blank?)
-                  = link_to product_path(product), class: "show_product_link" do
+                  = link_to category_path(product), class: "show_product_link" do
                     .product-show-item-box-photo
                       = image_tag "#{product.images.last.url}", size: "220x220"
                     .product-show-item-box-body
@@ -212,7 +212,7 @@
                       .product-show-item-box-body-price
                         = '¥' + "#{product.price}"
                 - else
-                  = link_to product_path(product), class: "show_product_link" do
+                  = link_to category_path(product), class: "show_product_link" do
                     .product-show-item-box-photo
                       .product_sold-out_badge
                       .product_sold-out_badge-text

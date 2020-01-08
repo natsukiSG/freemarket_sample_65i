@@ -11,8 +11,8 @@ class ToppagesController < ApplicationController
     @seller = @product.seller
     @images = @product.images.order("id DESC")
     @category = @product.category
-    @child = @category&.parent
-    @parent = @category&.root
+    @child = @category.parent
+    @parent = @category.root
     @brand = @product.brand
   end
 
