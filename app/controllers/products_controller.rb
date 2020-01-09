@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   before_action :set_child_category, only: [ :edit, :update]
   before_action :set_grandchild_category, only: [ :edit, :update]
   before_action :set_sizes, only: [ :edit, :update]
-  before_action :set_product, :set_card
+  # before_action :set_product, :set_card
   require "payjp"
 
   def index
@@ -110,7 +110,6 @@ class ProductsController < ApplicationController
       @category_parent_array << @parent
     end
   end
-end
 
   def buy_confirmation
     @streetaddress = StreetAddress.find_by(user_id: current_user.id)
