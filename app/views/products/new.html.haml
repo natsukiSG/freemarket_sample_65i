@@ -27,7 +27,6 @@
           .dropzone-container2
             #preview2
             .dropzone-area2
-
               = image.label :url, class: "dropzone-box2", for: "upload-image" do
                 %p ドラッグ&ドロップまたはクリックしてファイルをアップロード
 
@@ -116,7 +115,7 @@
               ー
           .main-price-right-profit
             #price
-            = f.number_field :price, style: "display: none", id: "price"
+            -# = f.number_field style: "display: none", id: "price"
             販売利益
             .right_bar_2
               ー
@@ -136,7 +135,7 @@
           %span{style: "color: #0099e8;"}>加盟店規約
           に同意したことになります。
         .products-new_mainbtn-text-red
-          = f.submit "", class: 'exhibit-btn', value: '出品する'
+          = f.submit "", class: 'exhibit-btn',disable_with: "出品中", value: '出品する'
         .products-new_mainbtn-text-gray
           = f.submit "", class: 'return-btn', value: 'もどる'
 
