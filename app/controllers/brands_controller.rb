@@ -1,5 +1,4 @@
 class BrandsController < ApplicationController
-
   def index
     @brand_categories = BrandCategory.all
   end
@@ -8,4 +7,5 @@ class BrandsController < ApplicationController
     @brand = Brand.find(params[:id])
     @products = @brand.products
   end
+
 end

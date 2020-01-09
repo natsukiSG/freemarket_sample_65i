@@ -26,6 +26,11 @@
     .main__contents
       .main__contents--title 電話番号の確認
       .form
+        .signup__error--message
+          - if @user.errors.any?
+            %ul
+              - @user.errors.full_messages.each do |message|
+                %li= message
       = form_for @user, url: address_path, method: :get do |f|
         .form
           %label.form__label 携帯電話の番号

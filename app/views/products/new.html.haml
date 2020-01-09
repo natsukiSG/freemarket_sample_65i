@@ -4,6 +4,7 @@
     .products-new_head
       %h1.products-new_head_mercari
         =link_to root_path, class: "products-new_head-link" do
+
           = image_tag "fmarket_logo_red", size: "185x49"
     .products-new_main
       %h2.sell-form__header
@@ -26,6 +27,7 @@
           .dropzone-container2
             #preview2
             .dropzone-area2
+
               = image.label :url, class: "dropzone-box2", for: "upload-image" do
                 %p ドラッグ&ドロップまたはクリックしてファイルをアップロード
 
@@ -107,13 +109,14 @@
               ¥
               .main-price-right-head-input-tab
                 = f.number_field :price, placeholder: "例) 300",class: 'input-price',id:'price_calc'
+
           .main-price-right-fee
             販売手数料(10%)
             .right_bar
               ー
           .main-price-right-profit
             #price
-            -# = f.number_field :price, style: "display: none", id: "price"
+            = f.number_field :price, style: "display: none", id: "price"
             販売利益
             .right_bar_2
               ー
@@ -136,4 +139,5 @@
           = f.submit "", class: 'exhibit-btn', value: '出品する'
         .products-new_mainbtn-text-gray
           = f.submit "", class: 'return-btn', value: 'もどる'
+
       = render 'signup/signup_footer'

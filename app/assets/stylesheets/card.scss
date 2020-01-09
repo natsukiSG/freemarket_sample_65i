@@ -1,0 +1,75 @@
+.credit{
+  padding-top: 40px;
+  background-color: #f5f5f5;
+  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+  &__container{
+    width: 700px;
+    margin: 0 auto 0; 
+    padding-bottom: 40px;
+  }
+}
+.credit-content{
+  display: inline-block;
+  width: 700px;
+  background: #fff;
+}
+.credit-content-title {
+  font-size: 24px;
+  font-weight: bold;
+  padding: 8px 24px;
+  text-align: center;
+  border-bottom: 1px solid #f5f5f5;
+}
+.credit-content-main {
+  padding: 64px;
+}
+.creditcard-box {
+  border-bottom: 1px solid #f5f5f5;
+}
+.creditcard {
+  max-width: 320px;
+  margin: 0 auto;
+  &__title {
+    font-weight: bold;
+  }
+}
+.creditcard-details {
+  margin: 24px 0;
+  position: relative;
+}
+.creditcard-detail {
+  margin: 8px 0 0;
+  font-size: 16px;
+}
+.creditcard-remove {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1px 6px;
+  background: #fff;
+  border-radius: 3px;
+  border: 1px solid #ea352d;
+  color: #ea352d;
+  font-size: 14px;
+}
+.creditcard-add-box {
+  margin: 24px auto;
+  max-width: 320px;
+}
+.creditcard-add-link{
+  text-decoration: none;
+}
+.creditcard-add {
+  background-color: #ea352d;
+  border: 1px solid #ea352d;
+  color: #fff;
+  line-height: 48px;
+  font-size: 14px;
+  width: 320px;
+  text-align: center;
+}
+.credit-card-icon {
+  margin-right: 16px;
+  font-weight: bold;
+  font-size: 16px;
+}

@@ -88,7 +88,6 @@ gem 'dotenv-rails'
 gem "font-awesome-rails"
 
 gem 'haml-rails'
-gem "font-awesome-rails"
 gem 'gretel'
 
 gem 'kaminari'
@@ -99,5 +98,4 @@ gem 'gon'
 gem 'ancestry'
 gem 'payjp'
 gem 'recaptcha', require: "recaptcha/rails"
-
 gem 'active_hash'

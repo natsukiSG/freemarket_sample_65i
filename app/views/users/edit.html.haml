@@ -111,7 +111,6 @@
                 .products-new-redbtn
                   必須
               .delivary-right-burden-box
-                -# = f.select :costcharge, ['送料込み(出品者負担)', '着払い(購入者負担)'], {include_blank: '---'}, {class: 'select-default', id: 'delivary-right-burden-box'}
                 = f.select :costcharge, Product.costcharges.keys,{include_blank: '---'}, {class: 'select-default', id: 'delivary-right-burden-box'}
           .products-new_main-delivary-right-area
             .delivary-right-area-head
@@ -152,24 +151,5 @@
             販売利益
             .right_bar_2
               = "¥" + "#{@profit}"
-
-      .products-new_mainbtn
-        .products-new_mainbtn-text
-          %span{style: "color: #0099e8;"}>禁止されている出品
-          、
-          %span{style: "color: #0099e8;"}>行為
-          を必ずご確認ください。
-          %br
-          またブランド品でシリアルナンバー等がある場合はご記載ください。
-          %span{style: "color: #0099e8;"}>偽ブランドの販売
-          は犯罪であり処罰される可能性があります。
-          %br
-          また、出品をもちまして
-          %span{style: "color: #0099e8;"}>加盟店規約
-          に同意したことになります。
-        .products-new_mainbtn-text-red
-          = f.submit "", class: 'exhibit-btn', value: '変更する'
-        .products-new_mainbtn-text-gray
-          = f.submit "", class: 'return-btn', value: 'キャンセル'
 
   = render 'signups/signup_footer'

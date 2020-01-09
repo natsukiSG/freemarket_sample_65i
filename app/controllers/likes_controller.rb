@@ -19,5 +19,4 @@ class LikesController < ApplicationController
     #非同期用
     @id_name = "#like-link-#{@product.id}"
   end
-
 end
