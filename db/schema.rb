@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_08_092149) do
+ActiveRecord::Schema.define(version: 2020_01_10_346075) do
 
   create_table "brand_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -42,8 +42,8 @@ ActiveRecord::Schema.define(version: 2020_01_08_092149) do
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "url", null: false
-    t.bigint "product_id", null: false
+    t.text "url"
+    t.bigint "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_images_on_product_id"
@@ -56,10 +56,9 @@ ActiveRecord::Schema.define(version: 2020_01_08_092149) do
     t.datetime "updated_at", null: false
   end
 
-
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
-    t.text "comment", null: false
+    t.string "comment", null: false
     t.integer "price", null: false
     t.integer "status", null: false
     t.integer "costcharge", null: false
@@ -67,14 +66,13 @@ ActiveRecord::Schema.define(version: 2020_01_08_092149) do
     t.string "delivery_area", null: false
     t.string "delivery_date", null: false
     t.bigint "buyer_id"
-
-    t.integer "transaction_id"
+    t.bigint "category_id"
     t.bigint "seller_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "transaction_id"
     t.bigint "size_id"
     t.bigint "brand_id"
-    t.bigint "category_id"
     t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["buyer_id"], name: "index_products_on_buyer_id"
     t.index ["category_id"], name: "index_products_on_category_id"
@@ -133,23 +131,6 @@ ActiveRecord::Schema.define(version: 2020_01_08_092149) do
     t.index ["user_id"], name: "index_street_addresses_on_user_id"
   end
 
-  create_table "streetaddresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "last_name", null: false
-    t.string "first_name", null: false
-    t.string "last_name_kana", null: false
-    t.string "first_name_kana", null: false
-    t.string "post_number", null: false
-    t.integer "prefecture", null: false
-    t.string "city", null: false
-    t.string "address", null: false
-    t.string "building_name"
-    t.string "phone_number"
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_streetaddresses_on_user_id"
-  end
-
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -173,7 +154,6 @@ ActiveRecord::Schema.define(version: 2020_01_08_092149) do
 
   add_foreign_key "creditcards", "users"
   add_foreign_key "images", "products"
-  add_foreign_key "products", "categories"
   add_foreign_key "products", "brands"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "sizes"
@@ -184,5 +164,4 @@ ActiveRecord::Schema.define(version: 2020_01_08_092149) do
   add_foreign_key "size_categories", "sizes"
   add_foreign_key "sns_credentials", "users"
   add_foreign_key "street_addresses", "users"
-  add_foreign_key "streetaddresses", "users"
 end
