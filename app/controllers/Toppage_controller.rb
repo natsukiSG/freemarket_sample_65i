@@ -1,8 +1,17 @@
 class ToppageController < ApplicationController
   def index
-    @brands = []
     @categories = Category.roots
+    @products = @categories.map{|root| Product.where(category_id: root.subtree)}
+    @sorted_products = @products.sort {|a,b| b.length <=> a.length }
     @popular = []
+    @sorted_products.each.with_index(1) do |products, i|
+      if (i <= 4)
+        @popular << products
+      else
+        break
+      end
+    end
+
   end
 
   def new
