@@ -27,8 +27,8 @@
 /config/master.key
 /.env
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 # public/uploads/以下をgithubに上げない措置
 public/uploads/
-=======
 >>>>>>> 7586365f4f02150999521873a4403224495ac194
