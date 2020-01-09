@@ -4,6 +4,7 @@ class ProductsController < ApplicationController
   before_action :set_grandchild_category, only: [ :edit, :update]
   before_action :set_sizes, only: [ :edit, :update]
   before_action :set_product, :set_card, only: [:buy_confirmation, :pay]
+
   require "payjp"
 
   def index
@@ -22,7 +23,7 @@ class ProductsController < ApplicationController
   
   def new
     @product = Product.new
-    
+    @product.images.build
     gon.count = 0
   end
 
@@ -140,6 +141,4 @@ class ProductsController < ApplicationController
   def set_product
     @product = Product.find(params[:id])
   end
-
-
 end

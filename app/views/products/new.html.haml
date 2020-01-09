@@ -135,7 +135,7 @@
           %span{style: "color: #0099e8;"}>加盟店規約
           に同意したことになります。
         .products-new_mainbtn-text-red
-          = f.submit "", class: 'exhibit-btn', value: '出品する'
+          = f.submit "", class: 'exhibit-btn',disable_with: "出品中", value: '出品する'
         .products-new_mainbtn-text-gray
           = f.submit "", class: 'return-btn', value: 'もどる'
 
