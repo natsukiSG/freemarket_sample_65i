@@ -27,7 +27,6 @@
           .dropzone-container2
             #preview2
             .dropzone-area2
-
               = image.label :url, class: "dropzone-box2", for: "upload-image" do
                 %p ドラッグ&ドロップまたはクリックしてファイルをアップロード
 
@@ -116,7 +115,7 @@
               ー
           .main-price-right-profit
             #price
-            = f.number_field :price, style: "display: none", id: "price"
+            -# = f.number_field style: "display: none", id: "price"
             販売利益
             .right_bar_2
               ー

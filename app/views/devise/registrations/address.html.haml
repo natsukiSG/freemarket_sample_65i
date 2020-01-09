@@ -31,7 +31,7 @@
             %ul
               - @streetaddress.errors.full_messages.each do |message|
                 %li= message
-      = form_for @streetaddress, url: credit_path, method: :get do |f|
+      = form_for @streetaddress, url: user_registration_path, method: :post do |f|
         .form
           %div
             %label.form__label お名前

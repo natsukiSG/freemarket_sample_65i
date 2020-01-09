@@ -3,7 +3,8 @@ class ProductsController < ApplicationController
   before_action :set_child_category, only: [ :edit, :update]
   before_action :set_grandchild_category, only: [ :edit, :update]
   before_action :set_sizes, only: [ :edit, :update]
-  before_action :set_product, :set_card, only: [:buy_confirmation]
+  before_action :set_product, :set_card, only: [:buy_confirmation, :pay]
+
   require "payjp"
 
   def index
@@ -32,7 +33,7 @@ class ProductsController < ApplicationController
       if @product.save
         params[:images]['url'].each do |image|
           @product.images.create(url: image, product_id: @product.id)
-          end
+        end
         redirect_to root_path
       else
         redirect_to new_product_path
@@ -76,9 +77,31 @@ class ProductsController < ApplicationController
     end
   end
 
+  def buy_confirmation
+    @streetaddress = StreetAddress.find_by(user_id: current_user.id)
+      if @card.present?
+        Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+        customer = Payjp::Customer.retrieve(@card.customer_id)
+        @customer_card = customer.cards.retrieve(@card.card_id)
+    else
+      redirect_to root_path
+    end
+  end
+  
+
+  def pay 
+    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+    Payjp::Charge.create(
+    :amount => @product.price, #支払金額
+    :customer => @card.customer_id, #顧客ID
+    :currency => 'jpy',
+  )
+  redirect_to action: 'done'
+  end
+
   private
   def  product_params
-    params.require(:product).permit(:name, :comment, :price, :costcharge, :status, :delivery_way, :delivery_area, :delivery_date, :category_id).merge(seller_id: current_user.id)
+    params.require(:product).permit(:name, :comment, :price, :costcharge, :status, :delivery_way, :delivery_area, :delivery_date, :category_id, :images).merge(seller_id: current_user.id)
   end
   
   def search_params
@@ -111,24 +134,11 @@ class ProductsController < ApplicationController
     end
   end
 
-  def buy_confirmation
-    @streetaddress = StreetAddress.find_by(user_id: current_user.id)
-      if @card.present?
-        Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-        customer = Payjp::Customer.retrieve(@card.customer_id)
-        @customer_card = customer.cards.retrieve(@card.card_id)
-    else
-      redirect_to root_path
-    end
+  def set_card
+    @card = Creditcard.find_by(user_id: current_user.id)
   end
 
-  def pay 
-    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
-    Payjp::Charge.create(
-    :amount => @product.price, #支払金額
-    :customer => @card.customer_id, #顧客ID
-    :currency => 'jpy',
-  )
-  redirect_to action: 'done'
+  def set_product
+    @product = Product.find(params[:id])
   end
 end
