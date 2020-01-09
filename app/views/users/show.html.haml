@@ -15,7 +15,7 @@
             = link_to "", class: "user_link user_link--name" do
               = image_tag "member_photo_noimage_thumb.png", class: "user_link__icon", size: "60x60"
               .user_link__name.bold
-                @user.nickname
+                = @user.nickname
           .mypage-content__user--rating
             = link_to "", class: "user_link" do
               .user_link__detail
