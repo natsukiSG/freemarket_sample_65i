@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   before_action :set_child_category, only: [ :edit, :update]
   before_action :set_grandchild_category, only: [ :edit, :update]
   before_action :set_sizes, only: [ :edit, :update]
-  before_action :set_product, :set_card
+  before_action :set_product, :set_card, only: [:buy_confirmation]
   require "payjp"
 
   def index
@@ -22,7 +22,7 @@ class ProductsController < ApplicationController
   
   def new
     @product = Product.new
-    
+    @product.images.build
     gon.count = 0
   end
 
@@ -110,7 +110,6 @@ class ProductsController < ApplicationController
       @category_parent_array << @parent
     end
   end
-end
 
   def buy_confirmation
     @streetaddress = StreetAddress.find_by(user_id: current_user.id)
@@ -122,7 +121,6 @@ end
       redirect_to root_path
     end
   end
-  
 
   def pay 
     Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
@@ -133,6 +131,4 @@ end
   )
   redirect_to action: 'done'
   end
-  
 end
-
