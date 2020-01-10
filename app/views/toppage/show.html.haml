@@ -109,7 +109,7 @@
           = link_to edit_product_path(@product.id),class: "product-show-buylink" do
             .product-show-buybtn
               編集
-          = link_to "/products/#{@product.id}", method: :delete,class: "product-show-buylink" do
+          = link_to "/toppage/#{@product.id}", method: :delete, data: { confirm: "「#{@product.name}」を削除します。よろしいですか？" }, class: "product-show-buylink" do
             .product-show-buybtn
               削除
         - else
