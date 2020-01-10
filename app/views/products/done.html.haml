@@ -1,6 +1,161 @@
-%h2 購入が完了しました！
-%p Apple MacBook Pro 13インチ
-%p ¥44,623,345(送料込み)
+.product-show-wrapper
+  .header
+    = render 'layouts/header'
 
-= link_to root_path,class:'link-button' do
-  トップページに戻る
+  .product-show-detail
+    %h1.product-show-name
+      購入済み
+
+    .product-show-maincontent
+      .product-show-image
+        - if (@product.buyer_id.blank?)
+          .product-show-image__main
+            = image_tag "#{@images[0].url}",class: "details__photo__main__image",id: "mainphoto", size: "300x300"
+          .product-show-image__under
+            - @images.each do |image|
+              = image_tag "#{image.url}",class: "details__photo__under__image", size: "60x60"
+        - else
+          .product-show-image__main
+            = image_tag "#{@images[0].url}",class: "details__photo__main__image",id: "mainphoto", size: "300x300"
+            .product-show_sold-out_badge
+            .product-show_sold-out_badge-text
+              SOLD
+          .product-show-image__under
+            - @images.each do |image|
+              = image_tag "#{image.url}",class: "details__photo__under__image", size: "60x60"
+          
+
+      .product-show-detailtable
+        .product-show-tr
+          .product-show-th
+            出品者
+          .product-show-td
+            = link_to "", class: "product-show-td-link" do
+              = @seller&.nickname
+            .product-show-ratings
+              .product-show-iconbox
+                = fa_icon 'heart',class: 'product-show-icon1'
+                264
+              .product-show-iconbox
+                = fa_icon 'bell',class: 'product-show-icon2'
+                5
+              .product-show-iconbox
+                = fa_icon 'check',class: 'product-show-icon3'
+                1
+        .product-show-tr
+          .product-show-th
+            カテゴリー
+          .product-show-td
+            .product-show-linkbox
+              = link_to category_path(@parent), class: "product-show-categorylink" do
+                = @parent.name
+            .product-show-linkbox
+              = link_to category_path(@child), class: "product-show-categorylink" do
+                >
+                = @child.name
+            .product-show-linkbox
+              = link_to category_path(@category), class: "product-show-categorylink" do
+                >
+                = @category.name
+        - if @brand.present?
+          .product-show-tr
+            .product-show-block1
+              ブランド
+            .product-show-block2
+              = link_to brand_path(@brand), class: "product-show-productlink" do
+                = @brand.name
+        - if @product.size.present?
+          .product-show-tr
+            .product-show-block1
+              商品サイズ
+            .product-show-block2
+              = @product.size.name
+        .product-show-tr
+          .product-show-block1
+            商品の状態
+          .product-show-block2
+            = @product.status
+        .product-show-tr
+          .product-show-block1
+            配送料の負担
+          .product-show-block2
+            = @product.costcharge
+        .product-show-tr
+          .product-show-block1
+            配送の方法
+          .product-show-block2
+            = @product.delivery_way
+        .product-show-tr
+          .product-show-block1
+            配送元地域
+          .product-show-block2
+            = link_to "", class: "product-show-citylink" do
+              = @product.delivery_area
+        .product-show-tr
+          .product-show-block1
+            配送日の目安
+          .product-show-block2
+            = @product.delivery_date
+    .product-show-pricebox
+      .product-show-price
+        = "¥" + "#{@product.price.to_s(:delimited, delimiter: ',')}" + "円"
+      .product-show-tax
+        (税込)
+      .product-show-shipping-fee
+        送料込み
+    - if (@product.buyer_id.blank?)
+      - if user_signed_in?
+        - if @product.seller_id == current_user.id
+          = link_to edit_product_path(@product.id),class: "product-show-buylink" do
+            .product-show-buybtn
+              編集
+          = link_to "/products/#{@product.id}", method: :delete,class: "product-show-buylink" do
+            .product-show-buybtn
+              削除
+        - else
+          = link_to root_path ,class: "product-show-buylink" do
+            .product-show-buybtn
+              ホームに戻る
+      - else
+        = link_to root_path ,class: "product-show-buylink" do
+          .product-show-buybtn
+            ホームに戻る
+    - else
+      .product-show-sold-out-link
+        売り切れました
+
+    .product-show-description
+      %p.product-show-inner
+        = @product.comment
+       
+
+    .product-show-itembutton
+      .product-show-itembutton-left
+        = render partial: "likes/like", locals: { product: @product } 
+        = link_to "" ,class: "product-show-reportlink" do
+          = fa_icon 'flag',class: 'product-show-reporticon'
+          .product-show-reporttext
+            不適切な商品の報告
+
+      .product-show-link-right
+        = link_to "" ,class: "product-show-linktext" do
+          = fa_icon 'key',class: 'product-show-keyicon'
+          .product-show-text
+            あんしん・あんぜんへの取り組み
+            
+  .product-show-media-box
+    = link_to "", class: "product-show-facebook" do
+      = fa_icon 'facebook-square',class: 'product-show-facebook-icon'
+
+    = link_to "", class: "product-show-twitter" do
+      = fa_icon 'twitter',class: 'product-show-twitter-icon'
+
+    = link_to "", class: "product-show-pinterest" do
+      = fa_icon 'pinterest-square',class: 'product-show-pinterest-icon'
+  
+
+  .app-banner
+    = render 'layouts/banner'
+
+  .footer
+    = render 'layouts/footer'

@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   before_action :set_child_category, only: [ :edit, :update]
   before_action :set_grandchild_category, only: [ :edit, :update]
   before_action :set_sizes, only: [ :edit, :update]
-  before_action :set_product, :set_card, only: [:buy_confirmation, :pay]
+  before_action :set_product, :set_card, only: [:buy_confirmation, :pay, :done]
   
 
   require "payjp"
@@ -106,6 +106,17 @@ class ProductsController < ApplicationController
   )
   redirect_to action: 'done'
   end
+
+  def done
+    @product = Product.find(params[:id])
+    @seller = @product.seller
+    @images = @product.images.order("id DESC")
+    @category = @product.category
+    @child = @category.parent
+    @parent = @category.root
+    @brand = @product.brand
+  end
+
 
   private
   def  product_params
