@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   before_action :set_grandchild_category, only: [ :edit, :update]
   before_action :set_sizes, only: [ :edit, :update]
   before_action :set_product, :set_card, only: [:buy_confirmation, :pay]
-
+  
   require "payjp"
 
   def index
@@ -95,8 +95,25 @@ class ProductsController < ApplicationController
     :amount => @product.price, #支払金額
     :customer => @card.customer_id, #顧客ID
     :currency => 'jpy',
-  )
+    )
   redirect_to action: 'done'
+  end
+
+
+  def set_parent_category
+    @category_parent_array = [{name:'---', id:'---'}]
+    Category.roots.each do |parent|
+      @parent = {name: parent.name, id: parent.id}
+      @category_parent_array << @parent
+    end
+  end
+
+  def set_card
+    @card = Creditcard.find_by(user_id: current_user.id)
+  end
+
+  def set_product
+    @product = Product.find(params[:id])
   end
 
   private
@@ -126,19 +143,5 @@ class ProductsController < ApplicationController
     ).merge(category_id_in: category_ids)
   end
 
-  def set_parent_category
-    @category_parent_array = [{name:'---', id:'---'}]
-    Category.roots.each do |parent|
-      @parent = {name: parent.name, id: parent.id}
-      @category_parent_array << @parent
-    end
-  end
-
-  def set_card
-    @card = Creditcard.find_by(user_id: current_user.id)
-  end
-
-  def set_product
-    @product = Product.find(params[:id])
-  end
 end
+
