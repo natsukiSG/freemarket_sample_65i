@@ -109,7 +109,7 @@
           = link_to edit_product_path(@product.id),class: "product-show-buylink" do
             .product-show-buybtn
               編集
-          = link_to "/products/#{@product.id}", method: :delete,class: "product-show-buylink" do
+          = link_to products_path(@product.id), method: :delete,class: "product-show-buylink" do
             .product-show-buybtn
               削除
         - else
@@ -142,7 +142,7 @@
           = fa_icon 'key',class: 'product-show-keyicon'
           .product-show-text
             あんしん・あんぜんへの取り組み
-            
+
   .product-show-media-box
     = link_to "", class: "product-show-facebook" do
       = fa_icon 'facebook-square',class: 'product-show-facebook-icon'
