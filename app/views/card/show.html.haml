@@ -1,8 +1,13 @@
 =render 'layouts/header'
-.credit
-  .credit__container
-    .credit-content
-      %h2.credit-content-title 
+.pankuzu-nav
+  = render 'users/nav'
+
+
+.mypage
+  .mypage__container
+    = render 'users/side-bar'
+    .profile-wrapper__contents
+      .profile-wrapper__title 
         支払い方法
       .credit-content-main
         .creditcard-box
@@ -29,3 +34,9 @@
                 .creditcard-add
                   = fa_icon 'credit-card',class: 'credit-card-icon'
                   クレジットカードを追加する
+= render 'layouts/sell-btn'
+
+.app-banner
+  = render 'layouts/banner'
+.footer
+  = render 'layouts/footer'

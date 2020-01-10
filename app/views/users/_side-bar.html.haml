@@ -133,12 +133,21 @@
           .mypage-nav__link__content__icon
             = fa_icon 'chevron-right', class: "nav-right-icon"
     .mypage-nav
-      = link_to "", class: "mypage-nav__link active-nav" do
+    -if @card.blank?
+      = link_to new_card_path, class: "mypage-nav__link active-nav" do
         .mypage-nav__link__content
           .mypage-nav__link__content__title
             %li 支払い方法
           .mypage-nav__link__content__icon
             = fa_icon 'chevron-right', class: "nav-right-icon"
+    -else
+      = link_to card_index_path, class: "mypage-nav__link active-nav" do
+        .mypage-nav__link__content
+          .mypage-nav__link__content__title
+            %li 支払い方法
+          .mypage-nav__link__content__icon
+            = fa_icon 'chevron-right', class: "nav-right-icon"
+
     .mypage-nav
       = link_to "", class: "mypage-nav__link active-nav" do
         .mypage-nav__link__content

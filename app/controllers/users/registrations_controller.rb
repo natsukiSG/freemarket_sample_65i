@@ -152,12 +152,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
       building_name: session[:building_name],
       address_phone_number: session[:address_phone_number]
     )
-    # @creditcard = Creditcard.new(customer_id: customer.id, card_id: customer.default_card)
+    #  @creditcard = Creditcard.new(customer_id: customer.id, card_id: customer.default_card)
     if @user.save
       @street_address.user = @user
-      # @creditcard.user = @user
+      #  @creditcard.user = @user
       @street_address.save
-      # @creditcard.save
+      #  @creditcard.save
       if @sns_credential.present?
         @sns_credential.user = @user
         @sns_credential.save

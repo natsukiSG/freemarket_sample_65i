@@ -3,7 +3,8 @@ class ProductsController < ApplicationController
   before_action :set_child_category, only: [ :edit, :update]
   before_action :set_grandchild_category, only: [ :edit, :update]
   before_action :set_sizes, only: [ :edit, :update]
-  before_action :set_product, :set_card, only: [:buy_confirmation, :pay]
+  before_action :set_product, :set_card, only: [:buy_confirmation, :pay, :done]
+  
 
   require "payjp"
 
@@ -44,6 +45,13 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @product = Product.find(params[:id])
+    gon.count = @product.images.length
+    if @product.buyer_id != nil || @product.seller_id != current_user.id
+      redirect_to root_path
+    end
+    @profit = (@product.price * 0.9).round
+    @fee = @product.price - @profit
   end
 
   def update
@@ -59,7 +67,7 @@ class ProductsController < ApplicationController
             Image.find(image_id).destroy
           end
         end
-        redirect_to root_path
+        redirect_to toppage_path
       else
         if image_del_list
           image_del_list.each do |image_id|
@@ -69,7 +77,7 @@ class ProductsController < ApplicationController
         if @product.images.length == 0
           redirect_to edit_product_path
         else
-          redirect_to root_path
+          redirect_to toppage_path
         end
       end
     else
@@ -98,6 +106,17 @@ class ProductsController < ApplicationController
   )
   redirect_to action: 'done'
   end
+
+  def done
+    @product = Product.find(params[:id])
+    @seller = @product.seller
+    @images = @product.images.order("id DESC")
+    @category = @product.category
+    @child = @category.parent
+    @parent = @category.root
+    @brand = @product.brand
+  end
+
 
   private
   def  product_params
@@ -140,5 +159,38 @@ class ProductsController < ApplicationController
 
   def set_product
     @product = Product.find(params[:id])
+  end
+
+  def set_child_category
+    @product = Product.find(params[:id])
+    @category_children_array = [{name:'---', id:'---'}]
+      (@product.category.root.children).each do |child|
+        @children = {name: child.name, id: child.id}
+        @category_children_array << @children
+      end
+    end
+
+  def set_grandchild_category
+    @category_grandchildren_array = [{name:'---', id:'---'}]
+    (@product.category.parent.children).each do |grandchild|
+      @grandchildren = {name:grandchild.name, id:grandchild.id}
+      @category_grandchildren_array << @grandchildren
+    end
+  end
+
+  def set_sizes
+    @sizes_array = [{name:'---', id:'---'}]
+    (@product.category.sizes).each do |size|
+      @size = {name: size.name, id: size.id}
+      @sizes_array << @size
+    end
+  end
+
+  def delete_imgs
+    if params.has_key?(:delete_ids)
+      return params.require(:delete_ids)
+    else
+      return nil
+    end
   end
 end
