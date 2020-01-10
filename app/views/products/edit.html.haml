@@ -64,11 +64,11 @@
               .products-new-redbtn
                 必須
             .detail-right-cate-top
-              -# = f.select :category_id, options_for_select(@category_parent_array.map{|parent| [parent[:name], parent[:id]]}, @product.category.root.id), {selected: @product.category.root.name}, {class: 'select-default', id: 'parent_category-edit'}
+              = f.select :category_id, options_for_select(@category_parent_array.map{|parent| [parent[:name], parent[:id]]}, @product.category.root.id), {selected: @product.category.root.name}, {class: 'select-default', id: 'parent_category-edit'}
             
-              -# = f.select :category_id, options_for_select(@category_children_array.map{|child| [child[:name], child[:id]]}, @product.category.parent.id), {selected: @product.category.parent.name}, {class: 'select-default', id: 'child_category-edit'}
+              = f.select :category_id, options_for_select(@category_children_array.map{|child| [child[:name], child[:id]]}, @product.category.parent.id), {selected: @product.category.parent.name}, {class: 'select-default', id: 'child_category-edit'}
 
-              -# = f.select :category_id, options_for_select(@category_grandchildren_array.map{|grandchild| [grandchild[:name], grandchild[:id]]}, @product.category.id), {selected: @product.category.name}, {class: 'select-default', id: 'grandchild_category-edit'}
+              = f.select :category_id, options_for_select(@category_grandchildren_array.map{|grandchild| [grandchild[:name], grandchild[:id]]}, @product.category.id), {selected: @product.category.name}, {class: 'select-default', id: 'grandchild_category-edit'}
             -if @product.size.present?
               #size_wrapper-edit
                 .products-new_main-detail-right-status
@@ -97,7 +97,7 @@
             .products-new-redbtn
               必須
           .detail-right-status-box
-            -# = f.select :status, ['新品、未使用', '未使用に近い', '目立った傷や汚れなし'], {include_blank: '---'},  class: 'select-default'
+            = f.select :status, ['新品、未使用', '未使用に近い', '目立った傷や汚れなし'], {include_blank: '---'},  class: 'select-default'
             = f.select :status, Product.statuses.keys,{include_blank: '---'}, class: 'select-default'
       .products-new_main-delivary
         .products-new_main-delivary-left-head
@@ -149,7 +149,7 @@
               = "¥" + "#{@fee}"
           .main-price-right-profit
             #price
-            -# = f.number_field :price, style: "display: none", id: "price"
+            = f.number_field :price, style: "display: none", id: "price"
             販売利益
             .right_bar_2
               = "¥" + "#{@profit}"
@@ -172,6 +172,4 @@
           = f.submit "", class: 'exhibit-btn', value: '変更する'
         .products-new_mainbtn-text-gray
           = f.submit "", class: 'return-btn', value: 'キャンセル'
-
-  -# = render 'signups/signup_footer'
 
