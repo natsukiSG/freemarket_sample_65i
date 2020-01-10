@@ -3,7 +3,7 @@
     .products-new_head
       %h1.products-new_head_mercari
         =link_to root_path, class: "products-new_head-link" do
-          = image_tag "logo-products_new.svg", size: "185x49"
+          = image_tag "fmarket_logo_red", size: "185x49"
     .products-new_main
       %h2.sell-form__header
         商品情報を入力
@@ -14,7 +14,7 @@
           必須
         .sell-form-container__require
           最大10枚までアップロードできます
-        = f.fields_for :image do |image|
+        = f.fields_for :url do |image|
           .dropzone-container
             #preview
               - @product.images.each do |image|
@@ -64,11 +64,11 @@
               .products-new-redbtn
                 必須
             .detail-right-cate-top
-              = f.select :category_id, options_for_select(@category_parent_array.map{|parent| [parent[:name], parent[:id]]}, @product.category.root.id), {selected: @product.category.root.name}, {class: 'select-default', id: 'parent_category-edit'}
+              -# = f.select :category_id, options_for_select(@category_parent_array.map{|parent| [parent[:name], parent[:id]]}, @product.category.root.id), {selected: @product.category.root.name}, {class: 'select-default', id: 'parent_category-edit'}
             
-              = f.select :category_id, options_for_select(@category_children_array.map{|child| [child[:name], child[:id]]}, @product.category.parent.id), {selected: @product.category.parent.name}, {class: 'select-default', id: 'child_category-edit'}
+              -# = f.select :category_id, options_for_select(@category_children_array.map{|child| [child[:name], child[:id]]}, @product.category.parent.id), {selected: @product.category.parent.name}, {class: 'select-default', id: 'child_category-edit'}
 
-              = f.select :category_id, options_for_select(@category_grandchildren_array.map{|grandchild| [grandchild[:name], grandchild[:id]]}, @product.category.id), {selected: @product.category.name}, {class: 'select-default', id: 'grandchild_category-edit'}
+              -# = f.select :category_id, options_for_select(@category_grandchildren_array.map{|grandchild| [grandchild[:name], grandchild[:id]]}, @product.category.id), {selected: @product.category.name}, {class: 'select-default', id: 'grandchild_category-edit'}
             -if @product.size.present?
               #size_wrapper-edit
                 .products-new_main-detail-right-status
@@ -173,4 +173,5 @@
         .products-new_mainbtn-text-gray
           = f.submit "", class: 'return-btn', value: 'キャンセル'
 
-  = render 'signups/signup_footer'
+  -# = render 'signups/signup_footer'
+

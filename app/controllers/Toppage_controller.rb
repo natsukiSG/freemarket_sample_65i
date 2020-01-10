@@ -1,4 +1,7 @@
 class ToppageController < ApplicationController
+# before_action :get_category_children, :get_category_grandchildren,:get_size,
+# :get_brand,:get_searchsize,:set_parent_category,
+# :set_grandchild_category, :set_sizes
   def index
     @categories = Category.roots
     @products = @categories.map{|root| Product.where(category_id: root.subtree)}
@@ -31,6 +34,13 @@ class ToppageController < ApplicationController
   end
 
   def show
+    @product = Product.find(params[:id])
+    @seller = @product.seller
+    @images = @product.images.order("id DESC")
+    @category = @product.category
+    @child = @category.parent
+    @parent = @category.root
+    @brand = @product.brand
   end
 
   def create
@@ -48,6 +58,8 @@ class ToppageController < ApplicationController
       redirect_to new_product_path
     end
   end
+
+  private
   
   def get_category_children
     @category_children = Category.find_by(id: "#{params[:parent_id]}", ancestry: nil).children
@@ -79,28 +91,5 @@ class ToppageController < ApplicationController
     end
   end
 
-  def set_child_category
-    @product = Product.find(params[:id])
-    @category_children_array = [{name:'---', id:'---'}]
-      (@product.category.root.children).each do |child|
-        @children = {name: child.name, id: child.id}
-        @category_children_array << @children
-      end
-  end
-
-  def set_grandchild_category
-    @category_grandchildren_array = [{name:'---', id:'---'}]
-    (@product.category.parent.children).each do |grandchild|
-      @grandchildren = {name:grandchild.name, id:grandchild.id}
-      @category_grandchildren_array << @grandchildren
-    end
-  end
-
-  def set_sizes
-    @sizes_array = [{name:'---', id:'---'}]
-    (@product.category.sizes).each do |size|
-      @size = {name: size.name, id: size.id}
-      @sizes_array << @size
-    end
-  end
+  
 end
