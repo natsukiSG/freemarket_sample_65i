@@ -1,5 +1,8 @@
 class ToppageController < ApplicationController
   def index
+    @ladies_items = Product.where(category_id: 1...199).order("created_at DESC").limit(10)
+    @mens_items = Product.where(category_id: 199...341).order("created_at DESC").limit(10)
+
     @categories = Category.roots
     @products = @categories.map{|root| Product.where(category_id: root.subtree)}
     @sorted_products = @products.sort {|a,b| b.length <=> a.length }
@@ -31,6 +34,13 @@ class ToppageController < ApplicationController
   end
 
   def show
+    @product = Product.find(params[:id])
+    @seller = @product.seller
+    @images = @product.images.order("id DESC")
+    @category = @product.category
+    @child = @category.parent
+    @parent = @category.root
+    @brand = @product.brand
   end
 
   def create
