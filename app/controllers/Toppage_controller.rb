@@ -1,7 +1,11 @@
 class ToppageController < ApplicationController
-# before_action :get_category_children, :get_category_grandchildren,:get_size,
-# :get_brand,:get_searchsize,:set_parent_category,
-# :set_grandchild_category, :set_sizes
+  before_action :set_parent_category, only: [:new, :create, :edit, :update, :search]
+  before_action :set_child_category, only: [ :edit, :update]
+  before_action :set_grandchild_category, only: [ :edit, :update]
+  before_action :set_sizes, only: [ :edit, :update]
+  skip_before_action :authenticate_user!, only: [:index, :show, :search, :get_searchsize, :get_category_children, :get_category_grandchildren]
+  require "payjp"
+
   def index
     @categories = Category.roots
     @products = @categories.map{|root| Product.where(category_id: root.subtree)}
@@ -59,7 +63,18 @@ class ToppageController < ApplicationController
     end
   end
 
-  private
+
+  def destroy
+    @product = Product.find(params[:id])
+    if @product.seller_id == current_user.id
+      if @product.destroy
+        redirect_to root_path, notice: "「#{@product.name}を削除しました。」"
+      else
+        redirect_to toppage_path(@product.id), notice: "「#{@product.name}の削除ができませんでした。」"
+      end
+    end
+  end
+
   
   def get_category_children
     @category_children = Category.find_by(id: "#{params[:parent_id]}", ancestry: nil).children
@@ -82,6 +97,7 @@ class ToppageController < ApplicationController
     @searchsizes = Searchsize.find("#{params[:searchsize_id]}").sizes
   end
 
+  private
 
   def set_parent_category
     @category_parent_array = [{name:'---', id:'---'}]
