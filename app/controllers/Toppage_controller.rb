@@ -66,8 +66,11 @@ class ToppageController < ApplicationController
   def destroy
     @product = Product.find(params[:id])
     if @product.seller_id == current_user.id
-      @product.destroy!
-      redirect_to root_path, notice: "「#{@product.name}を削除しました。」"
+      if @product.destroy
+        redirect_to root_path, notice: "「#{@product.name}を削除しました。」"
+      else
+        redirect_to toppage_path(@product.id), notice: "「#{@product.name}の削除できませんでした。」"
+      end
     end
   end
 
