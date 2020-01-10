@@ -69,7 +69,7 @@ class ToppageController < ApplicationController
       if @product.destroy
         redirect_to root_path, notice: "「#{@product.name}を削除しました。」"
       else
-        redirect_to toppage_path(@product.id), notice: "「#{@product.name}の削除できませんでした。」"
+        redirect_to toppage_path(@product.id), notice: "「#{@product.name}の削除ができませんでした。」"
       end
     end
   end
