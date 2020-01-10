@@ -2,7 +2,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   require "payjp"
   before_action :validates_step1, only: :sms
   before_action :validates_step2, only: :address
-  before_action :validates_step3, only: :credit
+  before_action :validates_step3, only: :create
 
   def new
     reset_session
@@ -108,17 +108,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
     render 'address' unless @streetaddress.valid?(:validates_step3)
   end
 
-  def credit
-  end
+  # def credit
+  # end
 
   def done
   end
 
   def create
-    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
-      customer = Payjp::Customer.create(
-      card: params['payjp-token'],
-      )
+    # Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+    #   customer = Payjp::Customer.create(
+    #   card: params['payjp-token'],
+    #   )
 
     if session["devise.provider_data"].present?
       @sns_credential = SnsCredential.new(
@@ -152,12 +152,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
       building_name: session[:building_name],
       address_phone_number: session[:address_phone_number]
     )
-     @creditcard = Creditcard.new(customer_id: customer.id, card_id: customer.default_card)
+    #  @creditcard = Creditcard.new(customer_id: customer.id, card_id: customer.default_card)
     if @user.save
       @street_address.user = @user
-       @creditcard.user = @user
+      #  @creditcard.user = @user
       @street_address.save
-       @creditcard.save
+      #  @creditcard.save
       if @sns_credential.present?
         @sns_credential.user = @user
         @sns_credential.save
