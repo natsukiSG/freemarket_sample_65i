@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   end
 
   devise_scope :user do
-    get     "index",               to: "users/registrations#index"
     get     "profile",             to: "users/registrations#profile"
     get     "sms",                 to: "users/registrations#sms"
     get     "sms_confirmation",    to: "users/registrations#sms_confirmation"
