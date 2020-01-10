@@ -2,6 +2,7 @@ class ToppageController < ApplicationController
   def index
     @ladies_items = Product.where(category_id: 1...199).order("created_at DESC").limit(10)
     @mens_items = Product.where(category_id: 199...341).order("created_at DESC").limit(10)
+    @electro_items = Product.where(category_id: 889...975).order("created_at DESC").limit(10)
 
     @categories = Category.roots
     @products = @categories.map{|root| Product.where(category_id: root.subtree)}
