@@ -3,7 +3,7 @@ class ToppageController < ApplicationController
   before_action :set_child_category, only: [ :edit, :update]
   before_action :set_grandchild_category, only: [ :edit, :update]
   before_action :set_sizes, only: [ :edit, :update]
-  # skip_before_action :authenticate_user!, only: [:index, :show, :search, :get_searchsize, :get_category_children, :get_category_grandchildren]
+  skip_before_action :authenticate_user!, only: [:index, :show, :search, :get_searchsize, :get_category_children, :get_category_grandchildren]
   require "payjp"
 
   def index
