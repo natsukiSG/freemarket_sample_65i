@@ -36,7 +36,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :toppages do
+  resources :toppage do
     member do
       get 'buy_confirmation'
       post 'onetimebuy'

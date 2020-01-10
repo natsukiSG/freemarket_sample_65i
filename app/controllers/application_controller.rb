@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   before_action :set_parents
   protect_from_forgery with: :exception
   before_action :set_brands
+  before_action :authenticate_user!
+
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :name_kana, :nickname, :email, :password, :password_confirmation, :birthday, :comment, :payment])
