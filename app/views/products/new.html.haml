@@ -56,7 +56,7 @@
               .products-new-redbtn
                 必須
             .detail-right-cate-top
-            = f.select :category_id, options_for_select(@category_parent_array.map{|parent| [parent[:name], parent[:id]]}), {}, {class: 'select-default', id: 'parent_category'}
+              = f.select :category_id, options_for_select(@category_parent_array.map{|parent| [parent[:name], parent[:id]]}), {}, {class: 'select-default', id: 'parent_category'}
 
           .products-new_main-detail-right-status
             商品状態
