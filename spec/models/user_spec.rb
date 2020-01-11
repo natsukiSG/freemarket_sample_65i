@@ -118,7 +118,7 @@ describe User do
     end
 
     it "電話番号重複登録できない" do
-      another_user = build(:user, email: user.phone_number)
+      another_user = build(:user, phone_number: user.phone_number)
       another_user.valid?
       expect(another_user.errors[:phone_number]).to include("has already been taken")
     end
