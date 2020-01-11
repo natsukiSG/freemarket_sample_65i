@@ -3,7 +3,7 @@
     .products-new_head
       %h1.products-new_head_mercari
         =link_to root_path, class: "products-new_head-link" do
-          = image_tag "logo-products_new.svg", size: "185x49"
+          = image_tag "fmarket_logo_red", size: "185x49"
     .products-new_main
       %h2.sell-form__header
         商品情報を入力
@@ -14,7 +14,7 @@
           必須
         .sell-form-container__require
           最大10枚までアップロードできます
-        = f.fields_for :image do |image|
+        = f.fields_for :url do |image|
           .dropzone-container
             #preview
               - @product.images.each do |image|
@@ -97,7 +97,7 @@
             .products-new-redbtn
               必須
           .detail-right-status-box
-            -# = f.select :status, ['新品、未使用', '未使用に近い', '目立った傷や汚れなし'], {include_blank: '---'},  class: 'select-default'
+            = f.select :status, ['新品、未使用', '未使用に近い', '目立った傷や汚れなし'], {include_blank: '---'},  class: 'select-default'
             = f.select :status, Product.statuses.keys,{include_blank: '---'}, class: 'select-default'
       .products-new_main-delivary
         .products-new_main-delivary-left-head
@@ -149,7 +149,7 @@
               = "¥" + "#{@fee}"
           .main-price-right-profit
             #price
-            -# = f.number_field :price, style: "display: none", id: "price"
+            = f.number_field :price, style: "display: none", id: "price"
             販売利益
             .right_bar_2
               = "¥" + "#{@profit}"
@@ -173,4 +173,3 @@
         .products-new_mainbtn-text-gray
           = f.submit "", class: 'return-btn', value: 'キャンセル'
 
-  = render 'signups/signup_footer'

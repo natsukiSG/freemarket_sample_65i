@@ -1,4 +1,11 @@
 class ToppageController < ApplicationController
+  before_action :set_parent_category, only: [:new, :create, :edit, :update, :search]
+  before_action :set_child_category, only: [ :edit, :update]
+  before_action :set_grandchild_category, only: [ :edit, :update]
+  before_action :set_sizes, only: [ :edit, :update]
+  skip_before_action :authenticate_user!, only: [:index, :show, :search, :get_searchsize, :get_category_children, :get_category_grandchildren]
+  require "payjp"
+
   def index
     @ladies_items = Product.where(category_id: 1...199).order("created_at DESC").limit(10)
     @mens_items = Product.where(category_id: 199...341).order("created_at DESC").limit(10)
@@ -63,6 +70,19 @@ class ToppageController < ApplicationController
       redirect_to new_product_path
     end
   end
+
+
+  def destroy
+    @product = Product.find(params[:id])
+    if @product.seller_id == current_user.id
+      if @product.destroy
+        redirect_to root_path, notice: "「#{@product.name}を削除しました。」"
+      else
+        redirect_to toppage_path(@product.id), notice: "「#{@product.name}の削除ができませんでした。」"
+      end
+    end
+  end
+
   
   def get_category_children
     @category_children = Category.find_by(id: "#{params[:parent_id]}", ancestry: nil).children
@@ -85,6 +105,7 @@ class ToppageController < ApplicationController
     @searchsizes = Searchsize.find("#{params[:searchsize_id]}").sizes
   end
 
+  private
 
   def set_parent_category
     @category_parent_array = [{name:'---', id:'---'}]
@@ -94,28 +115,5 @@ class ToppageController < ApplicationController
     end
   end
 
-  def set_child_category
-    @product = Product.find(params[:id])
-    @category_children_array = [{name:'---', id:'---'}]
-      (@product.category.root.children).each do |child|
-        @children = {name: child.name, id: child.id}
-        @category_children_array << @children
-      end
-  end
-
-  def set_grandchild_category
-    @category_grandchildren_array = [{name:'---', id:'---'}]
-    (@product.category.parent.children).each do |grandchild|
-      @grandchildren = {name:grandchild.name, id:grandchild.id}
-      @category_grandchildren_array << @grandchildren
-    end
-  end
-
-  def set_sizes
-    @sizes_array = [{name:'---', id:'---'}]
-    (@product.category.sizes).each do |size|
-      @size = {name: size.name, id: size.id}
-      @sizes_array << @size
-    end
-  end
+  
 end

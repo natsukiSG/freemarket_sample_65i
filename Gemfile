@@ -99,3 +99,5 @@ gem 'ancestry'
 gem 'payjp'
 gem 'recaptcha', require: "recaptcha/rails"
 gem 'active_hash'
+
+gem 'unicorn-worker-killer'
