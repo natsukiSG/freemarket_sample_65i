@@ -56,7 +56,7 @@
         .category-box_grid
           - @mens_items.each do |mens_item|
             .category__box--product
-              = link_to "", class: "category__box--product_link" do
+              = link_to toppage_path(mens_item.id), class: "category__box--product_link" do
                 .category__box--product-box
                   .category__box--product-box__image
                     = image_tag "#{mens_item.images[0].url}", size: "188x188"
@@ -75,7 +75,7 @@
         .category-box_grid
           - @electro_items.each do |electro_item|
             .category__box--product
-              = link_to "", class: "category__box--product_link" do
+              = link_to toppage_path(electro_item.id), class: "category__box--product_link" do
                 .category__box--product-box
                   .category__box--product-box__image
                     = image_tag "#{electro_item.images[0].url}", size: "188x188"
@@ -94,7 +94,7 @@
         .category-box_grid
           - @toy_items.each do |toy_item|
             .category__box--product
-              = link_to "", class: "category__box--product_link" do
+              = link_to toppage_path(toy_item.id), class: "category__box--product_link" do
                 .category__box--product-box
                   .category__box--product-box__image
                     = image_tag "#{toy_item.images[0].url}", size: "188x188"
@@ -127,7 +127,7 @@
         .category-box_grid
           - @chanel_brands.each do |chanel_brand|
             .category__box--product
-              = link_to "", class: "category__box--product_link" do
+              = link_to toppage_path(chanel_brand.id), class: "category__box--product_link" do
                 .category__box--product-box
                   .category__box--product-box__image
                     = image_tag "#{chanel_brand.images[0].url}", size: "188x188"
@@ -146,7 +146,7 @@
         .category-box_grid
           - @louis_brands.each do |louis_brand|
             .category__box--product
-              = link_to "", class: "category__box--product_link" do
+              = link_to toppage_path(louis_brand.id), class: "category__box--product_link" do
                 .category__box--product-box
                   .category__box--product-box__image
                     = image_tag "#{louis_brand.images[0].url}", size: "188x188"
@@ -165,7 +165,7 @@
         .category-box_grid
           - @sup_brands.each do |sup_brand|
             .category__box--product
-              = link_to "", class: "category__box--product_link" do
+              = link_to toppage_path(sup_brand.id), class: "category__box--product_link" do
                 .category__box--product-box
                   .category__box--product-box__image
                     = image_tag "#{sup_brand.images[0].url}", size: "188x188"
@@ -184,7 +184,7 @@
         .category-box_grid
           - @nike_brands.each do |nike_brand|
             .category__box--product
-              = link_to "", class: "category__box--product_link" do
+              = link_to toppage_path(nike_brand.id), class: "category__box--product_link" do
                 .category__box--product-box
                   .category__box--product-box__image
                     = image_tag "#{nike_brand.images[0].url}", size: "188x188"
