@@ -5,6 +5,7 @@ class ToppageController < ApplicationController
     @electro_items = Product.where(category_id: 889...975).order("created_at DESC").limit(10)
     @toy_items = Product.where(category_id: 676...789).order("created_at DESC").limit(10)
     @chanel_brands = Product.where(brand_id: 2447).order("created_at DESC").limit(10)
+    @louis_brands = Product.where(brand_id: 6155).order("created_at DESC").limit(10)
 
     @categories = Category.roots
     @products = @categories.map{|root| Product.where(category_id: root.subtree)}
