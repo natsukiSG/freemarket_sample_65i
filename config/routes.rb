@@ -24,9 +24,6 @@ Rails.application.routes.draw do
   end
   
   resources :users, only: [:show, :edit]
-
-
-
   
   resources :card, only: [:new, :show] do
     collection do
