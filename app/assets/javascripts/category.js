@@ -26,7 +26,7 @@ $(function() {
     // $('.active_parent-list').children().hover().css({"color":"#fff"});
     $.ajax({
       type: 'GET',
-      url: '/categories/get_category_children',
+      url: '/toppage/get_category_children',
       data: {parent_id: id},//どの親の要素かを送ります params[:parent_id]で送られる
       dataType: 'json'
     }).
@@ -83,7 +83,7 @@ $(function() {
     $($(this)).addClass("active_children-list");
     $.ajax({
       type: 'GET',
-      url: '/categories/get_category_grandchildren',
+      url: '/toppage/get_category_grandchildren',
       data: {child_id: id},
       dataType: 'json'
     })
