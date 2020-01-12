@@ -23,9 +23,9 @@
       %div{ class: "brand-index_individual-box clearfix"}
         .brand-index_list-box_category-name.clearfix
           %h3.brand-category-name
-            = @brand_categories[0].name
+            = @brand_categories.name
         .brand-index_individual-box_brand.clearfix
-          - @brand_categories[0].brands.each do |brand|
+          - @brand_categories.each do |brand|
             .brand_inner-box-name
               = link_to "#{brand.name}", brand_path(brand), class: "brand_inner-box-name-link"
                 
