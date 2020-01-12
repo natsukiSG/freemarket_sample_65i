@@ -5,7 +5,6 @@ class ProductsController < ApplicationController
   before_action :set_sizes, only: [ :edit, :update]
   before_action :set_product, :set_card, only: [:buy_confirmation, :pay, :done]
   
-
   require "payjp"
 
   def index
@@ -22,24 +21,8 @@ class ProductsController < ApplicationController
     end
   end
 
-  def get_category_children
-    #子カテゴリーの配列を取得
-    @children = Category.find(params[:parent_id]).children.limit(14)
-  end
-  def get_category_grandchildren
-    #孫カテゴリーの配列を取得
-    @grandchildren = Category.find(params[:child_id]).children.limit(14)
-  end
 
   def show
-  end
-
-  def get_brand
-    @brands = Brand.where('name LIKE(?)', "%#{params[:keyword]}%")
-  end
-
-  def get_size
-    @sizes = Category.find("#{params[:grandchild_id]}").sizes
   end
   
   def new
@@ -137,6 +120,22 @@ class ProductsController < ApplicationController
     @brand = @product.brand
   end
 
+  def get_brand
+    @brands = Brand.where('name LIKE(?)', "%#{params[:keyword]}%")
+  end
+
+  def get_size
+    @sizes = Category.find("#{params[:grandchild_id]}").sizes
+  end
+
+  def get_category_children
+    #子カテゴリーの配列を取得
+    @children = Category.find(params[:parent_id]).children.limit(14)
+  end
+  def get_category_grandchildren
+    #孫カテゴリーの配列を取得
+    @grandchildren = Category.find(params[:child_id]).children.limit(14)
+  end
 
   private
   def  product_params
