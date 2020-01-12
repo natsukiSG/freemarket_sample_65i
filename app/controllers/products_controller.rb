@@ -21,6 +21,26 @@ class ProductsController < ApplicationController
       end
     end
   end
+
+  def get_category_children
+    #子カテゴリーの配列を取得
+    @children = Category.find(params[:parent_id]).children.limit(14)
+  end
+  def get_category_grandchildren
+    #孫カテゴリーの配列を取得
+    @grandchildren = Category.find(params[:child_id]).children.limit(14)
+  end
+
+  def show
+  end
+
+  def get_brand
+    @brands = Brand.where('name LIKE(?)', "%#{params[:keyword]}%")
+  end
+
+  def get_size
+    @sizes = Category.find("#{params[:grandchild_id]}").sizes
+  end
   
   def new
     @product = Product.new
@@ -120,7 +140,7 @@ class ProductsController < ApplicationController
 
   private
   def  product_params
-    params.require(:product).permit(:name, :comment, :price, :costcharge, :status, :delivery_way, :delivery_area, :delivery_date, :category_id, :images).merge(seller_id: current_user.id)
+    params.require(:product).permit(:name, :comment, :price, :costcharge, :status, :delivery_way, :delivery_area, :delivery_date, :category_id, :images, :size_id, :brand_id).merge(seller_id: current_user.id)
   end
   
   def search_params

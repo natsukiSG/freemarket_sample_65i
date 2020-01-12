@@ -56,7 +56,7 @@ function appendbrands(brand){
                         </div>
                         <div class='detail-right-cate-top'>
                           <select class="select-default" id="product-size" name="product[size_id]">
-                            <option value="" data-category="---">---</option>
+                            <option value="---" data-category="---">---</option>
                             ${insertHTML}
                           </select>
                         </div>
@@ -129,7 +129,7 @@ function appendbrands(brand){
                   <option value="クリックポスト" data-category="---">クリックポスト</option>
                   <option value="ゆうパケット" data-category="---">ゆうパケット</option>
                 </select>
-             </div>`;
+            </div>`;
     return html;
   }
 
@@ -149,7 +149,7 @@ function appendbrands(brand){
                   <option value="ゆうパック">ゆうパック</option>
                   <option value="ゆうメール">ゆうメール</option>
                 </select>
-             </div>`;
+            </div>`;
     return html;
   }
 
@@ -443,6 +443,7 @@ function appendbrands(brand){
         dataType: 'json'
       })
       .done(function(children){
+        
         $('#child_category-edit').remove(); //親が変更された時、子以下を削除する
         $('#child_category-edit-add').remove();
         $('#grandchild_category-edit').remove();

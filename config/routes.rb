@@ -23,9 +23,6 @@ Rails.application.routes.draw do
   end
   
   resources :users, only: [:show, :edit]
-
-
-
   
   resources :card, only: [:new, :show] do
     collection do
@@ -61,28 +58,26 @@ Rails.application.routes.draw do
     collection do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
-
     end
   end
 
   resources :products do
     member do
       get 'buy_confirmation'
-
       post 'pay'
       get 'done', to:'products#done'
-
     end
-  end
-
-
-  resources :categories , only: [:index, :show]do
     collection do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
+      get 'get_size', defaults: { format: 'json' }
+      get 'get_brand', defaults: { format: 'json' }
+      get 'get_searchsize', defaults: { format: 'json' }
+      get 'search'
+      match 'search' => 'products#search', via: [:get, :post]
     end
   end
-  
+
   resources :brands , only: [:index, :show]
   resources :brand_categories , only: [:show]
 

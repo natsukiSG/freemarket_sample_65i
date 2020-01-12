@@ -12,7 +12,7 @@ FactoryBot.define do
     birth_year            {"1989"}
     birth_month           {"9"}
     birth_day             {"27"}
-    phone_number          {Faker::PhoneNumber}
+    phone_number          {Faker::Number.number(digits: 11)}
   end
 
 end
