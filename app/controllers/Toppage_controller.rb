@@ -13,7 +13,7 @@ class ToppageController < ApplicationController
     @toy_items = Product.where(category_id: 676...789).order("created_at DESC").limit(10)
     @chanel_brands = Product.where(brand_id: 2447).order("created_at DESC").limit(10)
     @louis_brands = Product.where(brand_id: 6155).order("created_at DESC").limit(10)
-    @sup_brands = Product.where(brand_id: 17556).order("created_at DESC").limit(10)
+    @sup_brands = Product.where(brand_id: 7959).order("created_at DESC").limit(10)
     @nike_brands = Product.where(brand_id: 3813).order("created_at DESC").limit(10)
     @categories = Category.roots
     @products = @categories.map{|root| Product.where(category_id: root.subtree)}
