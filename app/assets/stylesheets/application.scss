@@ -1,31 +1,33 @@
-/*
-* This is a manifest file that'll be compiled into application.css, which will include all the files
-* listed below.
-*
-* Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
-* vendor/assets/stylesheets directory can be referenced here using a relative path.
-*
-* You're free to add application-wide styles to this file and they'll appear at the bottom of the
-* compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
-* files in this directory. Styles in this file should be added after the last require_* statement.
-* It is generally better to create a new file per style scope.
-*
-*= require_tree .
-*= require_self
-*/
-
 @import "./reset";
 @import "font-awesome";
-@import "header";
-@import "footer";
-@import "users/nav";
-@import "display_btn";
 @import "brands/index";
-@import "style";
-@import "banner";
-@import "sell-btn";
-@import "users/users";
-@import "toppages/toppages";
-//  @import "slick-theme"; 
-//  @import "slick"; 
-//  @import "carousel";
+@import "categories/index";
+@import "signin/new";
+@import "signup/btn";
+@import "signup/done";
+@import "signup/new";
+@import "signup/profile";
+@import "signup/registration";
+@import "signup/reset";
+@import "signup/signup_footer";
+@import "signup/signup_header";
+@import "toppages/banner";
+@import "toppages/new";
+@import "toppages/show";
+@import "toppages/toppage";
+@import "users/edit";
+@import "users/info_check";
+@import "users/logout";
+@import "users/nav";
+@import "users/show";
+@import "users/side-bar";
+@import "shared/header";
+@import "shared/footer";
+@import "shared/style";
+@import "shared/banner";
+@import "shared/display_btn";
+@import "shared/sell-btn";
+@import "shared/buy";
+@import "shared/card";
+@import "shared/slick-theme";
+@import "shared/slick";
