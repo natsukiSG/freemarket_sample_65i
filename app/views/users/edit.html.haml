@@ -1,3 +1,6 @@
+.header
+  = render 'layouts/header'
+
 .pankuzu-nav
   = render 'nav'
 
@@ -11,7 +14,7 @@
       = form_for( 'mypage', method: :patch )do |f|
         .profile-wrapper__icon-area
           = image_tag "member_photo_noimage_thumb.png", class: "profile-wrapper__icon-area__icon-image"
-          = f.text_field :email, class: "profile-wrapper__icon-area__nickname", placeholder: "メルカリ"
+          = f.text_field :nickname, value:current_user.nickname,class: "profile-wrapper__icon-area__nickname", placeholder: "例)AYA☆セール中"
         .profile-wrapper__form
           = f.text_area :email, class: "profile-wrapper__form__profile", placeholder: "例)こんにちは☆ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取りきできるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪" 
           = f.submit "変更する", class: "profile-wrapper__form__button" 

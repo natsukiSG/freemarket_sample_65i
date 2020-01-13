@@ -1,10 +1,7 @@
 @import "./reset";
 @import "font-awesome";
-@import "header";
-@import "footer";
 @import "brands/index";
 @import "categories/index";
-
 @import "signin/new";
 @import "signup/btn";
 @import "signup/done";
@@ -14,24 +11,23 @@
 @import "signup/reset";
 @import "signup/signup_footer";
 @import "signup/signup_header";
-
 @import "toppages/banner";
 @import "toppages/new";
 @import "toppages/show";
 @import "toppages/toppage";
-
 @import "users/edit";
 @import "users/info_check";
 @import "users/logout";
 @import "users/nav";
 @import "users/show";
 @import "users/side-bar";
-
-@import "style";
-@import "banner";
-@import "display_btn";
-@import "sell-btn";
-@import "buy";
-@import "card";
-@import "slick-theme";
-@import "slick";
+@import "shared/header";
+@import "shared/footer";
+@import "shared/style";
+@import "shared/banner";
+@import "shared/display_btn";
+@import "shared/sell-btn";
+@import "shared/buy";
+@import "shared/card";
+@import "shared/slick-theme";
+@import "shared/slick";
