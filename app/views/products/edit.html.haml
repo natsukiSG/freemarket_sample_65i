@@ -87,7 +87,7 @@
                 - if @product.brand.present?
                   %input.select-default#product-brand-form-edit{placeholder: "例)シャネル", type: "text", value: "#{@product.brand.name}"}
                   .product-brand-suggest-box
-                  = f.hidden_field :brand_id, {value:'#{@product.brand.id}', id: 'hidden-brand-edit'}
+                  = f.hidden_field :brand_id, {value: "#{@product.brand.id}", id: 'hidden-brand-edit'}
                 - else
                   %input.select-default#product-brand-form-edit{placeholder: "例)シャネル", type: "text"}
                   .product-brand-suggest-box
