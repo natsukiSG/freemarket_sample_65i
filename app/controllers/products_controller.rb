@@ -58,58 +58,78 @@ class ProductsController < ApplicationController
   end
 
   def update
-    @product = Product.find(params[:id])
-    image_del_list = delete_imgs if delete_imgs
-    if @product.update(product_params)
-      if (params[:images] != nil)
-        params[:images]['url'].each do |image|
-          @product.images.create(url: image, product_id: @product.id)
-        end
-        if image_del_list
-          image_del_list.each do |image_id|
-            Image.find(image_id).destroy
+    if @product.seller_id == current_user.id
+      @product = Product.find(params[:id])
+      image_del_list = delete_imgs if delete_imgs
+      if @product.update(product_params)
+        if (params[:images] != nil)
+          params[:images]['url'].each do |image|
+            @product.images.create(url: image, product_id: @product.id)
           end
-        end
-        redirect_to toppage_path
-      else
-        if image_del_list
-          image_del_list.each do |image_id|
-            Image.find(image_id).destroy
+          if image_del_list
+            image_del_list.each do |image_id|
+              Image.find(image_id).destroy
+            end
           end
-        end
-        if @product.images.length == 0
-          redirect_to edit_product_path
-        else
           redirect_to toppage_path
+        else
+          if image_del_list
+            image_del_list.each do |image_id|
+              Image.find(image_id).destroy
+            end
+          end
+          if @product.images.length == 0
+            redirect_to edit_product_path
+          else
+            redirect_to toppage_path
+          end
         end
+      else
+        redirect_to edit_product_path
       end
     else
-      redirect_to edit_product_path
+      redirect_to root_path
     end
   end
 
   def buy_confirmation
-    @streetaddress = StreetAddress.find_by(user_id: current_user.id)
-      if @card.present?
-        Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-        customer = Payjp::Customer.retrieve(@card.customer_id)
-        @customer_card = customer.cards.retrieve(@card.card_id)
-    else
+    if (@product.buyer_id.blank?)
+      if @product.seller_id != current_user.id
+        @streetaddress = StreetAddress.find_by(user_id: current_user.id)
+          if @card.present?
+            Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+            customer = Payjp::Customer.retrieve(@card.customer_id)
+            @customer_card = customer.cards.retrieve(@card.card_id)
+          else
+            redirect_to root_path
+          end
+      else
       redirect_to root_path
+      end
+    else
+      redirect_to toppage_path(@product.id)
     end
   end
   
 
   def pay
-    @product = Product.find(params[:id])
-    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
-    Payjp::Charge.create(
-    :amount => @product.price, #支払金額
-    :customer => @card.customer_id, #顧客ID
-    :currency => 'jpy',
-  )
-  @product.update(buyer_id: current_user.id)
-  redirect_to action: 'done'
+    if (@product.buyer_id.blank?)
+      if @product.seller_id != current_user.id
+        @product = Product.find(params[:id])
+        Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+        Payjp::Charge.create(
+        :amount => @product.price, #支払金額
+        :customer => @card.customer_id, #顧客ID
+        :currency => 'jpy',
+        )
+        @product.update(buyer_id: current_user.id)
+        redirect_to action: 'done'
+      else
+        redirect_to root_path
+      end
+    else
+      redirect_to root_path
+    end
   end
 
   def done
