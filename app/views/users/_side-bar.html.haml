@@ -119,7 +119,7 @@
   %h3.mypage-nav__head 設定
   %ul.side-bar-config.mypage-nav-list
     .mypage-nav
-      = link_to edit_user_path, class: "mypage-nav__link active-nav" do
+      = link_to edit_user_path(current_user), class: "mypage-nav__link active-nav" do
         .mypage-nav__link__content
           .mypage-nav__link__content__title
             %li プロフィール
