@@ -14,17 +14,21 @@ $(function(){
     var reader = new FileReader();
     inputs.push($(this));
     var img = $( `<div class= "img_view">
-                    <div class=img_view_upper>
+                    <div class= "img_view_upper">
                       <img class= "product-new-img">
                     </div>
                   </div>`);
     reader.onload = function(e) {
-      var btn_wrapper = $(`<div class="btn_wrapper"><div class="btn_edit">編集</div><div class="btn_delete">削除</div></div>`);
+      var btn_wrapper = $(`<div class="btn_wrapper">
+                              <div class="btn_edit">編集</div>
+                              <div class="btn_delete">削除</div>
+                            </div>`);
       img.append(btn_wrapper);
       img.find('img').attr({src: e.target.result})
     }
     reader.readAsDataURL(file);
     images.push(img);
+  
 
     if(images.length >= (5 - count)) {
       dropzone2.css({
