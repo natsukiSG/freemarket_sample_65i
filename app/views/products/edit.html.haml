@@ -36,8 +36,7 @@
             .dropzone-area2
               = image.label :images, class: "dropzone-box", for: "upload-image" do
                 %p ドラッグ&ドロップまたはクリックしてファイルをアップロード
-          .dropzone-container3
-          
+                
       .products-new_main-content
         .main-content-group
           .main-content-group-name
@@ -147,8 +146,6 @@
             .right_bar
               = "¥" + "#{@fee}"
           .main-price-right-profit
-            #price
-            = f.number_field :price, style: "display: none", id: "price"
             販売利益
             .right_bar_2
               = "¥" + "#{@profit}"
