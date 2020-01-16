@@ -3,6 +3,7 @@ $(function(){
   var dropzone = $('.dropzone-area');
   var dropzone2 = $('.dropzone-area2');
   var images = [];
+  var images2 = [];
   var inputs  =[];
   var input_area = $('.input_area');
   var preview = $('#preview');
@@ -19,38 +20,35 @@ $(function(){
                     </div>
                   </div>`);
     reader.onload = function(e) {
-      var btn_wrapper = $(`<div class="btn_wrapper">
-                              <div class="btn_edit">編集</div>
-                              <div class="btn_delete">削除</div>
-                            </div>`);
+      var btn_wrapper = $(`<div class="btn_wrapper"><div class="btn_edit">編集</div><div class="btn_delete">削除</div></div>`);
       img.append(btn_wrapper);
       img.find('img').attr({src: e.target.result})
     }
     reader.readAsDataURL(file);
     images.push(img);
   
-
-    if(images.length >= (5 - count)) {
+    if(images.length > (5 - count)) {
+      images2.push(img);
       dropzone2.css({
         display: 'block'
       })
       dropzone.css({
         display: 'none'
       })
-      $.each(images, function(index, image) {
-        image.attr('data-image', index);
+      console.log(images2.length)
+      $.each(images2, function(index, image) {
+        image.attr('data-image', index + 5);
         preview2.append(image);
-
         dropzone2.css({
           width: `calc(100% - (126px * ${images.length - 5 + count}))`
-        })
-      })
-      if(images.length >= (6 - count)) {
+        });
+      });
+      if(images2.length > (5 - count)) {
         dropzone2.css({
           position: 'absolute'
-        })
+        });
       }
-      if(images.length == (9 - count)) {
+      if(images2.length == (4 - count)) {
         dropzone2.find('p').replaceWith('<i class="fa fa-camera"></i>')
       }
     } else {
@@ -74,6 +72,7 @@ $(function(){
     var new_image = $(`<input multiple= "multiple" name="images[url][]" data-image= ${images.length} type="file" id="upload-image" class="upload-image">`);
     input_area.prepend(new_image);
   });
+  
 
 // 削除イベント
   $(document).on('click', '.btn_delete', function() {

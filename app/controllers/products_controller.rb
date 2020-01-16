@@ -73,6 +73,11 @@ class ProductsController < ApplicationController
           end
           redirect_to toppage_path
         else
+          if image_del_list
+            image_del_list.each do |image_id|
+              Image.find(image_id).destroy
+            end
+          end
           if @product.images.length == 0
             redirect_to edit_product_path
           else
