@@ -4,7 +4,7 @@ $(function() {
     nextArrow:'<i class="slider-controller-right"></i>',
     autoplay: true,
     autoplaySpeed: 2000,
-    speed: 800
+    speed: 2000
   });
 
   $('.top-banner-slider').on(function() {
